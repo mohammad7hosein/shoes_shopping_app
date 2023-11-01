@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:shoes_shopping_app/models.dart';
 import 'package:shoes_shopping_app/util/theme.dart';
 
-import 'detail_screen.dart';
+import 'screen/detail_screen.dart';
 
 class Item extends StatefulWidget {
   final Shoe shoe;
@@ -26,6 +26,7 @@ class _ItemState extends State<Item> {
       },
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 8),
+        margin: const EdgeInsets.all(10),
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(16),

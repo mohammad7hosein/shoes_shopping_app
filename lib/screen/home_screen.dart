@@ -4,10 +4,12 @@ import 'package:flutter_svg/svg.dart';
 import 'package:shoes_shopping_app/models.dart';
 import 'package:shoes_shopping_app/util/theme.dart';
 
-import 'filterButton.dart';
-import 'item.dart';
+import '../filterButton.dart';
+import '../item.dart';
 
 class HomeScreen extends StatelessWidget {
+  static const route = '/home';
+
   const HomeScreen({Key? key}) : super(key: key);
 
   @override
@@ -18,7 +20,7 @@ class HomeScreen extends StatelessWidget {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
+        children: [
           const Padding(
             padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 12.0),
             child: Text(
@@ -40,14 +42,13 @@ class HomeScreen extends StatelessWidget {
   Expanded buildItems() {
     return Expanded(
         child: Padding(
-      padding: const EdgeInsets.symmetric(vertical: 16.0, horizontal: 24),
+      padding: const EdgeInsets.symmetric(horizontal: 16),
       child: GridView.builder(
           itemCount: shoes.length,
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2,
-              crossAxisSpacing: 16,
-              mainAxisSpacing: 16,
-              childAspectRatio: 0.7),
+            crossAxisCount: 2,
+            childAspectRatio: 0.7,
+          ),
           itemBuilder: (context, index) => Item(shoes[index])),
     ));
   }

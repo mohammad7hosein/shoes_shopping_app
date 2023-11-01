@@ -4,10 +4,11 @@ import 'package:flutter_svg/svg.dart';
 import 'package:shoes_shopping_app/models.dart';
 import 'package:shoes_shopping_app/util/theme.dart';
 
-import 'filterButton.dart';
-import 'filter_color.dart';
+import '../filterButton.dart';
+import '../filter_color.dart';
 
 class DetailScreen extends StatefulWidget {
+  static const route = '/detail';
   final Shoe shoe;
 
   const DetailScreen(this.shoe, {Key? key}) : super(key: key);
