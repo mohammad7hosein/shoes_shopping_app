@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:shoes_shopping_app/theme.dart';
+import 'package:shoes_shopping_app/util/theme.dart';
 
 class FilterButton extends StatefulWidget {
   final Widget? icon;
@@ -28,7 +28,7 @@ class _FilterButtonState extends State<FilterButton> {
       child: Container(
         padding: const EdgeInsets.all(4),
         decoration: BoxDecoration(
-            color: isSelected ? MyTheme.orange : Colors.white,
+            color: isSelected ? MyTheme.primary : Colors.white,
             boxShadow: const [
               BoxShadow(
                 color: Colors.black12,

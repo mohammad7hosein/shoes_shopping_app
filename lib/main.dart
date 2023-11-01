@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shoes_shopping_app/util/theme.dart';
 
 import 'home_screen.dart';
 
@@ -11,8 +12,9 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
+      theme: MyTheme.lightTheme,
       home: HomeScreen(),
     );
   }

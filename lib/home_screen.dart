@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:shoes_shopping_app/models.dart';
-import 'package:shoes_shopping_app/theme.dart';
+import 'package:shoes_shopping_app/util/theme.dart';
 
 import 'filterButton.dart';
 import 'item.dart';

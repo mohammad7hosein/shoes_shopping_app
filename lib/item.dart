@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shoes_shopping_app/models.dart';
-import 'package:shoes_shopping_app/theme.dart';
+import 'package:shoes_shopping_app/util/theme.dart';
 
 import 'detail_screen.dart';
 
@@ -52,7 +52,7 @@ class _ItemState extends State<Item> {
                 ),
                 const Icon(
                   Icons.add,
-                  color: MyTheme.orange,
+                  color: MyTheme.primary,
                 ),
               ],
             ),
@@ -86,7 +86,7 @@ class _ItemState extends State<Item> {
               child: Text(
                 widget.shoe.price,
                 style: const TextStyle(
-                  color: MyTheme.orange,
+                  color: MyTheme.primary,
                   fontSize: 16,
                   fontWeight: FontWeight.bold,
                 ),

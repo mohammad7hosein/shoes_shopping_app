@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:shoes_shopping_app/models.dart';
-import 'package:shoes_shopping_app/theme.dart';
+import 'package:shoes_shopping_app/util/theme.dart';
 
 import 'filterButton.dart';
 import 'filter_color.dart';
@@ -23,7 +23,7 @@ class _DetailScreenState extends State<DetailScreen>
     return Scaffold(
       appBar: buildAppBar(context),
       body: Container(
-        decoration: const BoxDecoration(color: MyTheme.purple),
+        decoration: const BoxDecoration(color: MyTheme.secondary),
         child: Column(
           children: [
             buildImage(),
@@ -83,10 +83,10 @@ class _DetailScreenState extends State<DetailScreen>
     return AppBar(
       systemOverlayStyle: const SystemUiOverlayStyle(
         statusBarIconBrightness: Brightness.light,
-        statusBarColor: MyTheme.purple,
+        statusBarColor: MyTheme.secondary,
       ),
       elevation: 0.0,
-      backgroundColor: MyTheme.purple,
+      backgroundColor: MyTheme.secondary,
       actions: const [
         Icon(
           Icons.favorite_border_rounded,
@@ -114,7 +114,7 @@ class _DetailScreenState extends State<DetailScreen>
         margin: const EdgeInsets.symmetric(horizontal: 12),
         padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
         decoration: BoxDecoration(
-          color: MyTheme.orange,
+          color: MyTheme.primary,
           borderRadius: BorderRadius.circular(24),
         ),
         child: Row(

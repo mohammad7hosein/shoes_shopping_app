@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:shoes_shopping_app/theme.dart';
+import 'package:shoes_shopping_app/util/theme.dart';
 
 class FilterColor extends StatefulWidget {
   final Color color;
@@ -29,7 +29,7 @@ class _FilterColorState extends State<FilterColor> {
         decoration: BoxDecoration(
           border: Border.all(
             width: 2,
-            color: isSelected ? MyTheme.orange : Colors.white,
+            color: isSelected ? MyTheme.primary : Colors.white,
           ),
           color: Colors.white,
           boxShadow: const [
