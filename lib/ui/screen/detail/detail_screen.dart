@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:shoes_shopping_app/ui/screen/home/components/filter_button.dart';
+import 'package:shoes_shopping_app/ui/screen/detail/components/filter_color.dart';
 import 'package:shoes_shopping_app/models.dart';
 import 'package:shoes_shopping_app/util/theme.dart';
-
-import '../filterButton.dart';
-import '../filter_color.dart';
 
 class DetailScreen extends StatefulWidget {
   static const route = '/detail';

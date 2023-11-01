@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:shoes_shopping_app/ui/screen/home/components/filter_button.dart';
+import 'package:shoes_shopping_app/ui/screen/home/components/home_item.dart';
 import 'package:shoes_shopping_app/models.dart';
+import 'package:shoes_shopping_app/ui/screen/home/components/search_field.dart';
 import 'package:shoes_shopping_app/util/theme.dart';
-import 'package:shoes_shopping_app/widgets/search_field.dart';
-
-import '../filterButton.dart';
-import '../item.dart';
 
 class HomeScreen extends StatelessWidget {
   static const route = '/home';

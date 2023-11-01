@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:shoes_shopping_app/screen/cart_screen.dart';
-import 'package:shoes_shopping_app/screen/favorite_screen.dart';
-import 'package:shoes_shopping_app/screen/main_screen.dart';
-import 'package:shoes_shopping_app/screen/profile/profile_screen.dart';
+import 'package:shoes_shopping_app/ui/screen/cart/cart_screen.dart';
+import 'package:shoes_shopping_app/ui/screen/favorite/favorite_screen.dart';
+import 'package:shoes_shopping_app/ui/screen/home/home_screen.dart';
+import 'package:shoes_shopping_app/ui/screen/main_screen.dart';
+import 'package:shoes_shopping_app/ui/screen/profile/profile_screen.dart';
 import 'package:shoes_shopping_app/util/size_config.dart';
 import 'package:shoes_shopping_app/util/theme.dart';
-
-import 'screen/home_screen.dart';
 
 void main() {
   SystemChrome.setSystemUIOverlayStyle(

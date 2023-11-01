@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:shoes_shopping_app/util/theme.dart';
 
-import 'cart_screen.dart';
-import 'favorite_screen.dart';
-import 'home_screen.dart';
+import 'cart/cart_screen.dart';
+import 'favorite/favorite_screen.dart';
+import 'home/home_screen.dart';
 import 'profile/profile_screen.dart';
 
 enum NavBarItem { home, cart, favorite, profile }
