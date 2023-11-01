@@ -5,7 +5,7 @@ import 'package:shoes_shopping_app/util/theme.dart';
 import 'cart_screen.dart';
 import 'favorite_screen.dart';
 import 'home_screen.dart';
-import 'profile_screen.dart';
+import 'profile/profile_screen.dart';
 
 enum NavBarItem { home, cart, favorite, profile }
 

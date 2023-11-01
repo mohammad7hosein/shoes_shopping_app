@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:shoes_shopping_app/models.dart';
 import 'package:shoes_shopping_app/util/theme.dart';
+import 'package:shoes_shopping_app/widgets/search_field.dart';
 
 import '../filterButton.dart';
 import '../item.dart';
@@ -16,25 +16,28 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: MyTheme.light,
-      appBar: buildAppBar(context),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 12.0),
-            child: Text(
-              'Catalog',
-              style: TextStyle(
-                fontFamily: 'Futura',
-                color: Colors.black,
-                fontSize: 30,
+      body: SafeArea(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            const Padding(
+              padding: EdgeInsets.all(16),
+              child: Text(
+                'Shoes',
+                style: TextStyle(
+                  fontFamily: 'Futura',
+                  color: Colors.black,
+                  fontSize: 30,
+                ),
               ),
             ),
-          ),
-          buildFilterRow(),
-          buildItems(),
-        ],
+            const SearchField(),
+            const SizedBox(height: 10),
+            buildFilterRow(),
+            buildItems(),
+          ],
+        ),
       ),
     );
   }
@@ -93,30 +96,6 @@ class HomeScreen extends StatelessWidget {
           FilterButton(null, SvgPicture.asset("assets/icon/puma.svg"), false)
         ],
       ),
-    );
-  }
-
-  AppBar buildAppBar(BuildContext context) {
-    return AppBar(
-      systemOverlayStyle: const SystemUiOverlayStyle(
-        statusBarColor: MyTheme.light,
-        statusBarIconBrightness: Brightness.dark,
-      ),
-      leading: IconButton(
-        onPressed: () {},
-        icon: SvgPicture.asset("assets/icon/profile.svg"),
-      ),
-      actions: [
-        IconButton(
-          onPressed: () {},
-          icon: SvgPicture.asset("assets/icon/search.svg"),
-        ),
-        const SizedBox(
-          width: 8,
-        )
-      ],
-      elevation: 0,
-      backgroundColor: MyTheme.light,
     );
   }
 }

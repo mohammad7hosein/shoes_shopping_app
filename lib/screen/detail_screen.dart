@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:iconsax/iconsax.dart';
 import 'package:shoes_shopping_app/models.dart';
 import 'package:shoes_shopping_app/util/theme.dart';
 
@@ -142,7 +142,7 @@ class _DetailScreenState extends State<DetailScreen>
                 children: [
                   IconButton(
                     onPressed: () {},
-                    icon: SvgPicture.asset('assets/icon/shop.svg'),
+                    icon: const Icon(Iconsax.shopping_cart),
                   ),
                   const SizedBox(width: 2),
                   const Text(

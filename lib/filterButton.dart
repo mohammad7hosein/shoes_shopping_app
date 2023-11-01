@@ -32,12 +32,8 @@ class _FilterButtonState extends State<FilterButton> {
             boxShadow: const [
               BoxShadow(
                 color: Colors.black12,
-                offset: Offset(
-                  5.0,
-                  5.0,
-                ), //Offset
-                blurRadius: 10.0,
-                spreadRadius: 2.0,
+                offset: Offset(3, 3), //Offset
+                blurRadius: 10,
               )
             ],
             borderRadius: const BorderRadius.all(Radius.circular(16))),

@@ -32,9 +32,9 @@ AppBarTheme appBarTheme() {
   return const AppBarTheme(
     systemOverlayStyle: SystemUiOverlayStyle(
       statusBarColor: Colors.transparent,
-      statusBarBrightness: Brightness.dark,
+      statusBarIconBrightness: Brightness.dark,
     ),
-    color: Colors.white,
+    color: Colors.transparent,
     elevation: 0,
     iconTheme: IconThemeData(color: Colors.black),
     titleTextStyle: TextStyle(color: Colors.black, fontSize: 18),
