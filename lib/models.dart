@@ -3,16 +3,18 @@ import 'package:flutter/material.dart';
 enum Brand { adidas, nike, puma }
 
 class Shoe {
+  final int id;
   final String title;
   final String subTitle;
   final String price;
   final String imageSrc;
   final Brand brand;
-  final bool isFavorite;
+  bool isFavorite;
   final List<String> sizes;
   final List<Color> colors;
 
-  const Shoe({
+   Shoe({
+    required this.id,
     required this.title,
     required this.subTitle,
     required this.price,
@@ -22,10 +24,12 @@ class Shoe {
     required this.colors,
     this.isFavorite = false,
   });
+
 }
 
-const List<Shoe> shoes = [
+final List<Shoe> shoes = [
   Shoe(
+    id: 1,
     title: 'Nike',
     subTitle: 'Red Jordan',
     imageSrc: 'assets/image/image7.png',
@@ -35,6 +39,7 @@ const List<Shoe> shoes = [
     colors: [Colors.red, Colors.blue, Colors.green],
   ),
   Shoe(
+    id: 2,
     title: 'Adidas',
     subTitle: 'Human Race',
     imageSrc: 'assets/image/image1.png',
@@ -44,6 +49,7 @@ const List<Shoe> shoes = [
     colors: [Colors.red, Colors.blue, Colors.green],
   ),
   Shoe(
+    id: 3,
     title: 'Puma',
     subTitle: 'Zoom Pegasus',
     imageSrc: 'assets/image/image3.png',
@@ -53,6 +59,7 @@ const List<Shoe> shoes = [
     colors: [Colors.red, Colors.blue, Colors.green],
   ),
   Shoe(
+    id: 4,
     title: 'Nike',
     subTitle: 'Joyraide',
     imageSrc: 'assets/image/image2.png',
@@ -62,6 +69,7 @@ const List<Shoe> shoes = [
     colors: [Colors.red, Colors.blue, Colors.green],
   ),
   Shoe(
+    id: 5,
     title: 'Nike',
     subTitle: 'Beautiful Old Design',
     imageSrc: 'assets/image/image8.png',
@@ -71,6 +79,7 @@ const List<Shoe> shoes = [
     colors: [Colors.red, Colors.blue, Colors.green],
   ),
   Shoe(
+    id: 6,
     title: 'Nike',
     subTitle: 'Joyraide',
     imageSrc: 'assets/image/image6.png',
@@ -80,6 +89,7 @@ const List<Shoe> shoes = [
     colors: [Colors.red, Colors.blue, Colors.green],
   ),
   Shoe(
+    id: 7,
     title: 'Puma',
     subTitle: 'Street Ball',
     imageSrc: 'assets/image/image4.png',
@@ -89,6 +99,7 @@ const List<Shoe> shoes = [
     colors: [Colors.red, Colors.blue, Colors.green],
   ),
   Shoe(
+    id: 8,
     title: 'Nike',
     subTitle: 'Zoom Pegasus',
     imageSrc: 'assets/image/image11.png',
@@ -98,6 +109,7 @@ const List<Shoe> shoes = [
     colors: [Colors.red, Colors.blue, Colors.green],
   ),
   Shoe(
+    id: 9,
     title: 'Adidas',
     subTitle: 'Human Race',
     imageSrc: 'assets/image/image9.png',
@@ -107,6 +119,7 @@ const List<Shoe> shoes = [
     colors: [Colors.red, Colors.blue, Colors.green],
   ),
   Shoe(
+    id: 10,
     title: 'Nike',
     subTitle: 'Joyraide',
     imageSrc: 'assets/image/image10.png',
@@ -116,6 +129,7 @@ const List<Shoe> shoes = [
     colors: [Colors.red, Colors.blue, Colors.green],
   ),
   Shoe(
+    id: 11,
     title: 'Puma',
     subTitle: 'Street Ball',
     imageSrc: 'assets/image/image12.png',
@@ -125,6 +139,7 @@ const List<Shoe> shoes = [
     colors: [Colors.red, Colors.blue, Colors.green],
   ),
   Shoe(
+    id: 12,
     title: 'Nike',
     subTitle: 'Running Shoe',
     imageSrc: 'assets/image/image13.png',
