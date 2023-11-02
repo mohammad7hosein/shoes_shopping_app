@@ -26,7 +26,7 @@ class _DetailScreenState extends State<DetailScreen>
     return Scaffold(
       appBar: buildAppBar(context),
       body: Container(
-        decoration: const BoxDecoration(color: MyTheme.secondary),
+        decoration: const BoxDecoration(color: MyTheme.secondaryLight),
         child: Column(
           children: [
             buildImage(),
@@ -41,13 +41,15 @@ class _DetailScreenState extends State<DetailScreen>
     return Expanded(
       flex: 4,
       child: Container(
-        decoration: const BoxDecoration(
-          color: MyTheme.light,
-          borderRadius: BorderRadius.only(
-            topRight: Radius.circular(40),
-            topLeft: Radius.circular(40),
-          ),
-        ),
+        decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: const BorderRadius.only(
+              topRight: Radius.circular(40),
+              topLeft: Radius.circular(40),
+            ),
+            boxShadow: [
+              myBoxShadow(),
+            ]),
         child: SingleChildScrollView(
           child: Padding(
             padding: const EdgeInsets.all(24),
@@ -84,16 +86,13 @@ class _DetailScreenState extends State<DetailScreen>
 
   buildAppBar(BuildContext context) {
     return AppBar(
-      backgroundColor: MyTheme.secondary,
+      backgroundColor: MyTheme.secondaryLight,
       actions: [
         IconButton(
           onPressed: () {
             // set favorite
           },
-          icon: const Icon(
-            Iconsax.heart,
-            color: MyTheme.light,
-          ),
+          icon: const Icon(Iconsax.heart),
         ),
         const Padding(
           padding: EdgeInsets.all(10),
@@ -103,10 +102,7 @@ class _DetailScreenState extends State<DetailScreen>
         onPressed: () {
           Navigator.pop(context);
         },
-        icon: const Icon(
-          Iconsax.arrow_left_2,
-          color: MyTheme.light,
-        ),
+        icon: const Icon(Iconsax.arrow_left_2),
       ),
     );
   }
