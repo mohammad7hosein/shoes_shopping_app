@@ -1,12 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:iconsax/iconsax.dart';
 import 'package:shoes_shopping_app/models.dart';
 import 'package:shoes_shopping_app/util/theme.dart';
+
 import '../../detail/detail_screen.dart';
 
 class Item extends StatefulWidget {
   final Shoe shoe;
 
-  const Item(this.shoe, {Key? key}) : super(key: key);
+  const Item({
+    Key? key,
+    required this.shoe,
+  }) : super(key: key);
 
   @override
   State<Item> createState() => _ItemState();
@@ -17,6 +22,7 @@ class _ItemState extends State<Item> {
 
   @override
   Widget build(BuildContext context) {
+    TextTheme textTheme = Theme.of(context).textTheme;
     return InkWell(
       borderRadius: BorderRadius.circular(16),
       onTap: () {
@@ -24,7 +30,7 @@ class _ItemState extends State<Item> {
             MaterialPageRoute(builder: (context) => DetailScreen(widget.shoe)));
       },
       child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 8),
+        padding: const EdgeInsets.all(10),
         margin: const EdgeInsets.all(10),
         decoration: BoxDecoration(
           color: Colors.white,
@@ -37,22 +43,16 @@ class _ItemState extends State<Item> {
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                IconButton(
-                  onPressed: () {
+                InkWell(
+                  onTap: () {
                     setState(() {
                       isLiked = !isLiked;
                     });
                   },
-                  icon: Icon(
-                    isLiked
-                        ? Icons.favorite_rounded
-                        : Icons.favorite_outline_rounded,
+                  child: Icon(
+                    isLiked ? Iconsax.heart5 : Iconsax.heart,
                     color: isLiked ? Colors.red : Colors.grey,
                   ),
-                ),
-                const Icon(
-                  Icons.add,
-                  color: MyTheme.primary,
                 ),
               ],
             ),
@@ -64,33 +64,19 @@ class _ItemState extends State<Item> {
                 ),
               ),
             ),
-            const SizedBox(
-              height: 5,
-            ),
+            const SizedBox(height: 10),
             Text(
               widget.shoe.title,
-              style: const TextStyle(
-                  color: Colors.grey,
-                  fontSize: 14,
-                  fontWeight: FontWeight.bold),
+              style: textTheme.bodySmall?.copyWith(color: MyTheme.darkGray),
             ),
             Text(
               widget.shoe.subTitle,
-              style: const TextStyle(
-                  color: Colors.grey,
-                  fontSize: 14,
-                  fontWeight: FontWeight.bold),
+              style: textTheme.bodySmall?.copyWith(color: MyTheme.gray),
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 8.0),
-              child: Text(
-                widget.shoe.price,
-                style: const TextStyle(
-                  color: MyTheme.primary,
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
+            const SizedBox(height: 10),
+            Text(
+              widget.shoe.price,
+              style: textTheme.bodyMedium?.copyWith(color: MyTheme.primary),
             ),
           ],
         ),

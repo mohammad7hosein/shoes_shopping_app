@@ -1,27 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:shoes_shopping_app/util/theme.dart';
 
-class FilterColor extends StatefulWidget {
+class FilterColor extends StatelessWidget {
   final Color color;
+  final bool isSelected;
+  final VoidCallback onClick;
 
-  const FilterColor(this.color, {Key? key}) : super(key: key);
-
-  @override
-  State<FilterColor> createState() => _FilterColorState();
-}
-
-class _FilterColorState extends State<FilterColor> {
-  bool isSelected = false;
+  const FilterColor({
+    Key? key,
+    required this.color,
+    required this.isSelected,
+    required this.onClick,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       borderRadius: BorderRadius.circular(16),
-      onTap: () {
-        setState(() {
-          isSelected = !isSelected;
-        });
-      },
+      onTap: onClick,
       child: Container(
         padding: const EdgeInsets.all(12),
         width: 50,
@@ -44,7 +40,7 @@ class _FilterColorState extends State<FilterColor> {
         ),
         child: Container(
           decoration: BoxDecoration(
-            color: widget.color,
+            color: color,
             borderRadius: BorderRadius.circular(6),
           ),
         ),

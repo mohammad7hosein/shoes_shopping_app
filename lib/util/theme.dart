@@ -34,11 +34,19 @@ AppBarTheme appBarTheme() {
       statusBarColor: Colors.transparent,
       statusBarIconBrightness: Brightness.dark,
     ),
-    color: Colors.transparent,
+    backgroundColor: Colors.transparent,
     elevation: 0,
     iconTheme: IconThemeData(color: Colors.black),
     titleTextStyle: TextStyle(color: Colors.black, fontSize: 18),
     centerTitle: true,
+  );
+}
+
+BoxShadow myBoxShadow() {
+  return const BoxShadow(
+    color: Colors.black12,
+    offset: Offset(3, 3), //Offset
+    blurRadius: 10,
   );
 }
 
@@ -64,17 +72,46 @@ class MyTheme {
     inputDecorationTheme: inputDecorationTheme(),
     textTheme: const TextTheme(
       titleLarge: TextStyle(
-          color: Colors.black, fontSize: 28, fontWeight: FontWeight.bold),
+        color: Colors.black,
+        fontSize: 26,
+        fontWeight: FontWeight.bold,
+      ),
       titleMedium: TextStyle(
-          color: Colors.black, fontSize: 22, fontWeight: FontWeight.bold),
+        color: Colors.black,
+        fontSize: 22,
+        fontWeight: FontWeight.bold,
+      ),
       titleSmall: TextStyle(
-          color: Colors.black, fontSize: 18, fontWeight: FontWeight.bold),
-      bodyLarge: TextStyle(color: Colors.black, fontSize: 18),
-      bodyMedium: TextStyle(color: Colors.black, fontSize: 16),
-      bodySmall: TextStyle(color: Colors.black, fontSize: 14),
-      labelLarge: TextStyle(color: Colors.black, fontSize: 12),
-      labelMedium: TextStyle(color: Colors.black, fontSize: 11),
-      labelSmall: TextStyle(color: Colors.black, fontSize: 10),
+        color: Colors.black,
+        fontSize: 18,
+        fontWeight: FontWeight.bold,
+      ),
+      bodyLarge: TextStyle(
+        color: Colors.black,
+        fontSize: 18,
+      ),
+      bodyMedium: TextStyle(
+        color: Colors.black,
+        fontSize: 16,
+        fontWeight: FontWeight.bold,
+      ),
+      bodySmall: TextStyle(
+        color: Colors.black,
+        fontSize: 14,
+        fontWeight: FontWeight.bold,
+      ),
+      labelLarge: TextStyle(
+        color: Colors.black,
+        fontSize: 12,
+      ),
+      labelMedium: TextStyle(
+        color: Colors.black,
+        fontSize: 11,
+      ),
+      labelSmall: TextStyle(
+        color: Colors.black,
+        fontSize: 10,
+      ),
     ),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(

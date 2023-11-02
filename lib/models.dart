@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 enum Brand { adidas, nike, puma }
 
 class Shoe {
@@ -7,6 +9,8 @@ class Shoe {
   final String imageSrc;
   final Brand brand;
   final bool isFavorite;
+  final List<String> sizes;
+  final List<Color> colors;
 
   const Shoe({
     required this.title,
@@ -14,6 +18,8 @@ class Shoe {
     required this.price,
     required this.imageSrc,
     required this.brand,
+    required this.sizes,
+    required this.colors,
     this.isFavorite = false,
   });
 }
@@ -25,6 +31,8 @@ const List<Shoe> shoes = [
     imageSrc: 'assets/image/image7.png',
     price: '\$250',
     brand: Brand.nike,
+    sizes: ['36', '37', '38', '39', '40'],
+    colors: [Colors.red, Colors.blue, Colors.green],
   ),
   Shoe(
     title: 'Adidas',
@@ -32,6 +40,8 @@ const List<Shoe> shoes = [
     imageSrc: 'assets/image/image1.png',
     price: '\$280',
     brand: Brand.adidas,
+    sizes: ['39', '40', '41', '42', '43'],
+    colors: [Colors.red, Colors.blue, Colors.green],
   ),
   Shoe(
     title: 'Puma',
@@ -39,6 +49,8 @@ const List<Shoe> shoes = [
     imageSrc: 'assets/image/image3.png',
     price: '\$250',
     brand: Brand.puma,
+    sizes: ['36', '37', '38', '39', '40'],
+    colors: [Colors.red, Colors.blue, Colors.green],
   ),
   Shoe(
     title: 'Nike',
@@ -46,6 +58,8 @@ const List<Shoe> shoes = [
     imageSrc: 'assets/image/image2.png',
     price: '\$320',
     brand: Brand.nike,
+    sizes: ['36', '37', '38', '39', '40'],
+    colors: [Colors.red, Colors.blue, Colors.green],
   ),
   Shoe(
     title: 'Nike',
@@ -53,6 +67,8 @@ const List<Shoe> shoes = [
     imageSrc: 'assets/image/image8.png',
     price: '\$160',
     brand: Brand.nike,
+    sizes: ['36', '37', '38', '39', '40'],
+    colors: [Colors.red, Colors.blue, Colors.green],
   ),
   Shoe(
     title: 'Nike',
@@ -60,6 +76,8 @@ const List<Shoe> shoes = [
     imageSrc: 'assets/image/image6.png',
     price: '\$320',
     brand: Brand.nike,
+    sizes: ['36', '37', '38', '39', '40'],
+    colors: [Colors.red, Colors.blue, Colors.green],
   ),
   Shoe(
     title: 'Puma',
@@ -67,6 +85,8 @@ const List<Shoe> shoes = [
     imageSrc: 'assets/image/image4.png',
     price: '\$160',
     brand: Brand.puma,
+    sizes: ['36', '37', '38', '39', '40'],
+    colors: [Colors.red, Colors.blue, Colors.green],
   ),
   Shoe(
     title: 'Nike',
@@ -74,6 +94,8 @@ const List<Shoe> shoes = [
     imageSrc: 'assets/image/image11.png',
     price: '\$250',
     brand: Brand.nike,
+    sizes: ['36', '37', '38', '39', '40'],
+    colors: [Colors.red, Colors.blue, Colors.green],
   ),
   Shoe(
     title: 'Adidas',
@@ -81,6 +103,8 @@ const List<Shoe> shoes = [
     imageSrc: 'assets/image/image9.png',
     price: '\$280',
     brand: Brand.adidas,
+    sizes: ['36', '37', '38', '39', '40'],
+    colors: [Colors.red, Colors.blue, Colors.green],
   ),
   Shoe(
     title: 'Nike',
@@ -88,6 +112,8 @@ const List<Shoe> shoes = [
     imageSrc: 'assets/image/image10.png',
     price: '\$320',
     brand: Brand.nike,
+    sizes: ['36', '37', '38', '39', '40'],
+    colors: [Colors.red, Colors.blue, Colors.green],
   ),
   Shoe(
     title: 'Puma',
@@ -95,6 +121,8 @@ const List<Shoe> shoes = [
     imageSrc: 'assets/image/image12.png',
     price: '\$160',
     brand: Brand.puma,
+    sizes: ['36', '37', '38', '39', '40'],
+    colors: [Colors.red, Colors.blue, Colors.green],
   ),
   Shoe(
     title: 'Nike',
@@ -102,5 +130,7 @@ const List<Shoe> shoes = [
     imageSrc: 'assets/image/image13.png',
     price: '\$280',
     brand: Brand.nike,
+    sizes: ['36', '37', '38', '39', '40'],
+    colors: [Colors.red, Colors.blue, Colors.green],
   ),
 ];

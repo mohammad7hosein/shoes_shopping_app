@@ -1,100 +1,133 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:shoes_shopping_app/ui/screen/home/components/filter_button.dart';
-import 'package:shoes_shopping_app/ui/screen/home/components/home_item.dart';
 import 'package:shoes_shopping_app/models.dart';
+import 'package:shoes_shopping_app/ui/screen/home/components/filter_item.dart';
+import 'package:shoes_shopping_app/ui/screen/home/components/home_item.dart';
 import 'package:shoes_shopping_app/ui/screen/home/components/search_field.dart';
 import 'package:shoes_shopping_app/util/theme.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   static const route = '/home';
 
   const HomeScreen({Key? key}) : super(key: key);
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  FilterType filterType = FilterType.none;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: MyTheme.light,
       body: SafeArea(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            const Padding(
-              padding: EdgeInsets.all(16),
-              child: Text(
-                'Shoes',
-                style: TextStyle(
-                  fontFamily: 'Futura',
-                  color: Colors.black,
-                  fontSize: 30,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              const Padding(
+                padding: EdgeInsets.all(16),
+                child: Text(
+                  'Shoes',
+                  style: TextStyle(
+                    fontFamily: 'Futura',
+                    color: Colors.black,
+                    fontSize: 30,
+                  ),
                 ),
               ),
-            ),
-            const SearchField(),
-            const SizedBox(height: 10),
-            buildFilterRow(),
-            buildItems(),
-          ],
+              const SizedBox(height: 10),
+              const SearchField(),
+              const SizedBox(height: 30),
+              buildFilterRow(),
+              const SizedBox(height: 20),
+              buildItems(),
+            ],
+          ),
         ),
       ),
     );
   }
 
-  Expanded buildItems() {
+  buildItems() {
     return Expanded(
-        child: Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16),
       child: GridView.builder(
-          itemCount: shoes.length,
-          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2,
-            childAspectRatio: 0.7,
-          ),
-          itemBuilder: (context, index) => Item(shoes[index])),
-    ));
+        itemCount: shoes.length,
+        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 2,
+          childAspectRatio: 0.7,
+        ),
+        itemBuilder: (context, index) => Item(
+          shoe: shoes[index],
+        ),
+      ),
+    );
   }
 
-  Padding buildFilterRow() {
-    return Padding(
-      padding: const EdgeInsets.all(16.0),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Container(
+  buildFilterRow() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceAround,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        InkWell(
+          onTap: () {
+            setState(() => filterType = FilterType.none);
+          },
+          child: Container(
             padding: const EdgeInsets.all(16),
-            decoration: const BoxDecoration(
-                color: Colors.white,
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.black12,
-                    offset: Offset(5.0, 5.0), //Offset
-                    blurRadius: 10.0,
-                    spreadRadius: 1.0,
-                  )
-                ],
-                borderRadius: BorderRadius.all(Radius.circular(20))),
+            decoration: BoxDecoration(
+              color: Colors.white,
+              boxShadow: [
+                myBoxShadow(),
+              ],
+              borderRadius: const BorderRadius.all(
+                Radius.circular(16),
+              ),
+            ),
             child: const Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 Icon(Icons.filter_alt_rounded),
+                SizedBox(width: 2),
                 Text(
                   'Filter',
                   style: TextStyle(
-                    fontFamily: 'Futura',
                     color: Colors.black,
+                    fontWeight: FontWeight.bold,
                     fontSize: 14,
                   ),
                 )
               ],
             ),
           ),
-          FilterButton(null, SvgPicture.asset("assets/icon/nike.svg"), false),
-          FilterButton(null, SvgPicture.asset("assets/icon/adidas.svg"), false),
-          FilterButton(null, SvgPicture.asset("assets/icon/puma.svg"), false)
-        ],
-      ),
+        ),
+        FilterItem(
+          icon: "assets/icon/nike.svg",
+          isSelected: filterType == FilterType.nike,
+          onClick: () {
+            setState(() => filterType = FilterType.nike);
+          },
+        ),
+        FilterItem(
+          icon: "assets/icon/adidas.svg",
+          isSelected: filterType == FilterType.adidas,
+          onClick: () {
+            setState(() => filterType = FilterType.adidas);
+          },
+        ),
+        FilterItem(
+          icon: "assets/icon/puma.svg",
+          isSelected: filterType == FilterType.puma,
+          onClick: () {
+            setState(() => filterType = FilterType.puma);
+          },
+        ),
+      ],
     );
   }
 }
+
+enum FilterType { none, nike, adidas, puma }

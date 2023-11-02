@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:shoes_shopping_app/ui/screen/home/components/filter_button.dart';
-import 'package:shoes_shopping_app/ui/screen/detail/components/filter_color.dart';
 import 'package:shoes_shopping_app/models.dart';
+import 'package:shoes_shopping_app/ui/screen/detail/components/filter_color.dart';
+import 'package:shoes_shopping_app/ui/screen/home/components/filter_item.dart';
 import 'package:shoes_shopping_app/util/theme.dart';
 
 class DetailScreen extends StatefulWidget {
@@ -18,8 +17,12 @@ class DetailScreen extends StatefulWidget {
 
 class _DetailScreenState extends State<DetailScreen>
     with TickerProviderStateMixin {
+  String? selectedSize;
+  Color? selectedColor;
+
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
     return Scaffold(
       appBar: buildAppBar(context),
       body: Container(
@@ -27,22 +30,22 @@ class _DetailScreenState extends State<DetailScreen>
         child: Column(
           children: [
             buildImage(),
-            buildDetails(context),
+            buildDetails(textTheme),
           ],
         ),
       ),
     );
   }
 
-  Expanded buildDetails(BuildContext context) {
+  buildDetails(TextTheme textTheme) {
     return Expanded(
       flex: 4,
       child: Container(
         decoration: const BoxDecoration(
           color: MyTheme.light,
           borderRadius: BorderRadius.only(
-            topRight: Radius.circular(42),
-            topLeft: Radius.circular(42),
+            topRight: Radius.circular(40),
+            topLeft: Radius.circular(40),
           ),
         ),
         child: SingleChildScrollView(
@@ -52,13 +55,13 @@ class _DetailScreenState extends State<DetailScreen>
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                buildTitleAndSubTitle(),
+                buildTitleAndSubTitle(textTheme),
                 const SizedBox(height: 24),
-                buildSizes(),
+                buildSizes(textTheme),
                 const SizedBox(height: 24),
-                buildColors(),
-                const SizedBox(height: 42),
-                buildAddToCartButton(context),
+                buildColors(textTheme),
+                const SizedBox(height: 60),
+                buildAddToCartButton(textTheme),
               ],
             ),
           ),
@@ -67,7 +70,7 @@ class _DetailScreenState extends State<DetailScreen>
     );
   }
 
-  Expanded buildImage() {
+  buildImage() {
     return Expanded(
       flex: 2,
       child: Hero(
@@ -79,147 +82,66 @@ class _DetailScreenState extends State<DetailScreen>
     );
   }
 
-  AppBar buildAppBar(BuildContext context) {
+  buildAppBar(BuildContext context) {
     return AppBar(
-      systemOverlayStyle: const SystemUiOverlayStyle(
-        statusBarIconBrightness: Brightness.light,
-        statusBarColor: MyTheme.secondary,
-      ),
-      elevation: 0.0,
       backgroundColor: MyTheme.secondary,
-      actions: const [
-        Icon(
-          Icons.favorite_border_rounded,
-          color: MyTheme.light,
+      actions: [
+        IconButton(
+          onPressed: () {
+            // set favorite
+          },
+          icon: const Icon(
+            Iconsax.heart,
+            color: MyTheme.light,
+          ),
         ),
-        Padding(padding: EdgeInsets.all(8)),
+        const Padding(
+          padding: EdgeInsets.all(10),
+        ),
       ],
       leading: IconButton(
         onPressed: () {
           Navigator.pop(context);
         },
         icon: const Icon(
-          Icons.arrow_back_rounded,
+          Iconsax.arrow_left_2,
           color: MyTheme.light,
         ),
       ),
     );
   }
 
-  Widget buildAddToCartButton(BuildContext context) {
-    return InkWell(
-      onTap: () {},
-      borderRadius: BorderRadius.circular(24),
-      child: Container(
-        margin: const EdgeInsets.symmetric(horizontal: 12),
-        padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
-        decoration: BoxDecoration(
-          color: MyTheme.primary,
-          borderRadius: BorderRadius.circular(24),
+  buildAddToCartButton(TextTheme textTheme) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 10),
+          child: Text(
+            widget.shoe.price,
+            style: textTheme.titleSmall,
+          ),
         ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Text(
-              widget.shoe.price,
-              style: const TextStyle(
-                color: Colors.white,
-                fontWeight: FontWeight.bold,
-                fontSize: 18,
-              ),
+        ElevatedButton(
+          onPressed: () {},
+          style: ElevatedButton.styleFrom(
+            backgroundColor: MyTheme.primary,
+            padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 30),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(20),
             ),
-            Container(
-              padding: const EdgeInsets.symmetric(horizontal: 8),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(20),
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  IconButton(
-                    onPressed: () {},
-                    icon: const Icon(Iconsax.shopping_cart),
-                  ),
-                  const SizedBox(width: 2),
-                  const Text(
-                    "Add to cart",
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 14,
-                    ),
-                  )
-                ],
-              ),
-            )
-          ],
-        ),
-      ),
-    );
-  }
-
-  Column buildColors() {
-    return const Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          'Color',
-          style: TextStyle(
-            color: Colors.grey,
-            fontSize: 18,
-            fontWeight: FontWeight.bold,
           ),
-        ),
-        SizedBox(height: 12),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            SizedBox(width: 10),
-            FilterColor(Colors.red),
-            SizedBox(width: 20),
-            FilterColor(Colors.green),
-            SizedBox(width: 20),
-            FilterColor(Colors.blue),
-            SizedBox(width: 20),
-          ],
-        ),
-      ],
-    );
-  }
-
-  Column buildSizes() {
-    return const Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          'Size',
-          style: TextStyle(
-            color: Colors.grey,
-            fontSize: 18,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-        SizedBox(height: 12),
-        SingleChildScrollView(
-          scrollDirection: Axis.horizontal,
-          padding: EdgeInsets.all(10),
           child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              FilterButton('US6', null, true),
-              SizedBox(width: 10),
-              FilterButton('US7', null, true),
-              SizedBox(width: 10),
-              FilterButton('US8', null, true),
-              SizedBox(width: 10),
-              FilterButton('US9', null, true),
-              SizedBox(width: 10),
-              FilterButton('US10', null, true),
-              SizedBox(width: 10),
+              const Icon(Iconsax.shopping_cart, color: Colors.black),
+              const SizedBox(width: 16),
+              Text(
+                "Add to cart",
+                style: textTheme.bodyMedium,
+              ),
             ],
           ),
         ),
@@ -227,25 +149,87 @@ class _DetailScreenState extends State<DetailScreen>
     );
   }
 
-  Column buildTitleAndSubTitle() {
+  buildColors(TextTheme textTheme) {
+    final colors = widget.shoe.colors;
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          'Color',
+          style: textTheme.titleSmall?.copyWith(color: Colors.grey),
+        ),
+        const SizedBox(height: 12),
+        SizedBox(
+          height: 50,
+          child: ListView.builder(
+            scrollDirection: Axis.horizontal,
+            itemCount: colors.length,
+            itemBuilder: (context, index) {
+              final item = colors[index];
+              return Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 5),
+                child: FilterColor(
+                  color: item,
+                  isSelected: selectedColor == item,
+                  onClick: () {
+                    setState(() => selectedColor = item);
+                  },
+                ),
+              );
+            },
+          ),
+        ),
+      ],
+    );
+  }
+
+  buildSizes(TextTheme textTheme) {
+    final sizes = widget.shoe.sizes;
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          'Size',
+          style: textTheme.titleSmall?.copyWith(color: Colors.grey),
+        ),
+        const SizedBox(height: 12),
+        SizedBox(
+          height: 50,
+          child: ListView.builder(
+            scrollDirection: Axis.horizontal,
+            itemCount: sizes.length,
+            itemBuilder: (context, index) {
+              final item = sizes[index];
+              return Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 5),
+                child: FilterItem(
+                  text: item,
+                  isSelected: selectedSize == item,
+                  onClick: () {
+                    setState(() => selectedSize = item);
+                  },
+                ),
+              );
+            },
+          ),
+        ),
+      ],
+    );
+  }
+
+  buildTitleAndSubTitle(TextTheme textTheme) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
           widget.shoe.title,
-          style: const TextStyle(
-            color: Colors.black,
-            fontSize: 26,
-            fontWeight: FontWeight.bold,
-          ),
+          style: textTheme.titleLarge,
         ),
         const SizedBox(height: 6),
         Text(
           widget.shoe.subTitle,
-          style: const TextStyle(
+          style: textTheme.titleSmall?.copyWith(
             color: Colors.grey,
-            fontSize: 18,
-            fontWeight: FontWeight.bold,
           ),
         ),
       ],
