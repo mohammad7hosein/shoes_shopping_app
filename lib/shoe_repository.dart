@@ -1,4 +1,4 @@
-import 'package:shoes_shopping_app/models.dart';
+import 'package:shoes_shopping_app/models/shoe.dart';
 
 class ShoeRepository {
   Future<List<Shoe>> loadShoes() async {
@@ -29,6 +29,15 @@ class ShoeRepository {
     final index = shoes.indexWhere((shoe) => shoe.id == id);
     if (index != -1) {
       shoes[index].isFavorite = true;
+      return true;
+    }
+    return false;
+  }
+
+  bool removeFromFavorites(int id) {
+    final index = shoes.indexWhere((shoe) => shoe.id == id);
+    if (index != -1) {
+      shoes[index].isFavorite = false;
       return true;
     }
     return false;

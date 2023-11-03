@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:shoes_shopping_app/models.dart';
+import 'package:shoes_shopping_app/models/shoe.dart';
 import 'package:shoes_shopping_app/util/theme.dart';
 
 import '../../detail/detail_screen.dart';

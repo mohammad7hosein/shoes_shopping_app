@@ -1,15 +1,80 @@
 import 'package:flutter/material.dart';
+import 'package:iconsax/iconsax.dart';
+import 'package:shoes_shopping_app/models/cart.dart';
+import 'package:shoes_shopping_app/ui/widgets/my_app_bar.dart';
 
-class CartScreen extends StatelessWidget {
-  static const route = '/cart';
-  const CartScreen({super.key});
+import 'components/cart_item.dart';
+import 'components/checkout_card.dart';
+
+class CartScreen extends StatefulWidget {
+  static String route = "/cart";
+
+  const CartScreen({Key? key}) : super(key: key);
 
   @override
+  State<CartScreen> createState() => _CartScreenState();
+}
+
+class _CartScreenState extends State<CartScreen> {
+  @override
   Widget build(BuildContext context) {
+    TextTheme textTheme = Theme.of(context).textTheme;
     return Scaffold(
-      body: const Center(
-        child: Text('Cart Screen'),
+      appBar: MyAppBar(
+        title: Column(
+          children: [
+            const Text("Your Cart"),
+            Text(
+              "${itemCarts.length} items",
+              style: textTheme.bodySmall,
+            ),
+          ],
+        ),
       ),
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 20),
+        child: ListView.builder(
+          itemCount: itemCarts.length,
+          itemBuilder: (context, index) => Padding(
+            padding: const EdgeInsets.symmetric(vertical: 10),
+            child: Dismissible(
+              key: Key(itemCarts[index].shoe.id.toString()),
+              direction: DismissDirection.endToStart,
+              onDismissed: (direction) {
+                setState(() {
+                  itemCarts.removeAt(index);
+                });
+              },
+              background: Container(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                decoration: BoxDecoration(
+                  color: Colors.red.withOpacity(0.2),
+                  borderRadius: BorderRadius.circular(16),
+                ),
+                child: const Row(
+                  children: [
+                    Spacer(),
+                    Icon(
+                      Iconsax.trash,
+                      color: Colors.red,
+                    ),
+                  ],
+                ),
+              ),
+              child: CartItem(
+                cart: itemCarts[index],
+                onAddQuantity: (){
+                  setState(() => itemCarts[index].quantity++);
+                },
+                onMinusQuantity: (){
+                  setState(() => itemCarts[index].quantity--);
+                },
+              ),
+            ),
+          ),
+        ),
+      ),
+      bottomNavigationBar: const CheckoutCard(),
     );
   }
 }

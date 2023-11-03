@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:shoes_shopping_app/models.dart';
+import 'package:shoes_shopping_app/models/shoe.dart';
 import 'package:shoes_shopping_app/ui/screen/detail/components/filter_color.dart';
 import 'package:shoes_shopping_app/ui/screen/home/components/filter_item.dart';
 import 'package:shoes_shopping_app/util/theme.dart';
@@ -113,32 +113,33 @@ class _DetailScreenState extends State<DetailScreen>
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 10),
-          child: Text(
-            widget.shoe.price,
-            style: textTheme.titleSmall,
-          ),
-        ),
-        ElevatedButton(
-          onPressed: () {},
-          style: ElevatedButton.styleFrom(
-            backgroundColor: MyTheme.primary,
-            padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 30),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(20),
+          padding: const EdgeInsets.symmetric(horizontal: 20),
+          child: Text.rich(
+            TextSpan(
+              text: "Price:\n",
+              style: textTheme.bodySmall?.copyWith(color: MyTheme.gray),
+              children: [
+                TextSpan(
+                  text: widget.shoe.price,
+                  style: textTheme.titleSmall,
+                ),
+              ],
             ),
           ),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              const Icon(Iconsax.shopping_cart, color: Colors.black),
-              const SizedBox(width: 16),
-              Text(
-                "Add to cart",
-                style: textTheme.bodyMedium,
-              ),
-            ],
+        ),
+        SizedBox(
+          width: 200,
+          child: ElevatedButton(
+            onPressed: () {},
+            child: const Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Icon(Iconsax.shopping_cart),
+                SizedBox(width: 16),
+                Text("Add to cart"),
+              ],
+            ),
           ),
         ),
       ],

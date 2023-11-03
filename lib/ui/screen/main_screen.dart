@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:shoes_shopping_app/ui/screen/message/message_screen.dart';
 import 'package:shoes_shopping_app/util/theme.dart';
 
-import 'cart/cart_screen.dart';
 import 'favorite/favorite_screen.dart';
 import 'home/home_screen.dart';
 import 'profile/profile_screen.dart';
 
-enum NavBarItem { home, cart, favorite, profile }
+enum NavBarItem { home, favorite, message, profile }
 
 class MainScreen extends StatefulWidget {
   static const String route = '/main';
@@ -22,8 +22,8 @@ class _MainScreenState extends State<MainScreen> {
   int _selectedIndex = NavBarItem.home.index;
   final pages = [
     const HomeScreen(),
-    const CartScreen(),
     const FavoriteScreen(),
+    const MessageScreen(),
     const ProfileScreen(),
   ];
 
@@ -38,11 +38,11 @@ class _MainScreenState extends State<MainScreen> {
             label: '',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Iconsax.shopping_cart),
+            icon: Icon(Iconsax.heart),
             label: '',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Iconsax.heart),
+            icon: Icon(Iconsax.message),
             label: '',
           ),
           BottomNavigationBarItem(

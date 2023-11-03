@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 
 class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
-  final String title;
+  final Widget title;
 
   const MyAppBar({
     super.key,
@@ -20,7 +20,7 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
           Iconsax.arrow_left_2,
         ),
       ),
-      title: Text(title),
+      title: title,
     );
   }
 

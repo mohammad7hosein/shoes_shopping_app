@@ -25,6 +25,7 @@ InputDecorationTheme inputDecorationTheme() {
     enabledBorder: outlineInputBorder(),
     focusedBorder: outlineInputBorder(),
     border: outlineInputBorder(),
+    hintStyle: const TextStyle(fontSize: 14, color: MyTheme.darkGray),
   );
 }
 
@@ -115,8 +116,9 @@ class MyTheme {
     ),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
+        textStyle: const TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
         backgroundColor: primary,
-        padding: const EdgeInsets.all(20),
+        padding: const EdgeInsets.all(24),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(20),
         ),

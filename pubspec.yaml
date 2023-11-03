@@ -14,6 +14,8 @@ dependencies:
   flutter_svg:
   cupertino_icons:
   iconsax:
+  bloc:
+  flutter_bloc:
 
 dev_dependencies:
   flutter_test:

@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:shoes_shopping_app/models.dart';
+import 'package:iconsax/iconsax.dart';
+import 'package:shoes_shopping_app/models/shoe.dart';
+import 'package:shoes_shopping_app/ui/screen/cart/cart_screen.dart';
 import 'package:shoes_shopping_app/ui/screen/home/components/filter_item.dart';
 import 'package:shoes_shopping_app/ui/screen/home/components/home_item.dart';
+import 'package:shoes_shopping_app/ui/screen/home/components/icon_button_with_badge.dart';
 import 'package:shoes_shopping_app/ui/screen/home/components/search_field.dart';
 import 'package:shoes_shopping_app/util/theme.dart';
 
@@ -40,7 +43,22 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
               const SizedBox(height: 10),
-              const SearchField(),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    const Expanded(child: SearchField()),
+                    const SizedBox(width: 16),
+                    IconButtonWithBadge(
+                      icon: Iconsax.shopping_cart,
+                      onClick: () =>
+                          Navigator.pushNamed(context, CartScreen.route),
+                      number: 2,
+                    ),
+                  ],
+                ),
+              ),
               const SizedBox(height: 30),
               buildFilterRow(),
               const SizedBox(height: 20),
