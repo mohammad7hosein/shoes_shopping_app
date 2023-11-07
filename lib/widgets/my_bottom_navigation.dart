@@ -1,24 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:shoes_shopping_app/ui/screen/message/message_screen.dart';
 import 'package:shoes_shopping_app/util/theme.dart';
 
-import 'favorite/favorite_screen.dart';
-import 'home/home_screen.dart';
-import 'profile/profile_screen.dart';
+import '../feature/favorite/favorite_screen.dart';
+import '../feature/home/home_screen.dart';
+import '../feature/message/message_screen.dart';
+import '../feature/profile/profile_screen.dart';
 
 enum NavBarItem { home, favorite, message, profile }
 
-class MainScreen extends StatefulWidget {
+class MyBottomNavigation extends StatefulWidget {
   static const String route = '/main';
 
-  const MainScreen({super.key});
+  const MyBottomNavigation({super.key});
 
   @override
-  State<MainScreen> createState() => _MainScreenState();
+  State<MyBottomNavigation> createState() => _MyBottomNavigationState();
 }
 
-class _MainScreenState extends State<MainScreen> {
+class _MyBottomNavigationState extends State<MyBottomNavigation> {
   int _selectedIndex = NavBarItem.home.index;
   final pages = [
     const HomeScreen(),

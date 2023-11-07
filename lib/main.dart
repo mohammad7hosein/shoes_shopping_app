@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:shoes_shopping_app/shoe_repository.dart';
-import 'package:shoes_shopping_app/ui/screen/cart/cart_screen.dart';
-import 'package:shoes_shopping_app/ui/screen/detail/detail_screen.dart';
-import 'package:shoes_shopping_app/ui/screen/favorite/favorite_screen.dart';
-import 'package:shoes_shopping_app/ui/screen/home/bloc/home_event.dart';
-import 'package:shoes_shopping_app/ui/screen/home/home_screen.dart';
-import 'package:shoes_shopping_app/ui/screen/main_screen.dart';
-import 'package:shoes_shopping_app/ui/screen/message/message_screen.dart';
-import 'package:shoes_shopping_app/ui/screen/profile/profile_screen.dart';
-import 'package:shoes_shopping_app/util/size_config.dart';
-import 'package:shoes_shopping_app/util/theme.dart';
+import 'package:shoes_shopping_app/domain/shoe_repository.dart';
 
-import 'ui/screen/home/bloc/home_bloc.dart';
+import 'feature/cart/cart_screen.dart';
+import 'feature/detail/detail_screen.dart';
+import 'feature/favorite/favorite_screen.dart';
+import 'feature/home/bloc/home_bloc.dart';
+import 'feature/home/bloc/home_event.dart';
+import 'feature/home/home_screen.dart';
+import 'feature/message/message_screen.dart';
+import 'feature/profile/profile_screen.dart';
+import 'util/size_config.dart';
+import 'util/theme.dart';
+import 'widgets/my_bottom_navigation.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -45,7 +45,7 @@ class App extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         theme: MyTheme.lightTheme,
         routes: {
-          MainScreen.route: (context) => const MainScreen(),
+          MyBottomNavigation.route: (context) => const MyBottomNavigation(),
           HomeScreen.route: (context) => const HomeScreen(),
           CartScreen.route: (context) => const CartScreen(),
           FavoriteScreen.route: (context) => const FavoriteScreen(),
@@ -53,7 +53,7 @@ class App extends StatelessWidget {
           MessageScreen.route: (context) => const MessageScreen(),
           DetailScreen.route: (context) => DetailScreen(),
         },
-        initialRoute: MainScreen.route,
+        initialRoute: MyBottomNavigation.route,
       ),
     );
   }

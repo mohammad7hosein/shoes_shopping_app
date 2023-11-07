@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:shoes_shopping_app/models/shoe.dart';
 import 'package:shoes_shopping_app/util/theme.dart';
+
+import '../../../data/models/shoe.dart';
 
 class HomeItem extends StatelessWidget {
   final Shoe shoe;

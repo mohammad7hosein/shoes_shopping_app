@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:shoes_shopping_app/models/cart.dart';
-import 'package:shoes_shopping_app/ui/widgets/my_app_bar.dart';
 
+import '../../data/models/cart.dart';
+import '../../widgets/my_app_bar.dart';
 import 'components/cart_item.dart';
 import 'components/checkout_card.dart';
 
@@ -63,10 +63,10 @@ class _CartScreenState extends State<CartScreen> {
               ),
               child: CartItem(
                 cart: itemCarts[index],
-                onAddQuantity: (){
+                onAddQuantity: () {
                   setState(() => itemCarts[index].quantity++);
                 },
-                onMinusQuantity: (){
+                onMinusQuantity: () {
                   setState(() => itemCarts[index].quantity--);
                 },
               ),

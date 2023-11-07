@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:shoes_shopping_app/ui/widgets/my_app_bar.dart';
 
+import '../../widgets/my_app_bar.dart';
 import 'components/profile_menu.dart';
 import 'components/profile_pic.dart';
 

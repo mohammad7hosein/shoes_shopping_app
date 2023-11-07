@@ -1,7 +1,7 @@
 import 'dart:developer';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:shoes_shopping_app/shoe_repository.dart';
+import 'package:shoes_shopping_app/domain/shoe_repository.dart';
 
 import 'home_event.dart';
 import 'home_state.dart';

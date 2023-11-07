@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:shoes_shopping_app/models/brand_type.dart';
+
+import 'brand_type.dart';
 
 class Shoe {
   final int id;

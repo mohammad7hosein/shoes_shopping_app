@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:shoes_shopping_app/models/brand_type.dart';
-import 'package:shoes_shopping_app/models/shoe.dart';
+
+import 'brand_type.dart';
+import 'shoe.dart';
 
 class Cart {
   final Shoe shoe;

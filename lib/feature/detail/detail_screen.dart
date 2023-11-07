@@ -1,22 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:shoes_shopping_app/models/shoe.dart';
-import 'package:shoes_shopping_app/ui/screen/detail/components/filter_color.dart';
-import 'package:shoes_shopping_app/ui/screen/home/components/filter_item.dart';
 import 'package:shoes_shopping_app/util/theme.dart';
 
-class DetailScreen extends StatefulWidget {
+import '../../data/models/shoe.dart';
+import '../home/components/filter_item.dart';
+import 'components/filter_color.dart';
+
+class DetailScreen extends StatelessWidget {
   static const route = '/detail';
-  final Shoe shoe;
 
-  const DetailScreen(this.shoe, {Key? key}) : super(key: key);
+  DetailScreen({Key? key}) : super(key: key);
 
-  @override
-  State<DetailScreen> createState() => _DetailScreenState();
-}
-
-class _DetailScreenState extends State<DetailScreen>
-    with TickerProviderStateMixin {
+  late Shoe shoe;
   String? selectedSize;
   Color? selectedColor;
 
@@ -76,9 +71,9 @@ class _DetailScreenState extends State<DetailScreen>
     return Expanded(
       flex: 2,
       child: Hero(
-        tag: widget.shoe.imageSrc,
+        tag: shoe.imageSrc,
         child: Image(
-          image: AssetImage(widget.shoe.imageSrc),
+          image: AssetImage(shoe.imageSrc),
         ),
       ),
     );
@@ -120,7 +115,7 @@ class _DetailScreenState extends State<DetailScreen>
               style: textTheme.bodySmall?.copyWith(color: MyTheme.gray),
               children: [
                 TextSpan(
-                  text: widget.shoe.price,
+                  text: shoe.price,
                   style: textTheme.titleSmall,
                 ),
               ],
@@ -147,7 +142,7 @@ class _DetailScreenState extends State<DetailScreen>
   }
 
   buildColors(TextTheme textTheme) {
-    final colors = widget.shoe.colors;
+    final colors = shoe.colors;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -169,7 +164,7 @@ class _DetailScreenState extends State<DetailScreen>
                   color: item,
                   isSelected: selectedColor == item,
                   onClick: () {
-                    setState(() => selectedColor = item);
+                    // setState(() => selectedColor = item);
                   },
                 ),
               );
@@ -181,7 +176,7 @@ class _DetailScreenState extends State<DetailScreen>
   }
 
   buildSizes(TextTheme textTheme) {
-    final sizes = widget.shoe.sizes;
+    final sizes = shoe.sizes;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -203,7 +198,7 @@ class _DetailScreenState extends State<DetailScreen>
                   text: item,
                   isSelected: selectedSize == item,
                   onClick: () {
-                    setState(() => selectedSize = item);
+                    // setState(() => selectedSize = item);
                   },
                 ),
               );
@@ -219,12 +214,12 @@ class _DetailScreenState extends State<DetailScreen>
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          widget.shoe.title,
+          shoe.title,
           style: textTheme.titleLarge,
         ),
         const SizedBox(height: 6),
         Text(
-          widget.shoe.subTitle,
+          shoe.subTitle,
           style: textTheme.titleSmall?.copyWith(
             color: Colors.grey,
           ),

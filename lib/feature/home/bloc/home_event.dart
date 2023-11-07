@@ -1,4 +1,4 @@
-import 'package:shoes_shopping_app/models/brand_type.dart';
+import '../../../data/models/brand_type.dart';
 
 sealed class HomeEvent {}
 

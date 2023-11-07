@@ -1,5 +1,5 @@
-import 'package:shoes_shopping_app/models/brand_type.dart';
-import 'package:shoes_shopping_app/models/shoe.dart';
+import '../data/models/brand_type.dart';
+import '../data/models/shoe.dart';
 
 class ShoeRepository {
   Future<List<Shoe>> loadShoes() async {

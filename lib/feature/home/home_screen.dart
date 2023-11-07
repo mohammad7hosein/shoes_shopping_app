@@ -2,18 +2,18 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:shoes_shopping_app/ui/screen/cart/cart_screen.dart';
-import 'package:shoes_shopping_app/ui/screen/detail/detail_screen.dart';
-import 'package:shoes_shopping_app/ui/screen/home/bloc/home_event.dart';
-import 'package:shoes_shopping_app/ui/screen/home/components/filter_section.dart';
-import 'package:shoes_shopping_app/ui/screen/home/components/home_item.dart';
-import 'package:shoes_shopping_app/ui/screen/home/components/icon_button_with_badge.dart';
-import 'package:shoes_shopping_app/ui/screen/home/components/search_field.dart';
-import 'package:shoes_shopping_app/ui/widgets/my_snack_bar.dart';
 import 'package:shoes_shopping_app/util/theme.dart';
 
+import '../../widgets/my_snack_bar.dart';
+import '../cart/cart_screen.dart';
+import '../detail/detail_screen.dart';
 import 'bloc/home_bloc.dart';
+import 'bloc/home_event.dart';
 import 'bloc/home_state.dart';
+import 'components/filter_section.dart';
+import 'components/home_item.dart';
+import 'components/icon_button_with_badge.dart';
+import 'components/search_field.dart';
 
 class HomeScreen extends StatelessWidget {
   static const route = '/home';

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:shoes_shopping_app/ui/screen/home/components/filter_item.dart';
 import 'package:shoes_shopping_app/util/theme.dart';
 
-import '../../../../models/brand_type.dart';
+import '../../../data/models/brand_type.dart';
+import 'filter_item.dart';
 
 class FilterSection extends StatelessWidget {
   final BrandType selectedBrand;

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:shoes_shopping_app/models/cart.dart';
 import 'package:shoes_shopping_app/util/theme.dart';
+
+import '../../../data/models/cart.dart';
 
 class CartItem extends StatelessWidget {
   final Cart cart;
