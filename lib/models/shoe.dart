@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-enum Brand { adidas, nike, puma }
+import 'package:shoes_shopping_app/models/brand_type.dart';
 
 class Shoe {
   final int id;
@@ -8,23 +7,22 @@ class Shoe {
   final String subTitle;
   final String price;
   final String imageSrc;
-  final Brand brand;
+  final BrandType brandType;
   bool isFavorite;
   final List<String> sizes;
   final List<Color> colors;
 
-   Shoe({
+  Shoe({
     required this.id,
     required this.title,
     required this.subTitle,
     required this.price,
     required this.imageSrc,
-    required this.brand,
+    required this.brandType,
     required this.sizes,
     required this.colors,
     this.isFavorite = false,
   });
-
 }
 
 final List<Shoe> shoes = [
@@ -34,7 +32,7 @@ final List<Shoe> shoes = [
     subTitle: 'Red Jordan',
     imageSrc: 'assets/image/image7.png',
     price: '\$250',
-    brand: Brand.nike,
+    brandType: BrandType.nike,
     sizes: ['36', '37', '38', '39', '40'],
     colors: [Colors.red, Colors.blue, Colors.green],
   ),
@@ -44,7 +42,7 @@ final List<Shoe> shoes = [
     subTitle: 'Human Race',
     imageSrc: 'assets/image/image1.png',
     price: '\$280',
-    brand: Brand.adidas,
+    brandType: BrandType.adidas,
     sizes: ['39', '40', '41', '42', '43'],
     colors: [Colors.red, Colors.blue, Colors.green],
   ),
@@ -54,7 +52,7 @@ final List<Shoe> shoes = [
     subTitle: 'Zoom Pegasus',
     imageSrc: 'assets/image/image3.png',
     price: '\$250',
-    brand: Brand.puma,
+    brandType: BrandType.puma,
     sizes: ['36', '37', '38', '39', '40'],
     colors: [Colors.red, Colors.blue, Colors.green],
   ),
@@ -64,7 +62,7 @@ final List<Shoe> shoes = [
     subTitle: 'Joyraide',
     imageSrc: 'assets/image/image2.png',
     price: '\$320',
-    brand: Brand.nike,
+    brandType: BrandType.nike,
     sizes: ['36', '37', '38', '39', '40'],
     colors: [Colors.red, Colors.blue, Colors.green],
   ),
@@ -74,7 +72,7 @@ final List<Shoe> shoes = [
     subTitle: 'Beautiful Old Design',
     imageSrc: 'assets/image/image8.png',
     price: '\$160',
-    brand: Brand.nike,
+    brandType: BrandType.nike,
     sizes: ['36', '37', '38', '39', '40'],
     colors: [Colors.red, Colors.blue, Colors.green],
   ),
@@ -84,7 +82,7 @@ final List<Shoe> shoes = [
     subTitle: 'Joyraide',
     imageSrc: 'assets/image/image6.png',
     price: '\$320',
-    brand: Brand.nike,
+    brandType: BrandType.nike,
     sizes: ['36', '37', '38', '39', '40'],
     colors: [Colors.red, Colors.blue, Colors.green],
   ),
@@ -94,7 +92,7 @@ final List<Shoe> shoes = [
     subTitle: 'Street Ball',
     imageSrc: 'assets/image/image4.png',
     price: '\$160',
-    brand: Brand.puma,
+    brandType: BrandType.puma,
     sizes: ['36', '37', '38', '39', '40'],
     colors: [Colors.red, Colors.blue, Colors.green],
   ),
@@ -104,7 +102,7 @@ final List<Shoe> shoes = [
     subTitle: 'Zoom Pegasus',
     imageSrc: 'assets/image/image11.png',
     price: '\$250',
-    brand: Brand.nike,
+    brandType: BrandType.nike,
     sizes: ['36', '37', '38', '39', '40'],
     colors: [Colors.red, Colors.blue, Colors.green],
   ),
@@ -114,7 +112,7 @@ final List<Shoe> shoes = [
     subTitle: 'Human Race',
     imageSrc: 'assets/image/image9.png',
     price: '\$280',
-    brand: Brand.adidas,
+    brandType: BrandType.adidas,
     sizes: ['36', '37', '38', '39', '40'],
     colors: [Colors.red, Colors.blue, Colors.green],
   ),
@@ -124,7 +122,7 @@ final List<Shoe> shoes = [
     subTitle: 'Joyraide',
     imageSrc: 'assets/image/image10.png',
     price: '\$320',
-    brand: Brand.nike,
+    brandType: BrandType.nike,
     sizes: ['36', '37', '38', '39', '40'],
     colors: [Colors.red, Colors.blue, Colors.green],
   ),
@@ -134,7 +132,7 @@ final List<Shoe> shoes = [
     subTitle: 'Street Ball',
     imageSrc: 'assets/image/image12.png',
     price: '\$160',
-    brand: Brand.puma,
+    brandType: BrandType.puma,
     sizes: ['36', '37', '38', '39', '40'],
     colors: [Colors.red, Colors.blue, Colors.green],
   ),
@@ -144,7 +142,7 @@ final List<Shoe> shoes = [
     subTitle: 'Running Shoe',
     imageSrc: 'assets/image/image13.png',
     price: '\$280',
-    brand: Brand.nike,
+    brandType: BrandType.nike,
     sizes: ['36', '37', '38', '39', '40'],
     colors: [Colors.red, Colors.blue, Colors.green],
   ),

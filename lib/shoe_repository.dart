@@ -1,18 +1,20 @@
+import 'package:shoes_shopping_app/models/brand_type.dart';
 import 'package:shoes_shopping_app/models/shoe.dart';
 
 class ShoeRepository {
   Future<List<Shoe>> loadShoes() async {
-    await Future.delayed(const Duration(seconds: 2));
+    await Future.delayed(const Duration(seconds: 1));
     return shoes;
   }
 
-  Future<List<Shoe>> filterShoes(Brand brand) async {
-    await Future.delayed(const Duration(seconds: 2));
-    return shoes.where((shoe) => shoe.brand == brand).toList();
+  Future<List<Shoe>> filterShoes(BrandType brandType) async {
+    await Future.delayed(const Duration(seconds: 1));
+    if (brandType == BrandType.none) return shoes;
+    return shoes.where((shoe) => shoe.brandType == brandType).toList();
   }
 
   Future<List<Shoe>> searchShoes(String query) async {
-    await Future.delayed(const Duration(seconds: 2));
+    await Future.delayed(const Duration(seconds: 1));
     return shoes
         .where((shoe) =>
             shoe.title.toLowerCase().contains(query.toLowerCase()) ||
@@ -21,11 +23,11 @@ class ShoeRepository {
   }
 
   Future<List<Shoe>> getFavoriteShoes() async {
-    await Future.delayed(const Duration(seconds: 2));
+    await Future.delayed(const Duration(seconds: 1));
     return shoes.where((shoe) => shoe.isFavorite).toList();
   }
 
-  bool addToFavorites(int id) {
+  Future<bool> addToFavorites(int id) async {
     final index = shoes.indexWhere((shoe) => shoe.id == id);
     if (index != -1) {
       shoes[index].isFavorite = true;
@@ -34,7 +36,7 @@ class ShoeRepository {
     return false;
   }
 
-  bool removeFromFavorites(int id) {
+  Future<bool> removeFromFavorites(int id) async {
     final index = shoes.indexWhere((shoe) => shoe.id == id);
     if (index != -1) {
       shoes[index].isFavorite = false;
@@ -44,12 +46,11 @@ class ShoeRepository {
   }
 
   Future<Shoe?> getShoeById(int id) async {
-    await Future.delayed(const Duration(seconds: 2));
+    await Future.delayed(const Duration(seconds: 1));
     final index = shoes.indexWhere((shoe) => shoe.id == id);
     if (index != -1) {
       return shoes[index];
     }
     return null;
   }
-
 }

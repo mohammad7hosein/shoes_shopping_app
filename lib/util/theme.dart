@@ -21,11 +21,10 @@ OutlineInputBorder outlineInputBorder() {
 InputDecorationTheme inputDecorationTheme() {
   return InputDecorationTheme(
     floatingLabelBehavior: FloatingLabelBehavior.auto,
-    contentPadding: const EdgeInsets.symmetric(horizontal: 40, vertical: 20),
     enabledBorder: outlineInputBorder(),
     focusedBorder: outlineInputBorder(),
     border: outlineInputBorder(),
-    hintStyle: const TextStyle(fontSize: 14, color: MyTheme.darkGray),
+    hintStyle: const TextStyle(fontSize: 14, color: MyTheme.gray),
   );
 }
 

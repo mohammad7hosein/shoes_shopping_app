@@ -3,8 +3,11 @@ import 'package:iconsax/iconsax.dart';
 import 'package:shoes_shopping_app/util/theme.dart';
 
 class SearchField extends StatelessWidget {
+  final Function(String query) onSearch;
+
   const SearchField({
     Key? key,
+    required this.onSearch,
   }) : super(key: key);
 
   @override
@@ -19,16 +22,13 @@ class SearchField extends StatelessWidget {
         ],
       ),
       child: TextField(
-        onChanged: (value) {
-          // search value
-        },
+        onChanged: (value) {},
+        onSubmitted: (value) => onSearch(value),
+        style: Theme.of(context).textTheme.bodyMedium,
+        textInputAction: TextInputAction.search,
         decoration: const InputDecoration(
           prefixIcon: Icon(Iconsax.search_normal_1),
           hintText: "Search...",
-          hintStyle: TextStyle(
-            fontSize: 16,
-            color: MyTheme.gray,
-          ),
           enabledBorder: InputBorder.none,
           focusedBorder: InputBorder.none,
         ),

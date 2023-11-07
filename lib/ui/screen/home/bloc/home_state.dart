@@ -1,8 +1,32 @@
+import 'package:shoes_shopping_app/models/brand_type.dart';
+import 'package:shoes_shopping_app/models/shoe.dart';
 
+enum HomeStatus { initial, loading, success, failure }
 
-sealed class HomeState {}
+final class HomeState {
+  final HomeStatus status;
+  final BrandType selectedFilter;
+  final List<Shoe> shoes;
+  final bool? isLiked;
 
-final class HomeInitial extends HomeState {}
-final class HomeLoadInProgress extends HomeState {}
-final class HomeLoadSuccess extends HomeState {}
-final class HomeLoadFailure extends HomeState {}
+  HomeState({
+    this.status = HomeStatus.initial,
+    this.selectedFilter = BrandType.none,
+    this.shoes = const [],
+    this.isLiked,
+  });
+
+  HomeState copyWith({
+    HomeStatus? status,
+    BrandType? selectedFilter,
+    List<Shoe>? shoes,
+    bool? isLiked,
+  }) {
+    return HomeState(
+      status: status ?? this.status,
+      selectedFilter: selectedFilter ?? this.selectedFilter,
+      shoes: shoes ?? this.shoes,
+      isLiked: isLiked ?? this.isLiked,
+    );
+  }
+}
