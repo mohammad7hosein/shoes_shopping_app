@@ -7,26 +7,30 @@ final class HomeState {
   final HomeStatus status;
   final BrandType selectedFilter;
   final List<Shoe> shoes;
-  final bool? isLiked;
+  final bool? isLikeClicked;
+  final int cartCount;
 
   HomeState({
     this.status = HomeStatus.initial,
     this.selectedFilter = BrandType.none,
     this.shoes = const [],
-    this.isLiked,
+    this.isLikeClicked,
+    this.cartCount = 0,
   });
 
   HomeState copyWith({
     HomeStatus? status,
     BrandType? selectedFilter,
     List<Shoe>? shoes,
-    bool? isLiked,
+    bool? isLikeClicked,
+    int? cartCount,
   }) {
     return HomeState(
       status: status ?? this.status,
       selectedFilter: selectedFilter ?? this.selectedFilter,
       shoes: shoes ?? this.shoes,
-      isLiked: isLiked ?? this.isLiked,
+      isLikeClicked: isLikeClicked ?? this.isLikeClicked,
+      cartCount: cartCount ?? this.cartCount,
     );
   }
 }

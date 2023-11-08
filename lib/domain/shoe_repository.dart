@@ -1,3 +1,7 @@
+import 'dart:ui';
+
+import 'package:shoes_shopping_app/data/models/cart.dart';
+
 import '../data/models/brand_type.dart';
 import '../data/models/shoe.dart';
 
@@ -52,5 +56,31 @@ class ShoeRepository {
       return shoes[index];
     }
     return null;
+  }
+
+  Future<void> addToCart(int id, String size, Color color, int quantity) async {
+    final index = itemCarts.indexWhere((itemCart) =>
+        itemCart.id == id && itemCart.size == size && itemCart.color == color);
+    if (index != -1) {
+      itemCarts[index].quantity += quantity;
+      return;
+    }
+
+    itemCarts.add(
+      Cart.fromShoe(
+        shoe: shoes.firstWhere((shoe) => shoe.id == id),
+        size: size,
+        color: color,
+        quantity: quantity,
+      ),
+    );
+  }
+
+  Future<bool> isFavorite(int id) {
+    final index = shoes.indexWhere((shoe) => shoe.id == id);
+    if (index != -1) {
+      return Future.value(shoes[index].isFavorite);
+    }
+    return Future.value(false);
   }
 }

@@ -38,7 +38,7 @@ class _CartScreenState extends State<CartScreen> {
           itemBuilder: (context, index) => Padding(
             padding: const EdgeInsets.symmetric(vertical: 10),
             child: Dismissible(
-              key: Key(itemCarts[index].shoe.id.toString()),
+              key: Key(itemCarts[index].id.toString()),
               direction: DismissDirection.endToStart,
               onDismissed: (direction) {
                 setState(() {

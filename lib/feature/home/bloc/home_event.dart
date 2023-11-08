@@ -16,14 +16,12 @@ final class HomeFilterItems extends HomeEvent {
   HomeFilterItems({required this.brandType});
 }
 
-final class HomeItemAddToFavorite extends HomeEvent {
-  final int itemId;
+final class HomeItemLikeClicked extends HomeEvent {
+  final int id;
+  final bool isLiked;
 
-  HomeItemAddToFavorite({required this.itemId});
-}
-
-final class HomeItemRemoveFromFavorite extends HomeEvent {
-  final int itemId;
-
-  HomeItemRemoveFromFavorite({required this.itemId});
+  HomeItemLikeClicked({
+    required this.id,
+    required this.isLiked,
+  });
 }

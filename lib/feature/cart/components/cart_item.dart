@@ -31,7 +31,7 @@ class CartItem extends StatelessWidget {
                 color: MyTheme.light,
                 borderRadius: BorderRadius.circular(16),
               ),
-              child: Image.asset(cart.shoe.imageSrc),
+              child: Image.asset(cart.imageSrc),
             ),
           ),
         ),
@@ -40,13 +40,13 @@ class CartItem extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              cart.shoe.title,
+              cart.title,
               style: textTheme.bodyMedium,
               maxLines: 1,
             ),
             // const SizedBox(height: 5),
             Text(
-              cart.shoe.subTitle,
+              cart.subTitle,
               style: textTheme.bodySmall?.copyWith(color: MyTheme.gray),
               maxLines: 2,
             ),
@@ -54,7 +54,7 @@ class CartItem extends StatelessWidget {
             Row(
               children: [
                 Text(
-                  cart.shoe.price,
+                  cart.price,
                   style: textTheme.bodyMedium?.copyWith(color: MyTheme.primary),
                   maxLines: 2,
                 ),

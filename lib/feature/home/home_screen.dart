@@ -1,9 +1,9 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:shoes_shopping_app/util/theme.dart';
 
+import '../../widgets/loading/loading_screen.dart';
 import '../../widgets/my_snack_bar.dart';
 import '../cart/cart_screen.dart';
 import '../detail/detail_screen.dart';
@@ -27,123 +27,139 @@ class HomeScreen extends StatelessWidget {
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16),
-          child: BlocConsumer<HomeBloc, HomeState>(
-            listenWhen: (previous, current) {
-              return current.isLiked != null && previous != current;
-            },
+          child: BlocListener<HomeBloc, HomeState>(
+            listenWhen: (previous, current) =>
+                previous.status != current.status,
             listener: (context, state) {
-              if (state.isLiked!) {
-                ScaffoldMessenger.of(context).showSnackBar(
-                  mySnackBar(context, 'Added to favorite'),
-                );
-              } else {
-                ScaffoldMessenger.of(context).showSnackBar(
-                  mySnackBar(context, 'Removed from favorite'),
-                );
-              }
-            },
-            buildWhen: (previous, current) => previous != current,
-            builder: (context, state) {
               if (state.status == HomeStatus.loading) {
-                return const Center(
-                  child: CupertinoActivityIndicator(
-                    color: MyTheme.primary,
-                    radius: 16,
-                  ),
-                );
-              } else if (state.status == HomeStatus.success) {
-                final shoes = state.shoes;
-                return Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    const Padding(
-                      padding: EdgeInsets.all(16),
-                      child: Text(
-                        'Shoes',
-                        style: TextStyle(
-                          fontFamily: 'Futura',
-                          color: Colors.black,
-                          fontSize: 30,
-                        ),
-                      ),
-                    ),
-                    const SizedBox(height: 10),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 16),
-                      child: Row(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Expanded(
-                            child: SearchField(
-                              onSearch: (String query) {
-                                context.read<HomeBloc>().add(
-                                      HomeSearchItems(query: query),
-                                    );
-                              },
-                            ),
-                          ),
-                          const SizedBox(width: 16),
-                          IconButtonWithBadge(
-                            icon: Iconsax.shopping_cart,
-                            onClick: () =>
-                                Navigator.pushNamed(context, CartScreen.route),
-                            number: 2,
-                          ),
-                        ],
-                      ),
-                    ),
-                    const SizedBox(height: 30),
-                    FilterSection(
-                      selectedBrand: state.selectedFilter,
-                      onClick: (brand) => () {
-                        context.read<HomeBloc>().add(
-                              HomeFilterItems(brandType: brand),
-                            );
-                      },
-                    ),
-                    const SizedBox(height: 20),
-                    Expanded(
-                      child: GridView.builder(
-                        itemCount: shoes.length,
-                        gridDelegate:
-                            const SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: 2,
-                          childAspectRatio: 0.7,
-                        ),
-                        itemBuilder: (context, index) => HomeItem(
-                          shoe: shoes[index],
-                          onClick: () {
-                            Navigator.pushNamed(context, DetailScreen.route);
-                          },
-                          onLike: () {
-                            if (shoes[index].isFavorite) {
-                              context.read<HomeBloc>().add(
-                                    HomeItemRemoveFromFavorite(
-                                        itemId: shoes[index].id),
-                                  );
-                            } else {
-                              context.read<HomeBloc>().add(
-                                    HomeItemAddToFavorite(
-                                        itemId: shoes[index].id),
-                                  );
-                            }
-                          },
-                          isLiked: shoes[index].isFavorite,
-                        ),
-                      ),
-                    ),
-                  ],
-                );
+                return LoadingScreen.instance()
+                    .show(context: context, text: 'Loading...');
               } else {
-                return const Center(
-                  child: Text('Something went wrong'),
-                );
+                return LoadingScreen.instance().hide();
               }
             },
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                const Padding(
+                  padding: EdgeInsets.all(16),
+                  child: Text(
+                    'Shoes',
+                    style: TextStyle(
+                      fontFamily: 'Futura',
+                      color: Colors.black,
+                      fontSize: 30,
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 10),
+                buildSearchAndCartButton(),
+                const SizedBox(height: 30),
+                buildFilterSection(),
+                const SizedBox(height: 20),
+                buildShoes(),
+              ],
+            ),
           ),
         ),
       ),
+    );
+  }
+
+  buildShoes() {
+    return BlocBuilder<HomeBloc, HomeState>(
+      buildWhen: (previous, current) =>
+          previous.status != current.status || current.isLikeClicked != null,
+      builder: (context, state) {
+        final shoes = state.shoes;
+        return Expanded(
+          child: GridView.builder(
+            itemCount: shoes.length,
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 2,
+              childAspectRatio: 0.7,
+            ),
+            itemBuilder: (context, index) => HomeItem(
+              shoe: shoes[index],
+              onClick: () {
+                Navigator.pushNamed(
+                  context,
+                  DetailScreen.route,
+                  arguments: {
+                    'shoeId': shoes[index].id,
+                  },
+                );
+              },
+              onLike: () {
+                context.read<HomeBloc>().add(
+                      HomeItemLikeClicked(
+                        id: shoes[index].id,
+                        isLiked: !shoes[index].isFavorite,
+                      ),
+                    );
+                if (!shoes[index].isFavorite) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    mySnackBar(context, 'Added to favorite'),
+                  );
+                } else {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    mySnackBar(context, 'Removed from favorite'),
+                  );
+                }
+              },
+              isLiked: shoes[index].isFavorite,
+            ),
+          ),
+        );
+      },
+    );
+  }
+
+  buildFilterSection() {
+    return BlocBuilder<HomeBloc, HomeState>(
+      buildWhen: (previous, current) =>
+          previous.selectedFilter != current.selectedFilter,
+      builder: (context, state) {
+        return FilterSection(
+          selectedBrand: state.selectedFilter,
+          onClick: (brand) => () {
+            context.read<HomeBloc>().add(
+                  HomeFilterItems(brandType: brand),
+                );
+          },
+        );
+      },
+    );
+  }
+
+  buildSearchAndCartButton() {
+    return BlocBuilder<HomeBloc, HomeState>(
+      builder: (context, state) {
+        return Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Expanded(
+                child: SearchField(
+                  onSearch: (String query) {
+                    context.read<HomeBloc>().add(
+                          HomeSearchItems(query: query),
+                        );
+                  },
+                ),
+              ),
+              const SizedBox(width: 16),
+              IconButtonWithBadge(
+                icon: Iconsax.shopping_cart,
+                onClick: () => Navigator.pushNamed(context, CartScreen.route),
+                number: state.cartCount,
+              ),
+            ],
+          ),
+        );
+      },
     );
   }
 }

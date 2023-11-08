@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shoes_shopping_app/domain/shoe_repository.dart';
+import 'package:shoes_shopping_app/feature/detail/bloc/detail_bloc.dart';
 
 import 'feature/cart/cart_screen.dart';
 import 'feature/detail/detail_screen.dart';
@@ -39,6 +40,9 @@ class App extends StatelessWidget {
       providers: [
         BlocProvider<HomeBloc>(
           create: (context) => HomeBloc(shoeRepository)..add(HomeStarted()),
+        ),
+        BlocProvider<DetailBloc>(
+          create: (context) => DetailBloc(shoeRepository),
         ),
       ],
       child: MaterialApp(

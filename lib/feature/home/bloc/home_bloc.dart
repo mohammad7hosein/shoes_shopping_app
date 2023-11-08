@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:shoes_shopping_app/data/models/cart.dart';
 import 'package:shoes_shopping_app/domain/shoe_repository.dart';
 
 import 'home_event.dart';
@@ -20,6 +21,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
             state.copyWith(
               status: HomeStatus.success,
               shoes: shoes,
+              cartCount: itemCarts.length,
             ),
           );
         } catch (e) {
@@ -59,50 +61,16 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
         }
       },
     );
-    on<HomeItemAddToFavorite>(
-      (event, emit) {
-        log('HomeItemAddToFavorite');
-        try {
-          shoeRepository.addToFavorites(event.itemId).then(
-                (isSuccess) => emit(
-                  isSuccess
-                      ? state.copyWith(status: HomeStatus.success, isLiked: true)
-                      : state.copyWith(status: HomeStatus.failure),
-                ),
-              );
-        } catch (e) {
-          emit(state.copyWith(status: HomeStatus.failure));
+    on<HomeItemLikeClicked>(
+      (event, emit) async {
+        log('HomeItemLikeClicked');
+        emit(state.copyWith(isLikeClicked: event.isLiked));
+        if (event.isLiked) {
+          await shoeRepository.addToFavorites(event.id);
+        } else {
+          await shoeRepository.removeFromFavorites(event.id);
         }
       },
     );
-    on<HomeItemRemoveFromFavorite>(
-      (event, emit) {
-        log('HomeItemRemoveFromFavorite');
-        try {
-          shoeRepository.removeFromFavorites(event.itemId).then(
-                (isSuccess) => emit(
-                  isSuccess
-                      ? state.copyWith(status: HomeStatus.success, isLiked: false)
-                      : state.copyWith(status: HomeStatus.failure),
-                ),
-              );
-        } catch (e) {
-          emit(state.copyWith(status: HomeStatus.failure));
-        }
-      },
-    );
-    // on<HomeItemClicked>(
-    //   (event, emit) async {
-    //     emit(state.copyWith(status: HomeStatus.loading));
-    //     try {
-    //       final shoe = await shoeRepository.getShoeById(event.itemId);
-    //       emit(
-    //         shoe == null ? state.copyWith(status: HomeStatus.failure) : HomeGetItemSuccess(shoe: shoe),
-    //       );
-    //     } catch (e) {
-    //       emit(state.copyWith(status: HomeStatus.failure));
-    //     }
-    //   },
-    // );
   }
 }
