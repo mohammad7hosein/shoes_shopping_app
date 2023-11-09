@@ -36,56 +36,81 @@ class CartItem extends StatelessWidget {
           ),
         ),
         const SizedBox(width: 20),
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              cart.title,
-              style: textTheme.bodyMedium,
-              maxLines: 1,
-            ),
-            // const SizedBox(height: 5),
-            Text(
-              cart.subTitle,
-              style: textTheme.bodySmall?.copyWith(color: MyTheme.gray),
-              maxLines: 2,
-            ),
-            const SizedBox(height: 15),
-            Row(
-              children: [
-                Text(
-                  cart.price,
-                  style: textTheme.bodyMedium?.copyWith(color: MyTheme.primary),
-                  maxLines: 2,
-                ),
-                const SizedBox(width: 80),
-                Container(
-                  decoration: BoxDecoration(
-                    color: MyTheme.light,
-                    borderRadius: BorderRadius.circular(16),
-                  ),
-                  child: Row(
+        Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      IconButton(
-                        splashRadius: 1,
-                        onPressed: onMinusQuantity,
-                        icon: const Icon(Iconsax.minus),
+                      Text(
+                        cart.title,
+                        style: textTheme.bodyMedium,
+                        maxLines: 1,
                       ),
                       Text(
-                        "${cart.quantity}",
-                        style: textTheme.bodyMedium,
-                      ),
-                      IconButton(
-                        splashRadius: 1,
-                        onPressed: onAddQuantity,
-                        icon: const Icon(Iconsax.add),
+                        cart.subTitle,
+                        style:
+                            textTheme.bodySmall?.copyWith(color: MyTheme.gray),
+                        maxLines: 2,
                       ),
                     ],
                   ),
-                ),
-              ],
-            ),
-          ],
+                  const Spacer(),
+                  Text(cart.size),
+                  const SizedBox(width: 10),
+                  Container(
+                    width: 25,
+                    height: 25,
+                    decoration: BoxDecoration(
+                      color: cart.color,
+                      shape: BoxShape.circle,
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 15),
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Text(
+                    '\$${cart.price.toInt()}',
+                    style:
+                        textTheme.bodyMedium?.copyWith(color: MyTheme.primary),
+                    maxLines: 2,
+                  ),
+                  const Spacer(),
+                  Container(
+                    decoration: BoxDecoration(
+                      color: MyTheme.light,
+                      borderRadius: BorderRadius.circular(16),
+                    ),
+                    child: Row(
+                      children: [
+                        IconButton(
+                          splashRadius: 1,
+                          onPressed: onMinusQuantity,
+                          icon: const Icon(Iconsax.minus),
+                        ),
+                        Text(
+                          "${cart.quantity}",
+                          style: textTheme.bodyMedium,
+                        ),
+                        IconButton(
+                          splashRadius: 1,
+                          onPressed: onAddQuantity,
+                          icon: const Icon(Iconsax.add),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
         )
       ],
     );

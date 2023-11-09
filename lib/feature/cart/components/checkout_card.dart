@@ -2,8 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:shoes_shopping_app/util/theme.dart';
 
 class CheckoutCard extends StatelessWidget {
+  final double totalPrice;
+  final VoidCallback onCheckout;
+
   const CheckoutCard({
     Key? key,
+    required this.totalPrice,
+    required this.onCheckout,
   }) : super(key: key);
 
   @override
@@ -60,7 +65,7 @@ class CheckoutCard extends StatelessWidget {
                     style: textTheme.bodySmall?.copyWith(color: MyTheme.gray),
                     children: [
                       TextSpan(
-                        text: "\$337.15",
+                        text: "\$$totalPrice",
                         style: textTheme.titleSmall,
                       ),
                     ],
@@ -69,8 +74,8 @@ class CheckoutCard extends StatelessWidget {
                 SizedBox(
                   width: 200,
                   child: ElevatedButton(
+                    onPressed: onCheckout,
                     child: const Text('Check Out'),
-                    onPressed: () {},
                   ),
                 )
               ],

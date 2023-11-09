@@ -164,7 +164,7 @@ class DetailScreen extends StatelessWidget {
                   style: textTheme.bodySmall?.copyWith(color: MyTheme.gray),
                   children: [
                     TextSpan(
-                      text: shoe.price,
+                      text: '\$${shoe.price.toInt()}',
                       style: textTheme.titleSmall,
                     ),
                   ],

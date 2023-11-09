@@ -1,80 +1,122 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:shoes_shopping_app/feature/home/home_screen.dart';
 
-import '../../data/models/cart.dart';
+import '../../widgets/loading/loading_screen.dart';
 import '../../widgets/my_app_bar.dart';
+import 'bloc/cart_bloc.dart';
+import 'bloc/cart_event.dart';
+import 'bloc/cart_state.dart';
 import 'components/cart_item.dart';
 import 'components/checkout_card.dart';
 
-class CartScreen extends StatefulWidget {
+class CartScreen extends StatelessWidget {
   static String route = "/cart";
 
   const CartScreen({Key? key}) : super(key: key);
 
   @override
-  State<CartScreen> createState() => _CartScreenState();
-}
-
-class _CartScreenState extends State<CartScreen> {
-  @override
   Widget build(BuildContext context) {
+    context.read<CartBloc>().add(CartStarted());
     TextTheme textTheme = Theme.of(context).textTheme;
-    return Scaffold(
-      appBar: MyAppBar(
-        title: Column(
-          children: [
-            const Text("Your Cart"),
-            Text(
-              "${itemCarts.length} items",
-              style: textTheme.bodySmall,
-            ),
-          ],
-        ),
-      ),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20),
-        child: ListView.builder(
-          itemCount: itemCarts.length,
-          itemBuilder: (context, index) => Padding(
-            padding: const EdgeInsets.symmetric(vertical: 10),
-            child: Dismissible(
-              key: Key(itemCarts[index].id.toString()),
-              direction: DismissDirection.endToStart,
-              onDismissed: (direction) {
-                setState(() {
-                  itemCarts.removeAt(index);
-                });
-              },
-              background: Container(
-                padding: const EdgeInsets.symmetric(horizontal: 20),
-                decoration: BoxDecoration(
-                  color: Colors.red.withOpacity(0.2),
-                  borderRadius: BorderRadius.circular(16),
+    return BlocConsumer<CartBloc, CartState>(
+      listenWhen: (previous, current) => previous.status != current.status,
+      listener: (context, state) {
+        if (state.status == CartStatus.loading) {
+          return LoadingScreen.instance()
+              .show(context: context, text: 'Loading...');
+        } else {
+          return LoadingScreen.instance().hide();
+        }
+      },
+      builder: (context, state) {
+        final cartItems = state.cartItems;
+        return Scaffold(
+          appBar: MyAppBar(
+            title: Column(
+              children: [
+                const Text("Your Cart"),
+                Text(
+                  "${cartItems.length} items",
+                  style: textTheme.bodySmall,
                 ),
-                child: const Row(
-                  children: [
-                    Spacer(),
-                    Icon(
-                      Iconsax.trash,
-                      color: Colors.red,
-                    ),
-                  ],
-                ),
-              ),
-              child: CartItem(
-                cart: itemCarts[index],
-                onAddQuantity: () {
-                  setState(() => itemCarts[index].quantity++);
-                },
-                onMinusQuantity: () {
-                  setState(() => itemCarts[index].quantity--);
-                },
-              ),
+              ],
             ),
           ),
-        ),
-      ),
-      bottomNavigationBar: const CheckoutCard(),
+          body: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+            child: ListView.builder(
+              itemCount: cartItems.length,
+              itemBuilder: (context, index) {
+                final item = cartItems[index];
+                return Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 10),
+                  child: Dismissible(
+                    key: Key(item.id.toString()),
+                    direction: DismissDirection.endToStart,
+                    onDismissed: (direction) {
+                      context.read<CartBloc>().add(
+                            CartItemRemoved(
+                              id: item.id,
+                              size: item.size,
+                              color: item.color,
+                            ),
+                          );
+                    },
+                    background: Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 20),
+                      decoration: BoxDecoration(
+                        color: Colors.red.withOpacity(0.2),
+                        borderRadius: BorderRadius.circular(16),
+                      ),
+                      child: const Row(
+                        children: [
+                          Spacer(),
+                          Icon(
+                            Iconsax.trash,
+                            color: Colors.red,
+                          ),
+                        ],
+                      ),
+                    ),
+                    child: CartItem(
+                      cart: item,
+                      onAddQuantity: () {
+                        context.read<CartBloc>().add(
+                              CartItemQuantityChanged(
+                                id: item.id,
+                                size: item.size,
+                                color: item.color,
+                                quantity: item.quantity + 1,
+                              ),
+                            );
+                      },
+                      onMinusQuantity: () {
+                        context.read<CartBloc>().add(
+                              CartItemQuantityChanged(
+                                id: item.id,
+                                size: item.size,
+                                color: item.color,
+                                quantity: item.quantity - 1,
+                              ),
+                            );
+                      },
+                    ),
+                  ),
+                );
+              },
+            ),
+          ),
+          bottomNavigationBar: CheckoutCard(
+            totalPrice: state.totalPrice,
+            onCheckout: () {
+              context.read<CartBloc>().add(CartCheckout());
+              Navigator.pushNamed(context, HomeScreen.route);
+            },
+          ),
+        );
+      },
     );
   }
 }

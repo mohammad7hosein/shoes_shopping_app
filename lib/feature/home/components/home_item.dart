@@ -64,7 +64,7 @@ class HomeItem extends StatelessWidget {
             ),
             const SizedBox(height: 10),
             Text(
-              shoe.price,
+              '\$${shoe.price.toInt()}',
               style: textTheme.bodyMedium?.copyWith(color: MyTheme.primary),
             ),
           ],

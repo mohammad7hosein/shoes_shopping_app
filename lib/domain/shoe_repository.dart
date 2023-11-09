@@ -62,7 +62,7 @@ class ShoeRepository {
     final index = itemCarts.indexWhere((itemCart) =>
         itemCart.id == id && itemCart.size == size && itemCart.color == color);
     if (index != -1) {
-      itemCarts[index].quantity += quantity;
+      itemCarts[index].quantity = quantity;
       return;
     }
 
@@ -76,11 +76,33 @@ class ShoeRepository {
     );
   }
 
+  Future<void> removeFromCart(int id, String size, Color color) async {
+    final index = itemCarts.indexWhere((itemCart) =>
+        itemCart.id == id && itemCart.size == size && itemCart.color == color);
+    if (index != -1) {
+      itemCarts.removeAt(index);
+      return;
+    }
+  }
+
   Future<bool> isFavorite(int id) {
     final index = shoes.indexWhere((shoe) => shoe.id == id);
     if (index != -1) {
       return Future.value(shoes[index].isFavorite);
     }
     return Future.value(false);
+  }
+
+  Future<List<Cart>> loadCartItems() async {
+    await Future.delayed(const Duration(seconds: 1));
+    return itemCarts;
+  }
+
+  Future<double> getTotalCartPrice() async {
+    return itemCarts.fold<double>(
+      0.0,
+      (previousValue, element) =>
+          previousValue + (element.price * element.quantity),
+    );
   }
 }

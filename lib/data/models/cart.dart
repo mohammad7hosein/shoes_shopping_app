@@ -7,7 +7,7 @@ class Cart {
   final int id;
   final String title;
   final String subTitle;
-  final String price;
+  final double price;
   final String imageSrc;
   final BrandType brandType;
   final String size;
