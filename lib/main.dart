@@ -1,21 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:shoes_shopping_app/domain/shoe_repository.dart';
-import 'package:shoes_shopping_app/feature/cart/bloc/cart_bloc.dart';
-import 'package:shoes_shopping_app/feature/detail/bloc/detail_bloc.dart';
+import 'package:shoes_shopping_app/core/styles/size_config.dart';
 
-import 'feature/cart/cart_screen.dart';
-import 'feature/detail/detail_screen.dart';
-import 'feature/favorite/favorite_screen.dart';
-import 'feature/home/bloc/home_bloc.dart';
-import 'feature/home/bloc/home_event.dart';
-import 'feature/home/home_screen.dart';
-import 'feature/message/message_screen.dart';
-import 'feature/profile/profile_screen.dart';
-import 'util/size_config.dart';
-import 'util/theme.dart';
-import 'widgets/my_bottom_navigation.dart';
+import 'core/common/widgets/my_bottom_navigation.dart';
+import 'core/domain/repository/shoe_repository.dart';
+import 'core/styles/theme.dart';
+import 'features/cart/presentation/bloc/cart_bloc.dart';
+import 'features/cart/presentation/cart_screen.dart';
+import 'features/detail/presentation/bloc/detail_bloc.dart';
+import 'features/detail/presentation/detail_screen.dart';
+import 'features/favorite/presentation/favorite_screen.dart';
+import 'features/home/presentation/bloc/home_bloc.dart';
+import 'features/home/presentation/bloc/home_event.dart';
+import 'features/home/presentation/home_screen.dart';
+import 'features/message/presentation/message_screen.dart';
+import 'features/profile/presentation/profile_screen.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -59,7 +59,7 @@ class App extends StatelessWidget {
           FavoriteScreen.route: (context) => const FavoriteScreen(),
           ProfileScreen.route: (context) => const ProfileScreen(),
           MessageScreen.route: (context) => const MessageScreen(),
-          DetailScreen.route: (context) => DetailScreen(),
+          DetailScreen.route: (context) => const DetailScreen(),
         },
         initialRoute: MyBottomNavigation.route,
       ),
