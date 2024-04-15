@@ -16,10 +16,8 @@ class SearchField extends StatelessWidget {
       height: 50,
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.circular(16),
-        boxShadow: [
-          myBoxShadow(),
-        ],
+        borderRadius: myBorderRadius(),
+        boxShadow: [myBoxShadow()],
       ),
       child: TextField(
         onChanged: (value) {},

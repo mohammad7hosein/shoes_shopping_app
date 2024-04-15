@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:shoes_shopping_app/core/common/widgets/loading/loading_screen.dart';
-import 'package:shoes_shopping_app/core/common/widgets/my_snack_bar.dart';
 import 'package:shoes_shopping_app/core/styles/theme.dart';
+import 'package:shoes_shopping_app/core/utils/extensions.dart';
 import 'package:shoes_shopping_app/features/home/presentation/components/filter_item.dart';
 
 import 'bloc/detail_bloc.dart';
@@ -21,8 +21,6 @@ class DetailScreen extends StatelessWidget {
     final shoeId = arguments['shoeId'];
     context.read<DetailBloc>().add(DetailStarted(id: shoeId));
 
-    final textTheme = Theme.of(context).textTheme;
-
     return BlocConsumer<DetailBloc, DetailState>(
       listenWhen: (previous, current) => previous.status != current.status,
       listener: (context, state) {
@@ -39,7 +37,7 @@ class DetailScreen extends StatelessWidget {
           return Scaffold(
             appBar: buildAppBar(context),
             body: Container(
-              decoration: const BoxDecoration(color: MyTheme.secondaryLight),
+              decoration: const BoxDecoration(color: secondaryLight),
               child: Column(
                 children: [
                   buildImage(),
@@ -61,13 +59,13 @@ class DetailScreen extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.start,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              buildTitleAndSubTitle(textTheme),
+                              buildTitleAndSubTitle(context),
                               const SizedBox(height: 24),
-                              buildSizes(textTheme),
+                              buildSizes(context),
                               const SizedBox(height: 24),
-                              buildColors(textTheme),
+                              buildColors(context),
                               const SizedBox(height: 60),
-                              buildAddToCartButton(textTheme),
+                              buildAddToCartButton(context),
                             ],
                           ),
                         ),
@@ -105,7 +103,7 @@ class DetailScreen extends StatelessWidget {
 
   buildAppBar(BuildContext context) {
     return AppBar(
-      backgroundColor: MyTheme.secondaryLight,
+      backgroundColor: secondaryLight,
       actions: [
         BlocBuilder<DetailBloc, DetailState>(
           buildWhen: (previous, current) => previous.isLiked != current.isLiked,
@@ -119,13 +117,9 @@ class DetailScreen extends StatelessWidget {
                       ),
                     );
                 if (!state.isLiked) {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    mySnackBar(context, 'Added to favorite'),
-                  );
+                  context.showSnackBar('Added to favorite');
                 } else {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    mySnackBar(context, 'Removed from favorite'),
-                  );
+                  context.showSnackBar('Removed from favorite');
                 }
               },
               icon: Icon(
@@ -148,7 +142,7 @@ class DetailScreen extends StatelessWidget {
     );
   }
 
-  buildAddToCartButton(TextTheme textTheme) {
+  buildAddToCartButton(BuildContext context) {
     return BlocBuilder<DetailBloc, DetailState>(
       builder: (context, state) {
         final shoe = state.shoe!;
@@ -161,11 +155,11 @@ class DetailScreen extends StatelessWidget {
               child: Text.rich(
                 TextSpan(
                   text: "Price:\n",
-                  style: textTheme.bodySmall?.copyWith(color: MyTheme.gray),
+                  style: context.textTheme.bodySmall?.copyWith(color: gray),
                   children: [
                     TextSpan(
                       text: '\$${shoe.price.toInt()}',
-                      style: textTheme.titleSmall,
+                      style: context.textTheme.titleSmall,
                     ),
                   ],
                 ),
@@ -176,13 +170,9 @@ class DetailScreen extends StatelessWidget {
               child: ElevatedButton(
                 onPressed: () {
                   if (state.selectedSize == '') {
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      mySnackBar(context, 'Please select size'),
-                    );
+                    context.showSnackBar('Please select size');
                   } else if (state.selectedColor == Colors.black) {
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      mySnackBar(context, 'Please select color'),
-                    );
+                    context.showSnackBar('Please select color');
                   } else {
                     context.read<DetailBloc>().add(
                           DetailAddToCart(
@@ -192,18 +182,22 @@ class DetailScreen extends StatelessWidget {
                             quantity: 1,
                           ),
                         );
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      mySnackBar(context, 'Added to cart'),
-                    );
+                    context.showSnackBar('Added to cart');
                   }
                 },
-                child: const Row(
+                child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Icon(Iconsax.shopping_cart),
-                    SizedBox(width: 16),
-                    Text("Add to cart"),
+                    const Icon(
+                      Iconsax.shopping_cart,
+                      color: Colors.white,
+                    ),
+                    const SizedBox(width: 16),
+                    Text(
+                      "Add to cart",
+                      style: buttonTextStyle(),
+                    ),
                   ],
                 ),
               ),
@@ -214,7 +208,7 @@ class DetailScreen extends StatelessWidget {
     );
   }
 
-  buildColors(TextTheme textTheme) {
+  buildColors(BuildContext context) {
     return BlocBuilder<DetailBloc, DetailState>(
       buildWhen: (previous, current) =>
           previous.selectedColor != current.selectedColor,
@@ -225,7 +219,7 @@ class DetailScreen extends StatelessWidget {
           children: [
             Text(
               'Color',
-              style: textTheme.titleSmall?.copyWith(color: Colors.grey),
+              style: context.textTheme.titleSmall?.copyWith(color: Colors.grey),
             ),
             const SizedBox(height: 12),
             SizedBox(
@@ -256,7 +250,7 @@ class DetailScreen extends StatelessWidget {
     );
   }
 
-  buildSizes(TextTheme textTheme) {
+  buildSizes(BuildContext context) {
     return BlocBuilder<DetailBloc, DetailState>(
       buildWhen: (previous, current) =>
           previous.selectedSize != current.selectedSize,
@@ -267,7 +261,7 @@ class DetailScreen extends StatelessWidget {
           children: [
             Text(
               'Size',
-              style: textTheme.titleSmall?.copyWith(color: Colors.grey),
+              style: context.textTheme.titleSmall?.copyWith(color: Colors.grey),
             ),
             const SizedBox(height: 12),
             SizedBox(
@@ -298,7 +292,7 @@ class DetailScreen extends StatelessWidget {
     );
   }
 
-  buildTitleAndSubTitle(TextTheme textTheme) {
+  buildTitleAndSubTitle(BuildContext context) {
     return BlocBuilder<DetailBloc, DetailState>(
       buildWhen: (previous, current) => previous.shoe != current.shoe,
       builder: (context, state) {
@@ -308,14 +302,12 @@ class DetailScreen extends StatelessWidget {
           children: [
             Text(
               shoe.title,
-              style: textTheme.titleLarge,
+              style: context.textTheme.titleLarge,
             ),
             const SizedBox(height: 6),
             Text(
               shoe.subTitle,
-              style: textTheme.titleSmall?.copyWith(
-                color: Colors.grey,
-              ),
+              style: context.textTheme.titleSmall?.copyWith(color: Colors.grey),
             ),
           ],
         );

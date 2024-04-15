@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:shoes_shopping_app/core/styles/theme.dart';
 
 import 'loading_screen_controller.dart';
 
@@ -54,7 +55,7 @@ class LoadingScreen {
               ),
               decoration: BoxDecoration(
                 color: Colors.white,
-                borderRadius: BorderRadius.circular(10),
+                borderRadius: myBorderRadius(),
               ),
               child: Padding(
                 padding: const EdgeInsets.all(16),

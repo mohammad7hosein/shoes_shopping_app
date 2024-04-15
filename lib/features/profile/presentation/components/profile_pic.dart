@@ -25,7 +25,7 @@ class ProfilePic extends StatelessWidget {
               height: 46,
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: MyTheme.light,
+                  backgroundColor: light,
                   elevation: 0,
                   padding: EdgeInsets.zero,
                   shape: RoundedRectangleBorder(
@@ -38,7 +38,7 @@ class ProfilePic extends StatelessWidget {
                 onPressed: () {},
                 child: const Icon(
                   Iconsax.camera,
-                  color: MyTheme.darkGray,
+                  color: darkGray,
                 ),
               ),
             ),

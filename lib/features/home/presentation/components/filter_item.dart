@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:shoes_shopping_app/core/styles/theme.dart';
+import 'package:shoes_shopping_app/core/utils/extensions.dart';
 
 class FilterItem extends StatelessWidget {
   final String? icon;
@@ -19,28 +20,24 @@ class FilterItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      borderRadius: BorderRadius.circular(16),
+      borderRadius: myBorderRadius(),
       onTap: onClick,
       child: Container(
-        padding: const EdgeInsets.all(16),
+        alignment: Alignment.center,
         width: 50,
         height: 50,
         decoration: BoxDecoration(
-          color: isSelected ? MyTheme.primary : Colors.white,
-          boxShadow: [
-            myBoxShadow(),
-          ],
-          borderRadius: const BorderRadius.all(
-            Radius.circular(16),
-          ),
+          color: isSelected ? primary : Colors.white,
+          boxShadow: [myBoxShadow()],
+          borderRadius: myBorderRadius(),
         ),
         child: text != null
             ? Text(
                 text!,
-                style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                      color: isSelected ? Colors.white : Colors.black,
-                      fontWeight: FontWeight.bold,
-                    ),
+                style: context.textTheme.bodySmall?.copyWith(
+                  color: isSelected ? Colors.white : Colors.black,
+                  fontWeight: FontWeight.bold,
+                ),
               )
             : SvgPicture.asset(icon ?? ''),
       ),

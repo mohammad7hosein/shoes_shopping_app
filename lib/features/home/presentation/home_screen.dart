@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:shoes_shopping_app/core/common/widgets/loading/loading_screen.dart';
-import 'package:shoes_shopping_app/core/common/widgets/my_snack_bar.dart';
 import 'package:shoes_shopping_app/core/styles/theme.dart';
+import 'package:shoes_shopping_app/core/utils/extensions.dart';
 import 'package:shoes_shopping_app/features/cart/presentation/cart_screen.dart';
 import 'package:shoes_shopping_app/features/detail/presentation/detail_screen.dart';
 
@@ -23,7 +23,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: MyTheme.light,
+      backgroundColor: light,
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -42,15 +42,12 @@ class HomeScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                const Padding(
-                  padding: EdgeInsets.all(16),
+                Padding(
+                  padding: const EdgeInsets.all(16),
                   child: Text(
                     'Shoes',
-                    style: TextStyle(
-                      fontFamily: 'Futura',
-                      color: Colors.black,
-                      fontSize: 30,
-                    ),
+                    style: context.textTheme.titleLarge
+                        ?.copyWith(fontFamily: 'Futura'),
                   ),
                 ),
                 const SizedBox(height: 10),
@@ -86,9 +83,7 @@ class HomeScreen extends StatelessWidget {
                 Navigator.pushNamed(
                   context,
                   DetailScreen.route,
-                  arguments: {
-                    'shoeId': shoes[index].id,
-                  },
+                  arguments: {'shoeId': shoes[index].id},
                 );
               },
               onLike: () {
@@ -99,13 +94,9 @@ class HomeScreen extends StatelessWidget {
                       ),
                     );
                 if (!shoes[index].isFavorite) {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    mySnackBar(context, 'Added to favorite'),
-                  );
+                  context.showSnackBar('Added to favorite');
                 } else {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    mySnackBar(context, 'Removed from favorite'),
-                  );
+                  context.showSnackBar('Removed from favorite');
                 }
               },
               isLiked: shoes[index].isFavorite,
@@ -124,9 +115,7 @@ class HomeScreen extends StatelessWidget {
         return FilterSection(
           selectedBrand: state.selectedFilter,
           onClick: (brand) => () {
-            context.read<HomeBloc>().add(
-                  HomeFilterItems(brandType: brand),
-                );
+            context.read<HomeBloc>().add(HomeFilterItems(brandType: brand));
           },
         );
       },
@@ -144,9 +133,7 @@ class HomeScreen extends StatelessWidget {
               Expanded(
                 child: SearchField(
                   onSearch: (String query) {
-                    context.read<HomeBloc>().add(
-                          HomeSearchItems(query: query),
-                        );
+                    context.read<HomeBloc>().add(HomeSearchItems(query: query));
                   },
                 ),
               ),

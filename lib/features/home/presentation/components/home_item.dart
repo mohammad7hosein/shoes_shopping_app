@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:shoes_shopping_app/core/data/model/shoe.dart';
 import 'package:shoes_shopping_app/core/styles/theme.dart';
+import 'package:shoes_shopping_app/core/utils/extensions.dart';
 
 class HomeItem extends StatelessWidget {
   final Shoe shoe;
@@ -19,16 +20,15 @@ class HomeItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    TextTheme textTheme = Theme.of(context).textTheme;
     return InkWell(
-      borderRadius: BorderRadius.circular(16),
+      borderRadius: myBorderRadius(),
       onTap: onClick,
       child: Container(
         padding: const EdgeInsets.all(10),
         margin: const EdgeInsets.all(10),
         decoration: BoxDecoration(
           color: Colors.white,
-          borderRadius: BorderRadius.circular(16),
+          borderRadius: myBorderRadius(),
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -55,16 +55,16 @@ class HomeItem extends StatelessWidget {
             const SizedBox(height: 10),
             Text(
               shoe.title,
-              style: textTheme.bodySmall,
+              style: context.textTheme.bodySmall,
             ),
             Text(
               shoe.subTitle,
-              style: textTheme.bodySmall?.copyWith(color: MyTheme.gray),
+              style: context.textTheme.bodySmall?.copyWith(color: gray),
             ),
             const SizedBox(height: 10),
             Text(
               '\$${shoe.price.toInt()}',
-              style: textTheme.bodyMedium?.copyWith(color: MyTheme.primary),
+              style: context.textTheme.bodyMedium?.copyWith(color: primary),
             ),
           ],
         ),

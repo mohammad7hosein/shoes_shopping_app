@@ -17,7 +17,7 @@ class IconButtonWithBadge extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: onClick,
-      borderRadius: BorderRadius.circular(16),
+      borderRadius: myBorderRadius(),
       child: Stack(
         clipBehavior: Clip.none,
         children: [
@@ -26,7 +26,7 @@ class IconButtonWithBadge extends StatelessWidget {
             height: 50,
             decoration: BoxDecoration(
               color: Colors.white,
-              borderRadius: BorderRadius.circular(16),
+              borderRadius: myBorderRadius(),
               boxShadow: [
                 myBoxShadow(),
               ],

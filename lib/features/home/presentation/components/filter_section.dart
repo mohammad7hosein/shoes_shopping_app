@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:shoes_shopping_app/core/data/model/brand_type.dart';
 import 'package:shoes_shopping_app/core/styles/theme.dart';
-
-import 'filter_item.dart';
+import 'package:shoes_shopping_app/core/utils/extensions.dart';
+import 'package:shoes_shopping_app/features/home/presentation/components/filter_item.dart';
 
 class FilterSection extends StatelessWidget {
   final BrandType selectedBrand;
@@ -26,25 +26,18 @@ class FilterSection extends StatelessWidget {
             padding: const EdgeInsets.all(16),
             decoration: BoxDecoration(
               color: Colors.white,
-              boxShadow: [
-                myBoxShadow(),
-              ],
-              borderRadius: const BorderRadius.all(
-                Radius.circular(16),
-              ),
+              boxShadow: [myBoxShadow()],
+              borderRadius: myBorderRadius(),
             ),
-            child: const Row(
+            child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                Icon(Icons.filter_alt_rounded),
-                SizedBox(width: 2),
+                const Icon(Icons.filter_alt_rounded),
+                const SizedBox(width: 2),
                 Text(
                   'Filter',
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 14,
-                  ),
+                  style: context.textTheme.bodySmall
+                      ?.copyWith(fontWeight: FontWeight.bold),
                 )
               ],
             ),

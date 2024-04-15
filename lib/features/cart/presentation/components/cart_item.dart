@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:shoes_shopping_app/core/data/model/cart.dart';
 import 'package:shoes_shopping_app/core/styles/theme.dart';
+import 'package:shoes_shopping_app/core/utils/extensions.dart';
 
 class CartItem extends StatelessWidget {
   final Cart cart;
@@ -17,7 +18,6 @@ class CartItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    TextTheme textTheme = Theme.of(context).textTheme;
     return Row(
       children: [
         SizedBox(
@@ -27,8 +27,8 @@ class CartItem extends StatelessWidget {
             child: Container(
               padding: const EdgeInsets.all(10),
               decoration: BoxDecoration(
-                color: MyTheme.light,
-                borderRadius: BorderRadius.circular(16),
+                color: light,
+                borderRadius: myBorderRadius(),
               ),
               child: Image.asset(cart.imageSrc),
             ),
@@ -47,13 +47,13 @@ class CartItem extends StatelessWidget {
                     children: [
                       Text(
                         cart.title,
-                        style: textTheme.bodyMedium,
+                        style: context.textTheme.bodyMedium,
                         maxLines: 1,
                       ),
                       Text(
                         cart.subTitle,
                         style:
-                            textTheme.bodySmall?.copyWith(color: MyTheme.gray),
+                            context.textTheme.bodySmall?.copyWith(color: gray),
                         maxLines: 2,
                       ),
                     ],
@@ -71,21 +71,21 @@ class CartItem extends StatelessWidget {
                   ),
                 ],
               ),
-              const SizedBox(height: 15),
+              const SizedBox(height: 16),
               Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Text(
                     '\$${cart.price.toInt()}',
                     style:
-                        textTheme.bodyMedium?.copyWith(color: MyTheme.primary),
+                        context.textTheme.bodyMedium?.copyWith(color: primary),
                     maxLines: 2,
                   ),
                   const Spacer(),
                   Container(
                     decoration: BoxDecoration(
-                      color: MyTheme.light,
-                      borderRadius: BorderRadius.circular(16),
+                      color: light,
+                      borderRadius: myBorderRadius(),
                     ),
                     child: Row(
                       children: [
@@ -96,7 +96,7 @@ class CartItem extends StatelessWidget {
                         ),
                         Text(
                           "${cart.quantity}",
-                          style: textTheme.bodyMedium,
+                          style: context.textTheme.bodyMedium,
                         ),
                         IconButton(
                           splashRadius: 1,

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:shoes_shopping_app/core/styles/theme.dart';
+import 'package:shoes_shopping_app/core/utils/extensions.dart';
 
 class ProfileMenu extends StatelessWidget {
   final String text;
@@ -25,9 +26,9 @@ class ProfileMenu extends StatelessWidget {
         style: ElevatedButton.styleFrom(
           elevation: 0,
           padding: const EdgeInsets.all(20),
-          backgroundColor: MyTheme.light,
+          backgroundColor: light,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(16),
+            borderRadius: myBorderRadius(),
           ),
         ),
         onPressed: onClick,
@@ -35,21 +36,18 @@ class ProfileMenu extends StatelessWidget {
           children: [
             Icon(
               icon,
-              color: MyTheme.primary,
+              color: primary,
             ),
             const SizedBox(width: 20),
             Expanded(
               child: Text(
                 text,
-                style: Theme.of(context)
-                    .textTheme
-                    .bodySmall
-                    ?.copyWith(color: MyTheme.dark),
+                style: context.textTheme.bodySmall?.copyWith(color: dark),
               ),
             ),
             const Icon(
               Iconsax.arrow_right_3,
-              color: MyTheme.dark,
+              color: dark,
             )
           ],
         ),

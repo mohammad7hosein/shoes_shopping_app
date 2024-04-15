@@ -3,6 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:shoes_shopping_app/core/common/widgets/loading/loading_screen.dart';
 import 'package:shoes_shopping_app/core/common/widgets/my_app_bar.dart';
+import 'package:shoes_shopping_app/core/styles/theme.dart';
+import 'package:shoes_shopping_app/core/utils/extensions.dart';
 import 'package:shoes_shopping_app/features/home/presentation/home_screen.dart';
 
 import 'bloc/cart_bloc.dart';
@@ -19,7 +21,6 @@ class CartScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     context.read<CartBloc>().add(CartStarted());
-    TextTheme textTheme = Theme.of(context).textTheme;
     return BlocConsumer<CartBloc, CartState>(
       listenWhen: (previous, current) => previous.status != current.status,
       listener: (context, state) {
@@ -39,7 +40,7 @@ class CartScreen extends StatelessWidget {
                 const Text("Your Cart"),
                 Text(
                   "${cartItems.length} items",
-                  style: textTheme.bodySmall,
+                  style: context.textTheme.bodySmall,
                 ),
               ],
             ),
@@ -68,7 +69,7 @@ class CartScreen extends StatelessWidget {
                       padding: const EdgeInsets.symmetric(horizontal: 20),
                       decoration: BoxDecoration(
                         color: Colors.red.withOpacity(0.2),
-                        borderRadius: BorderRadius.circular(16),
+                        borderRadius: myBorderRadius(),
                       ),
                       child: const Row(
                         children: [

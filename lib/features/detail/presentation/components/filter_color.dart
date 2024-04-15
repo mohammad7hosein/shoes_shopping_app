@@ -16,7 +16,7 @@ class FilterColor extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      borderRadius: BorderRadius.circular(16),
+      borderRadius: myBorderRadius(),
       onTap: onClick,
       child: Container(
         padding: const EdgeInsets.all(12),
@@ -25,7 +25,7 @@ class FilterColor extends StatelessWidget {
         decoration: BoxDecoration(
           border: Border.all(
             width: 2,
-            color: isSelected ? MyTheme.primary : Colors.white,
+            color: isSelected ? primary : Colors.white,
           ),
           color: Colors.white,
           boxShadow: const [
@@ -36,7 +36,7 @@ class FilterColor extends StatelessWidget {
               spreadRadius: 2.0,
             )
           ],
-          borderRadius: BorderRadius.circular(16),
+          borderRadius: myBorderRadius(),
         ),
         child: Container(
           decoration: BoxDecoration(

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shoes_shopping_app/core/styles/theme.dart';
+import 'package:shoes_shopping_app/core/utils/extensions.dart';
 
 class CheckoutCard extends StatelessWidget {
   final double totalPrice;
@@ -13,7 +14,6 @@ class CheckoutCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    TextTheme textTheme = Theme.of(context).textTheme;
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 20),
       decoration: BoxDecoration(
@@ -30,11 +30,11 @@ class CheckoutCard extends StatelessWidget {
               height: 50,
               padding: const EdgeInsets.all(10),
               decoration: BoxDecoration(
-                color: MyTheme.light,
-                borderRadius: BorderRadius.circular(10),
+                color: light,
+                borderRadius: myBorderRadius(),
               ),
               child: TextField(
-                style: textTheme.bodySmall,
+                style: context.textTheme.bodySmall,
                 decoration: InputDecoration(
                   contentPadding: const EdgeInsets.all(10),
                   border: InputBorder.none,
@@ -43,12 +43,17 @@ class CheckoutCard extends StatelessWidget {
                   hintText: 'discount code',
                   suffixIcon: ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.black,
-                        padding: const EdgeInsets.all(5),
-                        textStyle: textTheme.labelLarge,
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10))),
-                    child: const Text('Apply'),
+                      backgroundColor: Colors.black,
+                      padding: const EdgeInsets.all(5),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: myBorderRadius(),
+                      ),
+                    ),
+                    child: Text(
+                      'Apply',
+                      style: context.textTheme.labelLarge
+                          ?.copyWith(color: Colors.white),
+                    ),
                     onPressed: () {},
                   ),
                 ),
@@ -62,11 +67,11 @@ class CheckoutCard extends StatelessWidget {
                 Text.rich(
                   TextSpan(
                     text: "Total:\n",
-                    style: textTheme.bodySmall?.copyWith(color: MyTheme.gray),
+                    style: context.textTheme.bodySmall?.copyWith(color: gray),
                     children: [
                       TextSpan(
                         text: "\$$totalPrice",
-                        style: textTheme.titleSmall,
+                        style: context.textTheme.titleSmall,
                       ),
                     ],
                   ),
@@ -75,9 +80,12 @@ class CheckoutCard extends StatelessWidget {
                   width: 200,
                   child: ElevatedButton(
                     onPressed: onCheckout,
-                    child: const Text('Check Out'),
+                    child: Text(
+                      'Check Out',
+                      style: buttonTextStyle(),
+                    ),
                   ),
-                )
+                ),
               ],
             ),
           ],

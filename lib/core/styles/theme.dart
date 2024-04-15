@@ -12,8 +12,8 @@ InputDecoration otpInputDecoration() {
 
 OutlineInputBorder outlineInputBorder() {
   return OutlineInputBorder(
-    borderRadius: BorderRadius.circular(20),
-    borderSide: const BorderSide(color: MyTheme.darkGray),
+    borderRadius: myBorderRadius(),
+    borderSide: const BorderSide(color: darkGray),
     gapPadding: 10,
   );
 }
@@ -24,7 +24,7 @@ InputDecorationTheme inputDecorationTheme() {
     enabledBorder: outlineInputBorder(),
     focusedBorder: outlineInputBorder(),
     border: outlineInputBorder(),
-    hintStyle: const TextStyle(fontSize: 14, color: MyTheme.gray),
+    hintStyle: const TextStyle(fontSize: 14, color: gray),
   );
 }
 
@@ -42,6 +42,14 @@ AppBarTheme appBarTheme() {
   );
 }
 
+TextStyle buttonTextStyle() {
+  return const TextStyle(
+    fontSize: 16,
+    color: Colors.white,
+    fontWeight: FontWeight.bold,
+  );
+}
+
 BoxShadow myBoxShadow() {
   return const BoxShadow(
     color: Colors.black12,
@@ -50,21 +58,23 @@ BoxShadow myBoxShadow() {
   );
 }
 
-class MyTheme {
-  static const primary = Color(0xFFFF7643);
-  static const primaryLight = Color(0xFFFFECDF);
-  static const secondary = Color(0xFFAAA6D6);
-  static const secondaryLight = Color(0xFFF4F5FC);
-  static const light = Color(0xFFF5F6F9);
-  static const dark = Color(0xFF1A191C);
-  static const gray = Color(0xFF979797);
-  static const darkGray = Color(0xFF757575); // textColor
-  static const orangeGradientColor = LinearGradient(
-    begin: Alignment.topLeft,
-    end: Alignment.bottomRight,
-    colors: [MyTheme.primaryLight, MyTheme.primary],
-  );
+BorderRadius myBorderRadius() => BorderRadius.circular(16.0);
 
+const primary = Color(0xFFFF7643);
+const primaryLight = Color(0xFFFFECDF);
+const secondary = Color(0xFFAAA6D6);
+const secondaryLight = Color(0xFFF4F5FC);
+const light = Color(0xFFF5F6F9);
+const dark = Color(0xFF1A191C);
+const gray = Color(0xFF979797);
+const darkGray = Color(0xFF757575); // textColor
+const orangeGradientColor = LinearGradient(
+  begin: Alignment.topLeft,
+  end: Alignment.bottomRight,
+  colors: [primaryLight, primary],
+);
+
+class MyTheme {
   static final lightTheme = ThemeData(
     fontFamily: 'Muli',
     visualDensity: VisualDensity.adaptivePlatformDensity,
@@ -72,64 +82,51 @@ class MyTheme {
     inputDecorationTheme: inputDecorationTheme(),
     textTheme: const TextTheme(
       titleLarge: TextStyle(
-        color: Colors.black,
-        fontSize: 26,
+        fontSize: 32,
         fontWeight: FontWeight.bold,
       ),
       titleMedium: TextStyle(
-        color: Colors.black,
-        fontSize: 22,
+        fontSize: 24,
         fontWeight: FontWeight.bold,
       ),
       titleSmall: TextStyle(
-        color: Colors.black,
-        fontSize: 18,
+        fontSize: 20,
         fontWeight: FontWeight.bold,
       ),
       bodyLarge: TextStyle(
-        color: Colors.black,
         fontSize: 18,
+        fontWeight: FontWeight.normal,
       ),
       bodyMedium: TextStyle(
-        color: Colors.black,
         fontSize: 16,
-        fontWeight: FontWeight.bold,
+        fontWeight: FontWeight.normal,
       ),
       bodySmall: TextStyle(
-        color: Colors.black,
         fontSize: 14,
-        fontWeight: FontWeight.bold,
+        fontWeight: FontWeight.normal,
       ),
-      labelLarge: TextStyle(
-        color: Colors.black,
-        fontSize: 12,
-      ),
-      labelMedium: TextStyle(
-        color: Colors.black,
-        fontSize: 11,
-      ),
-      labelSmall: TextStyle(
-        color: Colors.black,
-        fontSize: 10,
-      ),
-    ),
+      labelLarge: TextStyle(fontSize: 12),
+      labelMedium: TextStyle(fontSize: 11),
+      labelSmall: TextStyle(fontSize: 10),
+    ).apply(displayColor: Colors.black),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
-        textStyle: const TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
+        textStyle: buttonTextStyle(),
         backgroundColor: primary,
         padding: const EdgeInsets.all(24),
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(20),
+          borderRadius: myBorderRadius(),
         ),
       ),
     ),
     outlinedButtonTheme: OutlinedButtonThemeData(
       style: OutlinedButton.styleFrom(
+        textStyle: buttonTextStyle(),
         padding: const EdgeInsets.all(20),
         foregroundColor: primary,
         side: const BorderSide(color: primary),
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(20),
+          borderRadius: myBorderRadius(),
         ),
       ),
     ),
