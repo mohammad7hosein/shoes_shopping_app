@@ -55,7 +55,7 @@ class LoadingScreen {
               ),
               decoration: BoxDecoration(
                 color: Colors.white,
-                borderRadius: myBorderRadius(),
+                borderRadius: myBorderRadius,
               ),
               child: Padding(
                 padding: const EdgeInsets.all(16),

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:shoes_shopping_app/core/styles/theme.dart';
 
 class IconButtonWithBadge extends StatelessWidget {
-  final IconData icon;
+  final Widget icon;
   final int number;
   final VoidCallback onClick;
 
@@ -17,21 +17,20 @@ class IconButtonWithBadge extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: onClick,
-      borderRadius: myBorderRadius(),
+      borderRadius: myBorderRadius,
       child: Stack(
         clipBehavior: Clip.none,
         children: [
           Container(
             width: 50,
             height: 50,
+            padding: const EdgeInsets.all(12),
             decoration: BoxDecoration(
               color: Colors.white,
-              borderRadius: myBorderRadius(),
-              boxShadow: [
-                myBoxShadow(),
-              ],
+              borderRadius: myBorderRadius,
+              boxShadow: [myBoxShadow],
             ),
-            child: Icon(icon),
+            child: icon,
           ),
           if (number != 0)
             Positioned(

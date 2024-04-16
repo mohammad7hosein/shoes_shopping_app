@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:iconsax/iconsax.dart';
 import 'package:shoes_shopping_app/core/common/widgets/loading/loading_screen.dart';
 import 'package:shoes_shopping_app/core/styles/theme.dart';
 import 'package:shoes_shopping_app/core/utils/extensions.dart';
 import 'package:shoes_shopping_app/features/cart/presentation/cart_screen.dart';
 import 'package:shoes_shopping_app/features/detail/presentation/detail_screen.dart';
+import 'package:shoes_shopping_app/generated/assets.dart';
 
 import 'bloc/home_bloc.dart';
 import 'bloc/home_event.dart';
@@ -139,7 +139,7 @@ class HomeScreen extends StatelessWidget {
               ),
               const SizedBox(width: 16),
               IconButtonWithBadge(
-                icon: Iconsax.shopping_cart,
+                icon: myIcon(Assets.iconsShoppingCart),
                 onClick: () => Navigator.pushNamed(context, CartScreen.route),
                 number: state.cartCount,
               ),

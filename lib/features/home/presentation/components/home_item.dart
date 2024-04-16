@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:iconsax/iconsax.dart';
 import 'package:shoes_shopping_app/core/data/model/shoe.dart';
 import 'package:shoes_shopping_app/core/styles/theme.dart';
 import 'package:shoes_shopping_app/core/utils/extensions.dart';
+import 'package:shoes_shopping_app/generated/assets.dart';
 
 class HomeItem extends StatelessWidget {
   final Shoe shoe;
@@ -21,14 +21,14 @@ class HomeItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      borderRadius: myBorderRadius(),
+      borderRadius: myBorderRadius,
       onTap: onClick,
       child: Container(
         padding: const EdgeInsets.all(10),
         margin: const EdgeInsets.all(10),
         decoration: BoxDecoration(
           color: Colors.white,
-          borderRadius: myBorderRadius(),
+          borderRadius: myBorderRadius,
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -39,9 +39,9 @@ class HomeItem extends StatelessWidget {
               children: [
                 InkWell(
                   onTap: onLike,
-                  child: Icon(
-                    isLiked ? Iconsax.heart5 : Iconsax.heart,
-                    color: isLiked ? Colors.red : Colors.grey,
+                  child: myIcon(
+                    isLiked ? Assets.iconsHeartFill : Assets.iconsHeart,
+                    color: isLiked ? Colors.red : Colors.black,
                   ),
                 ),
               ],

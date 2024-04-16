@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:iconsax/iconsax.dart';
 import 'package:shoes_shopping_app/core/common/widgets/loading/loading_screen.dart';
 import 'package:shoes_shopping_app/core/styles/theme.dart';
 import 'package:shoes_shopping_app/core/utils/extensions.dart';
 import 'package:shoes_shopping_app/features/home/presentation/components/filter_item.dart';
+import 'package:shoes_shopping_app/generated/assets.dart';
 
 import 'bloc/detail_bloc.dart';
 import 'components/filter_color.dart';
@@ -50,7 +50,7 @@ class DetailScreen extends StatelessWidget {
                           topRight: Radius.circular(40),
                           topLeft: Radius.circular(40),
                         ),
-                        boxShadow: [myBoxShadow()],
+                        boxShadow: [myBoxShadow],
                       ),
                       child: SingleChildScrollView(
                         child: Padding(
@@ -122,8 +122,8 @@ class DetailScreen extends StatelessWidget {
                   context.showSnackBar('Removed from favorite');
                 }
               },
-              icon: Icon(
-                state.isLiked ? Iconsax.heart5 : Iconsax.heart,
+              icon: myIcon(
+                state.isLiked ? Assets.iconsHeartFill : Assets.iconsHeart,
                 color: state.isLiked ? Colors.red : Colors.black,
               ),
             );
@@ -137,7 +137,7 @@ class DetailScreen extends StatelessWidget {
         onPressed: () {
           Navigator.pop(context);
         },
-        icon: const Icon(Iconsax.arrow_left_2),
+        icon: myIcon(Assets.iconsArrowLeft),
       ),
     );
   }
@@ -189,14 +189,14 @@ class DetailScreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    const Icon(
-                      Iconsax.shopping_cart,
+                    myIcon(
+                      Assets.iconsShoppingCart,
                       color: Colors.white,
                     ),
                     const SizedBox(width: 16),
                     Text(
                       "Add to cart",
-                      style: buttonTextStyle(),
+                      style: buttonTextStyle,
                     ),
                   ],
                 ),

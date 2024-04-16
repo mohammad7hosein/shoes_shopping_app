@@ -19,7 +19,7 @@ class CheckoutCard extends StatelessWidget {
       decoration: BoxDecoration(
         color: Colors.white,
         boxShadow: [
-          myBoxShadow(),
+          myBoxShadow,
         ],
       ),
       child: SafeArea(
@@ -31,7 +31,7 @@ class CheckoutCard extends StatelessWidget {
               padding: const EdgeInsets.all(10),
               decoration: BoxDecoration(
                 color: light,
-                borderRadius: myBorderRadius(),
+                borderRadius: myBorderRadius,
               ),
               child: TextField(
                 style: context.textTheme.bodySmall,
@@ -46,7 +46,7 @@ class CheckoutCard extends StatelessWidget {
                       backgroundColor: Colors.black,
                       padding: const EdgeInsets.all(5),
                       shape: RoundedRectangleBorder(
-                        borderRadius: myBorderRadius(),
+                        borderRadius: myBorderRadius,
                       ),
                     ),
                     child: Text(
@@ -82,7 +82,7 @@ class CheckoutCard extends StatelessWidget {
                     onPressed: onCheckout,
                     child: Text(
                       'Check Out',
-                      style: buttonTextStyle(),
+                      style: buttonTextStyle,
                     ),
                   ),
                 ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:iconsax/iconsax.dart';
+import 'package:shoes_shopping_app/core/styles/theme.dart';
+import 'package:shoes_shopping_app/generated/assets.dart';
 
 class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
   final Widget title;
@@ -13,12 +14,8 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return AppBar(
       leading: IconButton(
-        onPressed: () {
-          Navigator.pop(context);
-        },
-        icon: const Icon(
-          Iconsax.arrow_left_2,
-        ),
+        onPressed: () => Navigator.pop(context),
+        icon: myIcon(Assets.iconsArrowLeft),
       ),
       title: title,
     );

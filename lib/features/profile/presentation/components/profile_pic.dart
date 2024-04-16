@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:iconsax/iconsax.dart';
 import 'package:shoes_shopping_app/core/styles/theme.dart';
+import 'package:shoes_shopping_app/generated/assets.dart';
 
 class ProfilePic extends StatelessWidget {
   const ProfilePic({
@@ -16,7 +16,7 @@ class ProfilePic extends StatelessWidget {
         clipBehavior: Clip.none,
         fit: StackFit.expand,
         children: [
-          Image.asset("assets/image/profile_image.png"),
+          Image.asset(Assets.imagesProfileImage),
           Positioned(
             bottom: 0,
             right: -12,
@@ -36,8 +36,8 @@ class ProfilePic extends StatelessWidget {
                   ),
                 ),
                 onPressed: () {},
-                child: const Icon(
-                  Iconsax.camera,
+                child: myIcon(
+                  Assets.iconsCamera,
                   color: darkGray,
                 ),
               ),

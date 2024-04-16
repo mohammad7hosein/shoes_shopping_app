@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:shoes_shopping_app/core/styles/theme.dart';
 import 'package:shoes_shopping_app/core/utils/extensions.dart';
 
@@ -20,7 +19,7 @@ class FilterItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      borderRadius: myBorderRadius(),
+      borderRadius: myBorderRadius,
       onTap: onClick,
       child: Container(
         alignment: Alignment.center,
@@ -28,8 +27,8 @@ class FilterItem extends StatelessWidget {
         height: 50,
         decoration: BoxDecoration(
           color: isSelected ? primary : Colors.white,
-          boxShadow: [myBoxShadow()],
-          borderRadius: myBorderRadius(),
+          boxShadow: [myBoxShadow],
+          borderRadius: myBorderRadius,
         ),
         child: text != null
             ? Text(
@@ -39,7 +38,7 @@ class FilterItem extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                 ),
               )
-            : SvgPicture.asset(icon ?? ''),
+            : myIcon(icon ?? ''),
       ),
     );
   }

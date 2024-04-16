@@ -14,7 +14,6 @@ dependencies:
 
   flutter_svg:
   cupertino_icons:
-  iconsax:
   bloc:
   flutter_bloc:
 
@@ -27,17 +26,17 @@ flutter:
   uses-material-design: true
 
   assets:
-    - assets/icon/
-    - assets/image/
+    - assets/icons/
+    - assets/images/
 
   fonts:
     - family: Futura
       fonts:
-        - asset: assets/font/futura.ttf
+        - asset: assets/fonts/futura.ttf
     - family: Muli
       fonts:
-        - asset: assets/font/muli/Muli.ttf
-        - asset: assets/font/muli/Muli-Bold.ttf
+        - asset: assets/fonts/muli/Muli.ttf
+        - asset: assets/fonts/muli/Muli-Bold.ttf
           weight: 700
-        - asset: assets/font/muli/Muli-Light.ttf
+        - asset: assets/fonts/muli/Muli-Light.ttf
           weight: 300

@@ -3,6 +3,7 @@ import 'package:shoes_shopping_app/core/data/model/brand_type.dart';
 import 'package:shoes_shopping_app/core/styles/theme.dart';
 import 'package:shoes_shopping_app/core/utils/extensions.dart';
 import 'package:shoes_shopping_app/features/home/presentation/components/filter_item.dart';
+import 'package:shoes_shopping_app/generated/assets.dart';
 
 class FilterSection extends StatelessWidget {
   final BrandType selectedBrand;
@@ -26,8 +27,8 @@ class FilterSection extends StatelessWidget {
             padding: const EdgeInsets.all(16),
             decoration: BoxDecoration(
               color: Colors.white,
-              boxShadow: [myBoxShadow()],
-              borderRadius: myBorderRadius(),
+              boxShadow: [myBoxShadow],
+              borderRadius: myBorderRadius,
             ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -44,17 +45,17 @@ class FilterSection extends StatelessWidget {
           ),
         ),
         FilterItem(
-          icon: "assets/icon/nike.svg",
+          icon: Assets.iconsNike,
           isSelected: selectedBrand == BrandType.nike,
           onClick: onClick(BrandType.nike),
         ),
         FilterItem(
-          icon: "assets/icon/adidas.svg",
+          icon: Assets.iconsAdidas,
           isSelected: selectedBrand == BrandType.adidas,
           onClick: onClick(BrandType.adidas),
         ),
         FilterItem(
-          icon: "assets/icon/puma.svg",
+          icon: Assets.iconsPuma,
           isSelected: selectedBrand == BrandType.puma,
           onClick: onClick(BrandType.puma),
         ),

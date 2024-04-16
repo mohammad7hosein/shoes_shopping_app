@@ -1,64 +1,70 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_svg/svg.dart';
 
-InputDecoration otpInputDecoration() {
-  return InputDecoration(
-    contentPadding: const EdgeInsets.symmetric(vertical: 20),
-    border: outlineInputBorder(),
-    focusedBorder: outlineInputBorder(),
-    enabledBorder: outlineInputBorder(),
-  );
-}
+InputDecoration otpInputDecoration = InputDecoration(
+  contentPadding: const EdgeInsets.symmetric(vertical: 20),
+  border: outlineInputBorder,
+  focusedBorder: outlineInputBorder,
+  enabledBorder: outlineInputBorder,
+);
 
-OutlineInputBorder outlineInputBorder() {
-  return OutlineInputBorder(
-    borderRadius: myBorderRadius(),
-    borderSide: const BorderSide(color: darkGray),
-    gapPadding: 10,
-  );
-}
+OutlineInputBorder outlineInputBorder = OutlineInputBorder(
+  borderRadius: myBorderRadius,
+  borderSide: const BorderSide(color: darkGray),
+  gapPadding: 10,
+);
 
-InputDecorationTheme inputDecorationTheme() {
-  return InputDecorationTheme(
-    floatingLabelBehavior: FloatingLabelBehavior.auto,
-    enabledBorder: outlineInputBorder(),
-    focusedBorder: outlineInputBorder(),
-    border: outlineInputBorder(),
-    hintStyle: const TextStyle(fontSize: 14, color: gray),
-  );
-}
+InputDecorationTheme inputDecorationTheme = InputDecorationTheme(
+  floatingLabelBehavior: FloatingLabelBehavior.auto,
+  enabledBorder: outlineInputBorder,
+  focusedBorder: outlineInputBorder,
+  border: outlineInputBorder,
+  hintStyle: const TextStyle(fontSize: 14, color: gray),
+);
 
-AppBarTheme appBarTheme() {
-  return const AppBarTheme(
-    systemOverlayStyle: SystemUiOverlayStyle(
-      statusBarColor: Colors.transparent,
-      statusBarIconBrightness: Brightness.dark,
+AppBarTheme appBarTheme = const AppBarTheme(
+  systemOverlayStyle: SystemUiOverlayStyle(
+    statusBarColor: Colors.transparent,
+    statusBarIconBrightness: Brightness.dark,
+  ),
+  backgroundColor: Colors.transparent,
+  elevation: 0,
+  iconTheme: IconThemeData(color: Colors.black),
+  titleTextStyle: TextStyle(color: Colors.black, fontSize: 18),
+  centerTitle: true,
+);
+
+TextStyle buttonTextStyle = const TextStyle(
+  fontSize: 16,
+  color: Colors.white,
+  fontWeight: FontWeight.bold,
+);
+
+BoxShadow myBoxShadow = const BoxShadow(
+  color: Colors.black12,
+  offset: Offset(3, 3), //Offset
+  blurRadius: 10,
+);
+
+BorderRadius myBorderRadius = BorderRadius.circular(16.0);
+
+SvgPicture myIcon(
+  String icon, {
+  Color color = dark,
+  double size = 24,
+  BlendMode blendMode = BlendMode.srcIn,
+}) {
+  return SvgPicture.asset(
+    icon,
+    colorFilter: ColorFilter.mode(
+      color,
+      blendMode,
     ),
-    backgroundColor: Colors.transparent,
-    elevation: 0,
-    iconTheme: IconThemeData(color: Colors.black),
-    titleTextStyle: TextStyle(color: Colors.black, fontSize: 18),
-    centerTitle: true,
+    width: size,
+    height: size,
   );
 }
-
-TextStyle buttonTextStyle() {
-  return const TextStyle(
-    fontSize: 16,
-    color: Colors.white,
-    fontWeight: FontWeight.bold,
-  );
-}
-
-BoxShadow myBoxShadow() {
-  return const BoxShadow(
-    color: Colors.black12,
-    offset: Offset(3, 3), //Offset
-    blurRadius: 10,
-  );
-}
-
-BorderRadius myBorderRadius() => BorderRadius.circular(16.0);
 
 const primary = Color(0xFFFF7643);
 const primaryLight = Color(0xFFFFECDF);
@@ -78,8 +84,8 @@ class MyTheme {
   static final lightTheme = ThemeData(
     fontFamily: 'Muli',
     visualDensity: VisualDensity.adaptivePlatformDensity,
-    appBarTheme: appBarTheme(),
-    inputDecorationTheme: inputDecorationTheme(),
+    appBarTheme: appBarTheme,
+    inputDecorationTheme: inputDecorationTheme,
     textTheme: const TextTheme(
       titleLarge: TextStyle(
         fontSize: 32,
@@ -111,22 +117,22 @@ class MyTheme {
     ).apply(displayColor: Colors.black),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
-        textStyle: buttonTextStyle(),
+        textStyle: buttonTextStyle,
         backgroundColor: primary,
-        padding: const EdgeInsets.all(24),
+        padding: const EdgeInsets.all(20),
         shape: RoundedRectangleBorder(
-          borderRadius: myBorderRadius(),
+          borderRadius: myBorderRadius,
         ),
       ),
     ),
     outlinedButtonTheme: OutlinedButtonThemeData(
       style: OutlinedButton.styleFrom(
-        textStyle: buttonTextStyle(),
+        textStyle: buttonTextStyle,
         padding: const EdgeInsets.all(20),
         foregroundColor: primary,
         side: const BorderSide(color: primary),
         shape: RoundedRectangleBorder(
-          borderRadius: myBorderRadius(),
+          borderRadius: myBorderRadius,
         ),
       ),
     ),

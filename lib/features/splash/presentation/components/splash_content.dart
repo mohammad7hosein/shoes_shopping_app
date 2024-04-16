@@ -17,11 +17,13 @@ class SplashContent extends StatelessWidget {
       children: [
         const Spacer(),
         Text(
-          "Seyed's Shoes",
+          "Seyed Shoe",
           style: context.textTheme.titleLarge?.copyWith(color: primary),
         ),
+        const SizedBox(height: 5),
         Text(
           text,
+          style: context.textTheme.bodyMedium,
           textAlign: TextAlign.center,
         ),
         const Spacer(flex: 2),

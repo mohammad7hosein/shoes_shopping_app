@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:iconsax/iconsax.dart';
 import 'package:shoes_shopping_app/core/data/model/cart.dart';
 import 'package:shoes_shopping_app/core/styles/theme.dart';
 import 'package:shoes_shopping_app/core/utils/extensions.dart';
+import 'package:shoes_shopping_app/generated/assets.dart';
 
 class CartItem extends StatelessWidget {
   final Cart cart;
@@ -28,7 +28,7 @@ class CartItem extends StatelessWidget {
               padding: const EdgeInsets.all(10),
               decoration: BoxDecoration(
                 color: light,
-                borderRadius: myBorderRadius(),
+                borderRadius: myBorderRadius,
               ),
               child: Image.asset(cart.imageSrc),
             ),
@@ -85,14 +85,14 @@ class CartItem extends StatelessWidget {
                   Container(
                     decoration: BoxDecoration(
                       color: light,
-                      borderRadius: myBorderRadius(),
+                      borderRadius: myBorderRadius,
                     ),
                     child: Row(
                       children: [
                         IconButton(
                           splashRadius: 1,
                           onPressed: onMinusQuantity,
-                          icon: const Icon(Iconsax.minus),
+                          icon: myIcon(Assets.iconsMinus),
                         ),
                         Text(
                           "${cart.quantity}",
@@ -101,7 +101,7 @@ class CartItem extends StatelessWidget {
                         IconButton(
                           splashRadius: 1,
                           onPressed: onAddQuantity,
-                          icon: const Icon(Iconsax.add),
+                          icon: myIcon(Assets.iconsAdd),
                         ),
                       ],
                     ),

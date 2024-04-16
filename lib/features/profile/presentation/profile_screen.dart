@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:iconsax/iconsax.dart';
 import 'package:shoes_shopping_app/core/common/widgets/my_app_bar.dart';
+import 'package:shoes_shopping_app/features/sign_up/screens/complete_profile_screen.dart';
+import 'package:shoes_shopping_app/generated/assets.dart';
 
 import 'components/profile_menu.dart';
 import 'components/profile_pic.dart';
@@ -26,27 +27,28 @@ class ProfileScreen extends StatelessWidget {
             ),
             ProfileMenu(
               text: "My Account",
-              icon: Iconsax.user,
-              onClick: () {},
+              icon: Assets.iconsUser,
+              onClick: () =>
+                  Navigator.pushNamed(context, CompleteProfileScreen.route),
             ),
             ProfileMenu(
               text: "Notifications",
-              icon: Iconsax.notification,
+              icon: Assets.iconsNotification,
               onClick: () {},
             ),
             ProfileMenu(
               text: "Settings",
-              icon: Iconsax.setting_2,
+              icon: Assets.iconsSetting,
               onClick: () {},
             ),
             ProfileMenu(
               text: "About Us",
-              icon: Iconsax.info_circle,
+              icon: Assets.iconsInfoCircle,
               onClick: () {},
             ),
             ProfileMenu(
               text: "Log out",
-              icon: Iconsax.logout,
+              icon: Assets.iconsLogout,
               onClick: () {},
             ),
           ],

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:iconsax/iconsax.dart';
 import 'package:shoes_shopping_app/core/styles/theme.dart';
 import 'package:shoes_shopping_app/core/utils/extensions.dart';
+import 'package:shoes_shopping_app/generated/assets.dart';
 
 class ProfileMenu extends StatelessWidget {
   final String text;
-  final IconData icon;
+  final String icon;
   final VoidCallback onClick;
 
   const ProfileMenu({
@@ -28,13 +28,13 @@ class ProfileMenu extends StatelessWidget {
           padding: const EdgeInsets.all(20),
           backgroundColor: light,
           shape: RoundedRectangleBorder(
-            borderRadius: myBorderRadius(),
+            borderRadius: myBorderRadius,
           ),
         ),
         onPressed: onClick,
         child: Row(
           children: [
-            Icon(
+            myIcon(
               icon,
               color: primary,
             ),
@@ -45,10 +45,10 @@ class ProfileMenu extends StatelessWidget {
                 style: context.textTheme.bodySmall?.copyWith(color: dark),
               ),
             ),
-            const Icon(
-              Iconsax.arrow_right_3,
+            myIcon(
+              Assets.iconsArrowRight,
               color: dark,
-            )
+            ),
           ],
         ),
       ),

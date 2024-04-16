@@ -9,13 +9,13 @@ SnackBar mySnackBar(String message) {
       20,
       0,
       20,
-      SizeConfig.screenHeight - 150,
+      SizeConfig.screenHeight - 160,
     ),
     padding: const EdgeInsets.all(20),
     duration: const Duration(milliseconds: 1500),
     behavior: SnackBarBehavior.floating,
     shape: RoundedRectangleBorder(
-      borderRadius: myBorderRadius(),
+      borderRadius: myBorderRadius,
     ),
   );
 }

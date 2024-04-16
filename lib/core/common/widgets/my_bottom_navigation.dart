@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:iconsax/iconsax.dart';
 import 'package:shoes_shopping_app/core/styles/theme.dart';
 import 'package:shoes_shopping_app/features/favorite/presentation/favorite_screen.dart';
 import 'package:shoes_shopping_app/features/home/presentation/home_screen.dart';
 import 'package:shoes_shopping_app/features/message/presentation/message_screen.dart';
 import 'package:shoes_shopping_app/features/profile/presentation/profile_screen.dart';
+import 'package:shoes_shopping_app/generated/assets.dart';
 
 enum NavBarItem { home, favorite, message, profile }
 
@@ -31,21 +31,33 @@ class _MyBottomNavigationState extends State<MyBottomNavigation> {
     return Scaffold(
       body: pages[_selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
-        items: const [
+        items: [
           BottomNavigationBarItem(
-            icon: Icon(Iconsax.shop),
+            icon: myIcon(
+              Assets.iconsShop,
+              color: getColor(0),
+            ),
             label: '',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Iconsax.heart),
+            icon: myIcon(
+              Assets.iconsHeart,
+              color: getColor(1),
+            ),
             label: '',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Iconsax.message),
+            icon: myIcon(
+              Assets.iconsMessage,
+              color: getColor(2),
+            ),
             label: '',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Iconsax.user),
+            icon: myIcon(
+              Assets.iconsUser,
+              color: getColor(3),
+            ),
             label: '',
           ),
         ],
@@ -65,4 +77,6 @@ class _MyBottomNavigationState extends State<MyBottomNavigation> {
       ),
     );
   }
+
+  getColor(int index) => _selectedIndex == index ? primary : gray;
 }
