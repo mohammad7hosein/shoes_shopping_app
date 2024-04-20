@@ -25,7 +25,6 @@ class HomeItem extends StatelessWidget {
       onTap: onClick,
       child: Container(
         padding: const EdgeInsets.all(10),
-        margin: const EdgeInsets.all(10),
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: myBorderRadius,

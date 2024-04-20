@@ -11,7 +11,7 @@ import 'package:shoes_shopping_app/features/sign_up/screens/sign_up_screen.dart'
 import 'package:shoes_shopping_app/features/splash/presentation/splash_screen.dart';
 
 import 'core/common/widgets/my_bottom_navigation.dart';
-import 'core/domain/repository/shoe_repository.dart';
+import 'core/data/repository/shoe_repository.dart';
 import 'core/styles/theme.dart';
 import 'features/cart/presentation/bloc/cart_bloc.dart';
 import 'features/cart/presentation/cart_screen.dart';

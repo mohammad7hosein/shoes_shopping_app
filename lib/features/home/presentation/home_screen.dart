@@ -76,6 +76,8 @@ class HomeScreen extends StatelessWidget {
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 2,
               childAspectRatio: 0.7,
+              crossAxisSpacing: 16,
+              mainAxisSpacing: 16,
             ),
             itemBuilder: (context, index) => HomeItem(
               shoe: shoes[index],

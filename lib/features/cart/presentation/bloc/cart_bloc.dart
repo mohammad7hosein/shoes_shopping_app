@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:shoes_shopping_app/core/data/model/cart.dart';
-import 'package:shoes_shopping_app/core/domain/repository/shoe_repository.dart';
+import 'package:shoes_shopping_app/core/data/repository/shoe_repository.dart';
 
 import 'cart_event.dart';
 import 'cart_state.dart';

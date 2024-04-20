@@ -3,7 +3,7 @@ import 'dart:developer';
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:shoes_shopping_app/core/data/model/shoe.dart';
-import 'package:shoes_shopping_app/core/domain/repository/shoe_repository.dart';
+import 'package:shoes_shopping_app/core/data/repository/shoe_repository.dart';
 
 part 'detail_event.dart';
 
