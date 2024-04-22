@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:shoes_shopping_app/core/common/widgets/default_button.dart';
 import 'package:shoes_shopping_app/core/common/widgets/my_bottom_navigation.dart';
-import 'package:shoes_shopping_app/core/styles/theme.dart';
+import 'package:shoes_shopping_app/core/common/widgets/my_button.dart';
+import 'package:shoes_shopping_app/core/utils/extensions.dart';
 import 'package:shoes_shopping_app/generated/assets.dart';
 
 import 'components/splash_content.dart';
@@ -71,7 +71,7 @@ class _SplashScreenState extends State<SplashScreen> {
                         ),
                       ),
                       const Spacer(flex: 3),
-                      DefaultButton(
+                      MyButton(
                         text: "Continue",
                         onPressed: () => Navigator.pushNamed(
                           context,
@@ -97,7 +97,9 @@ class _SplashScreenState extends State<SplashScreen> {
       width: currentPage == index ? 20 : 6,
       height: 6,
       decoration: BoxDecoration(
-        color: currentPage == index ? primary : light,
+        color: currentPage == index
+            ? context.scheme.primary
+            : context.scheme.background,
         borderRadius: BorderRadius.circular(3),
       ),
     );

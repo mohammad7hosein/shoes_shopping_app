@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shoes_shopping_app/core/styles/theme.dart';
+import 'package:shoes_shopping_app/core/utils/extensions.dart';
 import 'package:shoes_shopping_app/generated/assets.dart';
 
 class ProfilePic extends StatelessWidget {
@@ -25,20 +26,19 @@ class ProfilePic extends StatelessWidget {
               height: 46,
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: light,
+                  backgroundColor: context.scheme.background,
                   elevation: 0,
                   padding: EdgeInsets.zero,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(50),
-                    side: const BorderSide(
-                      color: Colors.white,
-                    ),
+                    side: BorderSide(color: context.scheme.surface),
                   ),
                 ),
                 onPressed: () {},
                 child: myIcon(
+                  context,
                   Assets.iconsCamera,
-                  color: darkGray,
+                  color: context.scheme.onSurface,
                 ),
               ),
             ),

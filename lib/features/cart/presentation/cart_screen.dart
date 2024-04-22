@@ -74,7 +74,7 @@ class CartScreen extends StatelessWidget {
                       child: Row(
                         children: [
                           const Spacer(),
-                          myIcon(
+                          myIcon(context, 
                             Assets.iconsTrash,
                             color: Colors.red,
                           ),

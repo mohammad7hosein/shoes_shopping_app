@@ -37,7 +37,8 @@ class DetailScreen extends StatelessWidget {
           return Scaffold(
             appBar: buildAppBar(context),
             body: Container(
-              decoration: const BoxDecoration(color: secondaryLight),
+              decoration:
+                  BoxDecoration(color: context.scheme.secondaryContainer),
               child: Column(
                 children: [
                   buildImage(),
@@ -45,7 +46,7 @@ class DetailScreen extends StatelessWidget {
                     flex: 4,
                     child: Container(
                       decoration: BoxDecoration(
-                        color: Colors.white,
+                        color: context.scheme.surface,
                         borderRadius: const BorderRadius.only(
                           topRight: Radius.circular(40),
                           topLeft: Radius.circular(40),
@@ -103,7 +104,7 @@ class DetailScreen extends StatelessWidget {
 
   buildAppBar(BuildContext context) {
     return AppBar(
-      backgroundColor: secondaryLight,
+      backgroundColor: context.scheme.secondaryContainer,
       actions: [
         BlocBuilder<DetailBloc, DetailState>(
           buildWhen: (previous, current) => previous.isLiked != current.isLiked,
@@ -123,21 +124,18 @@ class DetailScreen extends StatelessWidget {
                 }
               },
               icon: myIcon(
+                context,
                 state.isLiked ? Assets.iconsHeartFill : Assets.iconsHeart,
-                color: state.isLiked ? Colors.red : Colors.black,
+                color: state.isLiked ? Colors.red : null,
               ),
             );
           },
         ),
-        const Padding(
-          padding: EdgeInsets.all(10),
-        ),
+        const Padding(padding: EdgeInsets.all(10)),
       ],
       leading: IconButton(
-        onPressed: () {
-          Navigator.pop(context);
-        },
-        icon: myIcon(Assets.iconsArrowLeft),
+        onPressed: () => Navigator.pop(context),
+        icon: myIcon(context, Assets.iconsArrowLeft),
       ),
     );
   }
@@ -155,7 +153,8 @@ class DetailScreen extends StatelessWidget {
               child: Text.rich(
                 TextSpan(
                   text: "Price:\n",
-                  style: context.textTheme.bodySmall?.copyWith(color: gray),
+                  style: context.textTheme.bodySmall
+                      ?.copyWith(color: context.theme.hintColor),
                   children: [
                     TextSpan(
                       text: '\$${shoe.price.toInt()}',
@@ -169,9 +168,9 @@ class DetailScreen extends StatelessWidget {
               width: 200,
               child: ElevatedButton(
                 onPressed: () {
-                  if (state.selectedSize == '') {
+                  if (state.selectedSize == null) {
                     context.showSnackBar('Please select size');
-                  } else if (state.selectedColor == Colors.black) {
+                  } else if (state.selectedColor == null) {
                     context.showSnackBar('Please select color');
                   } else {
                     context.read<DetailBloc>().add(
@@ -190,8 +189,9 @@ class DetailScreen extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     myIcon(
+                      context,
                       Assets.iconsShoppingCart,
-                      color: Colors.white,
+                      color: context.scheme.onPrimary,
                     ),
                     const SizedBox(width: 16),
                     Text(
@@ -219,7 +219,8 @@ class DetailScreen extends StatelessWidget {
           children: [
             Text(
               'Color',
-              style: context.textTheme.titleSmall?.copyWith(color: Colors.grey),
+              style: context.textTheme.titleSmall
+                  ?.copyWith(color: context.theme.hintColor),
             ),
             const SizedBox(height: 12),
             SizedBox(
@@ -261,7 +262,8 @@ class DetailScreen extends StatelessWidget {
           children: [
             Text(
               'Size',
-              style: context.textTheme.titleSmall?.copyWith(color: Colors.grey),
+              style: context.textTheme.titleSmall
+                  ?.copyWith(color: context.theme.hintColor),
             ),
             const SizedBox(height: 12),
             SizedBox(
@@ -307,7 +309,8 @@ class DetailScreen extends StatelessWidget {
             const SizedBox(height: 6),
             Text(
               shoe.subTitle,
-              style: context.textTheme.titleSmall?.copyWith(color: Colors.grey),
+              style: context.textTheme.titleSmall
+                  ?.copyWith(color: context.theme.hintColor),
             ),
           ],
         );

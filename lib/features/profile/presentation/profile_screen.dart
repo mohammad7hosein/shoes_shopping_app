@@ -18,13 +18,9 @@ class ProfileScreen extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            const SizedBox(
-              height: 20,
-            ),
+            const SizedBox(height: 20),
             const ProfilePic(),
-            const SizedBox(
-              height: 20,
-            ),
+            const SizedBox(height: 20),
             ProfileMenu(
               text: "My Account",
               icon: Assets.iconsUser,

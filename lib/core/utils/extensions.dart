@@ -6,6 +6,8 @@ extension ContextExtentions on BuildContext {
 
   TextTheme get textTheme => Theme.of(this).textTheme;
 
+  ColorScheme get scheme => Theme.of(this).colorScheme;
+
   ScaffoldFeatureController<SnackBar, SnackBarClosedReason> showSnackBar(
       String message) {
     return ScaffoldMessenger.of(this).showSnackBar(

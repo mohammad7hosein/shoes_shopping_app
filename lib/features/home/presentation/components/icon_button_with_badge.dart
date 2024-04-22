@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shoes_shopping_app/core/styles/theme.dart';
+import 'package:shoes_shopping_app/core/utils/extensions.dart';
 
 class IconButtonWithBadge extends StatelessWidget {
   final Widget icon;
@@ -9,8 +10,8 @@ class IconButtonWithBadge extends StatelessWidget {
   const IconButtonWithBadge({
     Key? key,
     required this.icon,
-    this.number = 0,
     required this.onClick,
+    this.number = 0,
   }) : super(key: key);
 
   @override
@@ -26,7 +27,7 @@ class IconButtonWithBadge extends StatelessWidget {
             height: 50,
             padding: const EdgeInsets.all(12),
             decoration: BoxDecoration(
-              color: Colors.white,
+              color: context.scheme.surface,
               borderRadius: myBorderRadius,
               boxShadow: [myBoxShadow],
             ),
@@ -40,18 +41,16 @@ class IconButtonWithBadge extends StatelessWidget {
                 width: 20,
                 height: 20,
                 decoration: BoxDecoration(
-                  color: const Color(0xffff4848),
+                  color: Colors.red,
                   shape: BoxShape.circle,
-                  border: Border.all(color: Colors.white, width: 1),
+                  border: Border.all(color: context.scheme.surface, width: 1),
                 ),
                 child: Center(
                   child: Text(
                     "$number",
-                    style: const TextStyle(
+                    style: context.textTheme.labelSmall?.copyWith(
                       fontWeight: FontWeight.w600,
-                      color: Colors.white,
-                      fontSize: 10,
-                      height: 1,
+                      color: context.scheme.onPrimary,
                     ),
                   ),
                 ),

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shoes_shopping_app/core/styles/size_config.dart';
 import 'package:shoes_shopping_app/core/utils/extensions.dart';
-import 'package:shoes_shopping_app/features/sign_up/components/complete_profile_form.dart';
+import 'package:shoes_shopping_app/features/sign_up/components/forms/complete_profile_form.dart';
 
 class CompleteProfileScreen extends StatelessWidget {
   static String route = "/complete_profile";

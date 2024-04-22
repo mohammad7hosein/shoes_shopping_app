@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:shoes_shopping_app/core/common/widgets/default_button.dart';
+import 'package:shoes_shopping_app/core/common/widgets/my_button.dart';
 import 'package:shoes_shopping_app/core/constants/strings.dart';
 import 'package:shoes_shopping_app/features/sign_up/components/custom_suffix_icon.dart';
 import 'package:shoes_shopping_app/features/sign_up/screens/otp_screen.dart';
@@ -47,7 +47,7 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
           const SizedBox(height: 30),
           buildAddressFormField(),
           const SizedBox(height: 40),
-          DefaultButton(
+          MyButton(
               text: "Continue",
               onPressed: () {
                 if (_formKey.currentState!.validate()) {

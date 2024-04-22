@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:shoes_shopping_app/core/common/widgets/default_button.dart';
+import 'package:shoes_shopping_app/core/common/widgets/my_button.dart';
 import 'package:shoes_shopping_app/core/constants/strings.dart';
 import 'package:shoes_shopping_app/core/styles/size_config.dart';
 import 'package:shoes_shopping_app/features/sign_up/components/custom_suffix_icon.dart';
@@ -64,7 +64,7 @@ class _ForgetPasswordFormState extends State<ForgetPasswordForm> {
           const SizedBox(height: 30),
           FormError(errors: errors),
           SizedBox(height: SizeConfig.screenHeight * 0.1),
-          DefaultButton(
+          MyButton(
             text: "Continue",
             onPressed: () {
               if (_formKey.currentState!.validate()) {

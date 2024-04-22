@@ -26,7 +26,7 @@ class FilterItem extends StatelessWidget {
         width: 50,
         height: 50,
         decoration: BoxDecoration(
-          color: isSelected ? primary : Colors.white,
+          color: isSelected ? context.scheme.primary : context.scheme.surface,
           boxShadow: [myBoxShadow],
           borderRadius: myBorderRadius,
         ),
@@ -34,11 +34,13 @@ class FilterItem extends StatelessWidget {
             ? Text(
                 text!,
                 style: context.textTheme.bodySmall?.copyWith(
-                  color: isSelected ? Colors.white : Colors.black,
+                  color: isSelected
+                      ? context.scheme.onPrimary
+                      : context.scheme.onBackground,
                   fontWeight: FontWeight.bold,
                 ),
               )
-            : myIcon(icon ?? ''),
+            : myIcon(context, icon ?? ''),
       ),
     );
   }

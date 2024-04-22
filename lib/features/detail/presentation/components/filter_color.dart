@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shoes_shopping_app/core/styles/theme.dart';
+import 'package:shoes_shopping_app/core/utils/extensions.dart';
 
 class FilterColor extends StatelessWidget {
   final Color color;
@@ -25,17 +26,10 @@ class FilterColor extends StatelessWidget {
         decoration: BoxDecoration(
           border: Border.all(
             width: 2,
-            color: isSelected ? primary : Colors.white,
+            color: isSelected ? context.scheme.primary : context.scheme.surface,
           ),
-          color: Colors.white,
-          boxShadow: const [
-            BoxShadow(
-              color: Colors.black12,
-              offset: Offset(5.0, 5.0), //Offset
-              blurRadius: 10.0,
-              spreadRadius: 2.0,
-            )
-          ],
+          color: context.scheme.surface,
+          boxShadow: [myBoxShadow],
           borderRadius: myBorderRadius,
         ),
         child: Container(

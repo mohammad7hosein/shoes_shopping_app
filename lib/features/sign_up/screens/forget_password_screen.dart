@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:shoes_shopping_app/core/styles/size_config.dart';
 import 'package:shoes_shopping_app/core/styles/theme.dart';
 import 'package:shoes_shopping_app/core/utils/extensions.dart';
-import 'package:shoes_shopping_app/features/sign_up/components/forget_password_form.dart';
+import 'package:shoes_shopping_app/features/sign_up/components/forms/forget_password_form.dart';
 import 'package:shoes_shopping_app/generated/assets.dart';
 
 class ForgetPasswordScreen extends StatelessWidget {
@@ -15,10 +15,8 @@ class ForgetPasswordScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          icon: myIcon(Assets.iconsArrowLeft),
+          onPressed: () => Navigator.pop(context),
+          icon: myIcon(context, Assets.iconsArrowLeft),
         ),
         title: const Text("Forget Password"),
       ),

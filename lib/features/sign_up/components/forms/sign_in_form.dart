@@ -1,22 +1,26 @@
 import 'package:flutter/material.dart';
-import 'package:shoes_shopping_app/core/common/widgets/default_button.dart';
+import 'package:shoes_shopping_app/core/common/widgets/my_button.dart';
 import 'package:shoes_shopping_app/core/constants/strings.dart';
+import 'package:shoes_shopping_app/core/utils/extensions.dart';
 import 'package:shoes_shopping_app/features/sign_up/components/custom_suffix_icon.dart';
 import 'package:shoes_shopping_app/features/sign_up/components/form_error.dart';
-import 'package:shoes_shopping_app/features/sign_up/screens/complete_profile_screen.dart';
+import 'package:shoes_shopping_app/features/sign_up/screens/login_success_screen.dart';
 import 'package:shoes_shopping_app/generated/assets.dart';
 
-class SignUpForm extends StatefulWidget {
-  const SignUpForm({Key? key}) : super(key: key);
+import '../../screens/forget_password_screen.dart';
+
+class SignForm extends StatefulWidget {
+  const SignForm({Key? key}) : super(key: key);
 
   @override
-  State<SignUpForm> createState() => _SignUpFormState();
+  State<SignForm> createState() => _SignFormState();
 }
 
-class _SignUpFormState extends State<SignUpForm> {
+class _SignFormState extends State<SignForm> {
   final _formKey = GlobalKey<FormState>();
   final List<String> errors = [];
-  late String email, password, confirmPassword;
+  late String email, password;
+  bool remember = false;
 
   void addError({required String error}) {
     if (!errors.contains(error)) {
@@ -44,46 +48,42 @@ class _SignUpFormState extends State<SignUpForm> {
           const SizedBox(height: 30),
           buildPasswordFormField(),
           const SizedBox(height: 30),
-          buildConfirmPasswordFormField(),
           FormError(errors: errors),
-          const SizedBox(height: 40),
-          DefaultButton(
-              text: "Continue",
-              onPressed: () {
-                if (_formKey.currentState!.validate()) {
-                  _formKey.currentState!.save();
-                  Navigator.pushNamed(context, CompleteProfileScreen.route);
-                }
-              }),
+          const SizedBox(height: 30),
+          Row(
+            children: [
+              Checkbox(
+                activeColor: context.scheme.primary,
+                value: remember,
+                onChanged: (value) {
+                  setState(() {
+                    remember = value!;
+                  });
+                },
+              ),
+              const Text("Remember me"),
+              const Spacer(),
+              GestureDetector(
+                onTap: () =>
+                    Navigator.pushNamed(context, ForgetPasswordScreen.route),
+                child: const Text(
+                  "Forget Password",
+                  style: TextStyle(decoration: TextDecoration.underline),
+                ),
+              )
+            ],
+          ),
+          const SizedBox(height: 20),
+          MyButton(
+            text: "Continue",
+            onPressed: () {
+              if (_formKey.currentState!.validate()) {
+                _formKey.currentState!.save();
+                Navigator.pushNamed(context, LoginSuccessScreen.route);
+              }
+            },
+          ),
         ],
-      ),
-    );
-  }
-
-  TextFormField buildConfirmPasswordFormField() {
-    return TextFormField(
-      obscureText: true,
-      onSaved: (newValue) => confirmPassword = newValue!,
-      onChanged: (value) {
-        if (password == value) {
-          removeError(error: Strings.matchPassError);
-        }
-        return;
-      },
-      validator: (value) {
-        if (value!.isEmpty) {
-          return "";
-        } else if (password != value) {
-          addError(error: Strings.matchPassError);
-          return "";
-        }
-        return null;
-      },
-      decoration: const InputDecoration(
-        labelText: "Confirm Password",
-        hintText: "Re-enter your password",
-        floatingLabelBehavior: FloatingLabelBehavior.always,
-        suffixIcon: CustomSuffixIcon(icon: Assets.iconsLock),
       ),
     );
   }
@@ -98,7 +98,6 @@ class _SignUpFormState extends State<SignUpForm> {
         } else if (value.length >= 8) {
           removeError(error: Strings.shortPassError);
         }
-        password = value;
         return;
       },
       validator: (value) {

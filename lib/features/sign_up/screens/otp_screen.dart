@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shoes_shopping_app/core/styles/size_config.dart';
-import 'package:shoes_shopping_app/core/styles/theme.dart';
 import 'package:shoes_shopping_app/core/utils/extensions.dart';
-import 'package:shoes_shopping_app/features/sign_up/components/otp_form.dart';
+import 'package:shoes_shopping_app/features/sign_up/components/forms/otp_form.dart';
 
 class OtpScreen extends StatelessWidget {
   static String route = "/otp";
@@ -19,36 +18,36 @@ class OtpScreen extends StatelessWidget {
         width: double.infinity,
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),
-            child: SingleChildScrollView(
-              child: Column(
-                children: [
-                  SizedBox(height: SizeConfig.screenHeight * 0.05),
-                  Text(
-                    "OTP Verification",
-                    style: context.textTheme.titleLarge,
-                  ),
-                  const Text(
-                    "We sent your code to +98 919 542 ****",
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                SizedBox(height: SizeConfig.screenHeight * 0.05),
+                Text(
+                  "OTP Verification",
+                  style: context.textTheme.titleLarge,
+                ),
+                const Text(
+                  "We sent your code to +98 919 542 ****",
+                  textAlign: TextAlign.center,
+                ),
+                buildTimer(),
+                SizedBox(height: SizeConfig.screenHeight * 0.15),
+                const OtpForm(),
+                SizedBox(height: SizeConfig.screenHeight * 0.1),
+                GestureDetector(
+                  onTap: () {
+                    // resend your otp
+                  },
+                  child: const Text(
+                    "Resend OTP code",
+                    style: TextStyle(decoration: TextDecoration.underline),
                     textAlign: TextAlign.center,
                   ),
-                  buildTimer(),
-                  SizedBox(height: SizeConfig.screenHeight * 0.15),
-                  const OtpForm(),
-                  SizedBox(height: SizeConfig.screenHeight * 0.1),
-                  GestureDetector(
-                    onTap: () {
-                      // resend your otp
-                    },
-                    child: const Text(
-                      "Resend OTP code",
-                      style: TextStyle(decoration: TextDecoration.underline),
-                      textAlign: TextAlign.center,
-                    ),
-                  ),
-                  const SizedBox(height: 20),
-                ],
-              ),
+                ),
+                const SizedBox(height: 20),
+              ],
             ),
+          ),
         ),
       ),
     );
@@ -64,7 +63,8 @@ class OtpScreen extends StatelessWidget {
           duration: const Duration(seconds: 30),
           builder: (context, value, child) => Text(
             "00:${value.toString().substring(0, 2)}",
-            style: context.textTheme.bodyMedium?.copyWith(color: primary),
+            style: context.textTheme.bodyMedium
+                ?.copyWith(color: context.scheme.primary),
           ),
           onEnd: () {},
         ),

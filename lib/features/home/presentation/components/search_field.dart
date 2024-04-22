@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shoes_shopping_app/core/styles/theme.dart';
+import 'package:shoes_shopping_app/core/utils/extensions.dart';
 import 'package:shoes_shopping_app/generated/assets.dart';
 
 class SearchField extends StatelessWidget {
@@ -16,7 +17,7 @@ class SearchField extends StatelessWidget {
       height: 50,
       padding: const EdgeInsets.symmetric(horizontal: 10),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: context.scheme.surface,
         borderRadius: myBorderRadius,
         boxShadow: [myBoxShadow],
       ),
@@ -26,7 +27,7 @@ class SearchField extends StatelessWidget {
         style: Theme.of(context).textTheme.bodyMedium,
         textInputAction: TextInputAction.search,
         decoration: InputDecoration(
-          icon: myIcon(Assets.iconsSearch),
+          icon: myIcon(context, Assets.iconsSearch),
           hintText: "Search...",
           enabledBorder: InputBorder.none,
           focusedBorder: InputBorder.none,

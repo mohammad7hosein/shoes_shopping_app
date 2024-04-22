@@ -26,7 +26,7 @@ class ProfileMenu extends StatelessWidget {
         style: ElevatedButton.styleFrom(
           elevation: 0,
           padding: const EdgeInsets.all(20),
-          backgroundColor: light,
+          backgroundColor: context.scheme.background,
           shape: RoundedRectangleBorder(
             borderRadius: myBorderRadius,
           ),
@@ -35,20 +35,18 @@ class ProfileMenu extends StatelessWidget {
         child: Row(
           children: [
             myIcon(
+              context,
               icon,
-              color: primary,
+              color: context.scheme.primary,
             ),
             const SizedBox(width: 20),
             Expanded(
               child: Text(
                 text,
-                style: context.textTheme.bodySmall?.copyWith(color: dark),
+                style: context.textTheme.bodySmall,
               ),
             ),
-            myIcon(
-              Assets.iconsArrowRight,
-              color: dark,
-            ),
+            myIcon(context, Assets.iconsArrowRight),
           ],
         ),
       ),

@@ -17,10 +17,8 @@ class CheckoutCard extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 20),
       decoration: BoxDecoration(
-        color: Colors.white,
-        boxShadow: [
-          myBoxShadow,
-        ],
+        color: context.scheme.surface,
+        boxShadow: [myBoxShadow],
       ),
       child: SafeArea(
         child: Column(
@@ -30,7 +28,7 @@ class CheckoutCard extends StatelessWidget {
               height: 50,
               padding: const EdgeInsets.all(10),
               decoration: BoxDecoration(
-                color: light,
+                color: context.scheme.background,
                 borderRadius: myBorderRadius,
               ),
               child: TextField(
@@ -43,7 +41,7 @@ class CheckoutCard extends StatelessWidget {
                   hintText: 'discount code',
                   suffixIcon: ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.black,
+                      backgroundColor: context.scheme.onBackground,
                       padding: const EdgeInsets.all(5),
                       shape: RoundedRectangleBorder(
                         borderRadius: myBorderRadius,
@@ -52,7 +50,7 @@ class CheckoutCard extends StatelessWidget {
                     child: Text(
                       'Apply',
                       style: context.textTheme.labelLarge
-                          ?.copyWith(color: Colors.white),
+                          ?.copyWith(color: context.scheme.onPrimary),
                     ),
                     onPressed: () {},
                   ),
@@ -67,7 +65,8 @@ class CheckoutCard extends StatelessWidget {
                 Text.rich(
                   TextSpan(
                     text: "Total:\n",
-                    style: context.textTheme.bodySmall?.copyWith(color: gray),
+                    style: context.textTheme.bodySmall
+                        ?.copyWith(color: context.theme.hintColor),
                     children: [
                       TextSpan(
                         text: "\$$totalPrice",

@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:shoes_shopping_app/core/styles/size_config.dart';
 import 'package:shoes_shopping_app/core/styles/theme.dart';
 import 'package:shoes_shopping_app/core/utils/extensions.dart';
+import 'package:shoes_shopping_app/features/sign_up/components/forms/sign_in_form.dart';
 import 'package:shoes_shopping_app/features/sign_up/components/no_account_text.dart';
-import 'package:shoes_shopping_app/features/sign_up/components/sign_in_form.dart';
 import 'package:shoes_shopping_app/features/sign_up/components/social_card.dart';
 import 'package:shoes_shopping_app/generated/assets.dart';
 
@@ -17,8 +17,9 @@ class SignInScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-            onPressed: () => Navigator.pop(context),
-            icon: myIcon(Assets.iconsArrowLeft)),
+          onPressed: () => Navigator.pop(context),
+          icon: myIcon(context, Assets.iconsArrowLeft),
+        ),
         title: const Text("Sign in"),
       ),
       body: SafeArea(

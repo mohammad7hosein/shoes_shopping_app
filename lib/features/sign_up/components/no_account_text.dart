@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:shoes_shopping_app/core/styles/theme.dart';
 import 'package:shoes_shopping_app/core/utils/extensions.dart';
 import 'package:shoes_shopping_app/features/sign_up/screens/sign_up_screen.dart';
 
@@ -23,7 +22,8 @@ class NoAccountText extends StatelessWidget {
           },
           child: Text(
             "SignUp",
-            style: context.textTheme.bodyMedium?.copyWith(color: primary),
+            style: context.textTheme.bodyMedium
+                ?.copyWith(color: context.scheme.primary),
           ),
         ),
       ],

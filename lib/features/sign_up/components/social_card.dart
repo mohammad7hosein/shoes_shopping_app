@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shoes_shopping_app/core/styles/theme.dart';
+import 'package:shoes_shopping_app/core/utils/extensions.dart';
 import 'package:shoes_shopping_app/generated/assets.dart';
 
 class SocialCard extends StatelessWidget {
@@ -23,9 +24,9 @@ class SocialCard extends StatelessWidget {
         height: 40,
         decoration: BoxDecoration(
           borderRadius: myBorderRadius,
-          color: light,
+          color: context.scheme.background,
         ),
-        child: myIcon(icon, blendMode: BlendMode.dstIn),
+        child: myIcon(context, icon, blendMode: BlendMode.dstIn),
       ),
     );
   }

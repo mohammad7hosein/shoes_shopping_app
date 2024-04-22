@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shoes_shopping_app/core/styles/theme.dart';
+import 'package:shoes_shopping_app/core/utils/extensions.dart';
 import 'package:shoes_shopping_app/features/favorite/presentation/favorite_screen.dart';
 import 'package:shoes_shopping_app/features/home/presentation/home_screen.dart';
 import 'package:shoes_shopping_app/features/message/presentation/message_screen.dart';
@@ -33,40 +34,40 @@ class _MyBottomNavigationState extends State<MyBottomNavigation> {
       bottomNavigationBar: BottomNavigationBar(
         items: [
           BottomNavigationBarItem(
-            icon: myIcon(
+            icon: myIcon(context, 
               Assets.iconsShop,
               color: getColor(0),
             ),
-            label: '',
+            label: 'Shop',
           ),
           BottomNavigationBarItem(
-            icon: myIcon(
+            icon: myIcon(context, 
               Assets.iconsHeart,
               color: getColor(1),
             ),
-            label: '',
+            label: 'Favorite',
           ),
           BottomNavigationBarItem(
-            icon: myIcon(
+            icon: myIcon(context, 
               Assets.iconsMessage,
               color: getColor(2),
             ),
-            label: '',
+            label: 'Message',
           ),
           BottomNavigationBarItem(
-            icon: myIcon(
+            icon: myIcon(context, 
               Assets.iconsUser,
               color: getColor(3),
             ),
-            label: '',
+            label: 'Profile',
           ),
         ],
         type: BottomNavigationBarType.fixed,
         elevation: 20,
-        selectedItemColor: primary,
-        unselectedItemColor: gray,
+        selectedItemColor: context.scheme.primary,
+        unselectedItemColor: context.theme.hintColor,
         currentIndex: _selectedIndex,
-        backgroundColor: Colors.white,
+        backgroundColor: context.scheme.surface,
         showSelectedLabels: false,
         showUnselectedLabels: false,
         onTap: (index) {
@@ -78,5 +79,7 @@ class _MyBottomNavigationState extends State<MyBottomNavigation> {
     );
   }
 
-  getColor(int index) => _selectedIndex == index ? primary : gray;
+  getColor(int index) => _selectedIndex == index
+      ? context.scheme.primary
+      : context.theme.hintColor;
 }

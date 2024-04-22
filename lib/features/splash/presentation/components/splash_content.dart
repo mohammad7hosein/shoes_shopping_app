@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:shoes_shopping_app/core/styles/theme.dart';
 import 'package:shoes_shopping_app/core/utils/extensions.dart';
 
 class SplashContent extends StatelessWidget {
@@ -18,7 +17,8 @@ class SplashContent extends StatelessWidget {
         const Spacer(),
         Text(
           "Seyed Shoe",
-          style: context.textTheme.titleLarge?.copyWith(color: primary),
+          style: context.textTheme.titleLarge
+              ?.copyWith(color: context.scheme.primary),
         ),
         const SizedBox(height: 5),
         Text(

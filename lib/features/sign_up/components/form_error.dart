@@ -15,15 +15,16 @@ class FormError extends StatelessWidget {
     return Column(
       children: List.generate(
         errors.length,
-        (index) => formErrorText(error: errors[index]),
+        (index) => formErrorText(context, error: errors[index]),
       ),
     );
   }
 
-  Row formErrorText({required String error}) {
+  Row formErrorText(BuildContext context, {required String error}) {
     return Row(
       children: [
         myIcon(
+          context,
           Assets.iconsError,
           color: Colors.red,
           size: 20,

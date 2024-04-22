@@ -27,7 +27,7 @@ class CartItem extends StatelessWidget {
             child: Container(
               padding: const EdgeInsets.all(10),
               decoration: BoxDecoration(
-                color: light,
+                color: context.scheme.background,
                 borderRadius: myBorderRadius,
               ),
               child: Image.asset(cart.imageSrc),
@@ -52,8 +52,8 @@ class CartItem extends StatelessWidget {
                       ),
                       Text(
                         cart.subTitle,
-                        style:
-                            context.textTheme.bodySmall?.copyWith(color: gray),
+                        style: context.textTheme.bodySmall
+                            ?.copyWith(color: context.theme.hintColor),
                         maxLines: 2,
                       ),
                     ],
@@ -77,14 +77,14 @@ class CartItem extends StatelessWidget {
                 children: [
                   Text(
                     '\$${cart.price.toInt()}',
-                    style:
-                        context.textTheme.bodyMedium?.copyWith(color: primary),
+                    style: context.textTheme.bodyMedium
+                        ?.copyWith(color: context.scheme.primary),
                     maxLines: 2,
                   ),
                   const Spacer(),
                   Container(
                     decoration: BoxDecoration(
-                      color: light,
+                      color: context.scheme.background,
                       borderRadius: myBorderRadius,
                     ),
                     child: Row(
@@ -92,7 +92,7 @@ class CartItem extends StatelessWidget {
                         IconButton(
                           splashRadius: 1,
                           onPressed: onMinusQuantity,
-                          icon: myIcon(Assets.iconsMinus),
+                          icon: myIcon(context, Assets.iconsMinus),
                         ),
                         Text(
                           "${cart.quantity}",
@@ -101,7 +101,7 @@ class CartItem extends StatelessWidget {
                         IconButton(
                           splashRadius: 1,
                           onPressed: onAddQuantity,
-                          icon: myIcon(Assets.iconsAdd),
+                          icon: myIcon(context, Assets.iconsAdd),
                         ),
                       ],
                     ),

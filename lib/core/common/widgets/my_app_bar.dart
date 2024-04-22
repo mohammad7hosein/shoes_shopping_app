@@ -15,7 +15,7 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
     return AppBar(
       leading: IconButton(
         onPressed: () => Navigator.pop(context),
-        icon: myIcon(Assets.iconsArrowLeft),
+        icon: myIcon(context, Assets.iconsArrowLeft),
       ),
       title: title,
     );

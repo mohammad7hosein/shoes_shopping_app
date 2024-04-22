@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:shoes_shopping_app/core/common/widgets/default_button.dart';
+import 'package:shoes_shopping_app/core/common/widgets/my_button.dart';
 import 'package:shoes_shopping_app/core/common/widgets/my_bottom_navigation.dart';
 import 'package:shoes_shopping_app/core/styles/size_config.dart';
 import 'package:shoes_shopping_app/core/utils/extensions.dart';
@@ -32,7 +32,7 @@ class LoginSuccessScreen extends StatelessWidget {
           const Spacer(),
           SizedBox(
             width: SizeConfig.screenWidth * 0.6,
-            child: DefaultButton(
+            child: MyButton(
                 text: "Back to home",
                 onPressed: () {
                   Navigator.pushNamed(context, MyBottomNavigation.route);

@@ -26,7 +26,7 @@ class HomeItem extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.all(10),
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: context.scheme.surface,
           borderRadius: myBorderRadius,
         ),
         child: Column(
@@ -39,8 +39,9 @@ class HomeItem extends StatelessWidget {
                 InkWell(
                   onTap: onLike,
                   child: myIcon(
+                    context,
                     isLiked ? Assets.iconsHeartFill : Assets.iconsHeart,
-                    color: isLiked ? Colors.red : Colors.black,
+                    color: isLiked ? Colors.red : null,
                   ),
                 ),
               ],
@@ -58,12 +59,14 @@ class HomeItem extends StatelessWidget {
             ),
             Text(
               shoe.subTitle,
-              style: context.textTheme.bodySmall?.copyWith(color: gray),
+              style: context.textTheme.bodySmall
+                  ?.copyWith(color: context.theme.hintColor),
             ),
             const SizedBox(height: 10),
             Text(
               '\$${shoe.price.toInt()}',
-              style: context.textTheme.bodyMedium?.copyWith(color: primary),
+              style: context.textTheme.bodyMedium
+                  ?.copyWith(color: context.scheme.primary),
             ),
           ],
         ),

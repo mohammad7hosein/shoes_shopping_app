@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:shoes_shopping_app/core/utils/extensions.dart';
 
-class DefaultButton extends StatelessWidget {
+class MyButton extends StatelessWidget {
   final String text;
   final VoidCallback onPressed;
 
-  const DefaultButton({
+  const MyButton({
     Key? key,
     required this.text,
     required this.onPressed,
@@ -19,7 +19,7 @@ class DefaultButton extends StatelessWidget {
         onPressed: onPressed,
         child: Text(
           text,
-          style: context.textTheme.bodyLarge?.copyWith(color: Colors.white),
+          style: context.textTheme.bodyLarge?.copyWith(color: context.scheme.onPrimary),
         ),
       ),
     );

@@ -141,7 +141,7 @@ class HomeScreen extends StatelessWidget {
               ),
               const SizedBox(width: 16),
               IconButtonWithBadge(
-                icon: myIcon(Assets.iconsShoppingCart),
+                icon: myIcon(context, Assets.iconsShoppingCart),
                 onClick: () => Navigator.pushNamed(context, CartScreen.route),
                 number: state.cartCount,
               ),
