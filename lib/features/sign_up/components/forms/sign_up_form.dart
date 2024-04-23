@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shoes_shopping_app/core/common/widgets/my_button.dart';
 import 'package:shoes_shopping_app/core/constants/strings.dart';
+import 'package:shoes_shopping_app/core/styles/size_config.dart';
 import 'package:shoes_shopping_app/features/sign_up/components/custom_suffix_icon.dart';
 import 'package:shoes_shopping_app/features/sign_up/components/form_error.dart';
 import 'package:shoes_shopping_app/features/sign_up/screens/complete_profile_screen.dart';
@@ -41,20 +42,21 @@ class _SignUpFormState extends State<SignUpForm> {
       child: Column(
         children: [
           buildEmailFormField(),
-          const SizedBox(height: 30),
+          SizedBox(height: smallSpace),
           buildPasswordFormField(),
-          const SizedBox(height: 30),
+          SizedBox(height: smallSpace),
           buildConfirmPasswordFormField(),
           FormError(errors: errors),
-          const SizedBox(height: 40),
+          SizedBox(height: mediumSpace),
           MyButton(
-              text: "Continue",
-              onPressed: () {
-                if (_formKey.currentState!.validate()) {
-                  _formKey.currentState!.save();
-                  Navigator.pushNamed(context, CompleteProfileScreen.route);
-                }
-              }),
+            text: "Continue",
+            onPressed: () {
+              if (_formKey.currentState!.validate()) {
+                _formKey.currentState!.save();
+                Navigator.pushNamed(context, CompleteProfileScreen.route);
+              }
+            },
+          ),
         ],
       ),
     );

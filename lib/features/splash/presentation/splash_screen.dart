@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:shoes_shopping_app/core/common/widgets/my_bottom_navigation.dart';
 import 'package:shoes_shopping_app/core/common/widgets/my_button.dart';
 import 'package:shoes_shopping_app/core/styles/theme.dart';
 import 'package:shoes_shopping_app/core/utils/extensions.dart';
+import 'package:shoes_shopping_app/features/sign_up/screens/sign_in_screen.dart';
 import 'package:shoes_shopping_app/generated/assets.dart';
 
 import 'components/splash_content.dart';
@@ -38,54 +38,51 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: SizedBox(
-          width: double.infinity,
-          child: Column(
-            children: [
-              Expanded(
-                flex: 3,
-                child: PageView.builder(
-                  itemCount: splashData.length,
-                  itemBuilder: (context, index) => SplashContent(
-                    text: splashData[index]["text"]!,
-                    image: splashData[index]["images"]!,
-                  ),
-                  onPageChanged: (value) {
-                    setState(() {
-                      currentPage = value;
-                    });
-                  },
+        child: Column(
+          children: [
+            Expanded(
+              flex: 3,
+              child: PageView.builder(
+                itemCount: splashData.length,
+                itemBuilder: (context, index) => SplashContent(
+                  text: splashData[index]["text"]!,
+                  image: splashData[index]["images"]!,
+                ),
+                onPageChanged: (value) {
+                  setState(() {
+                    currentPage = value;
+                  });
+                },
+              ),
+            ),
+            Expanded(
+              flex: 2,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 30),
+                child: Column(
+                  children: [
+                    const Spacer(),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: List.generate(
+                        splashData.length,
+                        (index) => buildDot(index),
+                      ),
+                    ),
+                    const Spacer(flex: 3),
+                    MyButton(
+                      text: "Continue",
+                      onPressed: () => Navigator.pushNamed(
+                        context,
+                        SignInScreen.route,
+                      ),
+                    ),
+                    const Spacer(),
+                  ],
                 ),
               ),
-              Expanded(
-                flex: 2,
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 20),
-                  child: Column(
-                    children: [
-                      const Spacer(),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: List.generate(
-                          splashData.length,
-                          (index) => buildDot(index),
-                        ),
-                      ),
-                      const Spacer(flex: 3),
-                      MyButton(
-                        text: "Continue",
-                        onPressed: () => Navigator.pushNamed(
-                          context,
-                          MyBottomNavigation.route,
-                        ),
-                      ),
-                      const Spacer(),
-                    ],
-                  ),
-                ),
-              ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
@@ -94,12 +91,12 @@ class _SplashScreenState extends State<SplashScreen> {
   AnimatedContainer buildDot(int index) {
     return AnimatedContainer(
       duration: const Duration(milliseconds: 200),
-      margin: const EdgeInsets.only(right: 5),
-      width: currentPage == index ? 16 : 6,
-      height: 6,
+      margin: const EdgeInsets.only(right: 4),
+      width: currentPage == index ? 12 : 4,
+      height: 4,
       decoration: BoxDecoration(
         color: currentPage == index ? context.scheme.primary : gray,
-        borderRadius: BorderRadius.circular(3),
+        borderRadius: BorderRadius.circular(4),
       ),
     );
   }

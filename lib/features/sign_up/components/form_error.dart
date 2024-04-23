@@ -20,18 +20,21 @@ class FormError extends StatelessWidget {
     );
   }
 
-  Row formErrorText(BuildContext context, {required String error}) {
-    return Row(
-      children: [
-        myIcon(
-          context,
-          Assets.iconsError,
-          color: Colors.red,
-          size: 20,
-        ),
-        const SizedBox(width: 10),
-        Text(error),
-      ],
+  Widget formErrorText(BuildContext context, {required String error}) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 4),
+      child: Row(
+        children: [
+          myIcon(
+            context,
+            Assets.iconsError,
+            color: Colors.red,
+            size: 20,
+          ),
+          const SizedBox(width: 8),
+          Text(error),
+        ],
+      ),
     );
   }
 }

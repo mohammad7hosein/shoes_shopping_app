@@ -17,33 +17,29 @@ class SignInScreen extends StatelessWidget {
       appBar: const MyAppBar(
         title: Text("Sign in"),
       ),
-      body: SafeArea(
-        child: SizedBox(
-          width: double.infinity,
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20),
-            child: SingleChildScrollView(
-              child: Column(
-                children: [
-                  SizedBox(height: SizeConfig.screenHeight * 0.02),
-                  Text(
-                    "Welcome Back",
-                    style: context.textTheme.titleLarge,
-                  ),
-                  const Text(
-                    "Sign with your email and password \nor cotinue with social media",
-                    textAlign: TextAlign.center,
-                  ),
-                  SizedBox(height: SizeConfig.screenHeight * 0.08),
-                  const SignForm(),
-                  SizedBox(height: SizeConfig.screenHeight * 0.08),
-                  SocialCard.buildSocialCards(),
-                  const SizedBox(height: 20),
-                  const NoAccountText(),
-                  const SizedBox(height: 20),
-                ],
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: EdgeInsets.all(smallSpace),
+          child: Column(
+            children: [
+              Text(
+                "Welcome Back",
+                style: context.textTheme.titleLarge,
               ),
-            ),
+              SizedBox(height: verySmallSpace),
+              Text(
+                "Sign with your email and password \nor cotinue with social media",
+                style: context.textTheme.bodyMedium,
+                textAlign: TextAlign.center,
+              ),
+              SizedBox(height: largeSpace),
+              const SignForm(),
+              SizedBox(height: largeSpace),
+              SocialCard.buildSocialCards(),
+              SizedBox(height: smallSpace),
+              const NoAccountText(),
+              SizedBox(height: smallSpace),
+            ],
           ),
         ),
       ),

@@ -19,12 +19,12 @@ class LoginSuccessScreen extends StatelessWidget {
       ),
       body: Column(
         children: [
-          SizedBox(height: SizeConfig.screenHeight * 0.04),
+          SizedBox(height: mediumSpace),
           Image.asset(
             Assets.imagesSuccess,
             height: SizeConfig.screenHeight * 0.4,
           ),
-          SizedBox(height: SizeConfig.screenHeight * 0.08),
+          SizedBox(height: largeSpace),
           Text(
             "Login Success",
             style: context.textTheme.titleLarge,
@@ -33,10 +33,11 @@ class LoginSuccessScreen extends StatelessWidget {
           SizedBox(
             width: SizeConfig.screenWidth * 0.6,
             child: MyButton(
-                text: "Back to home",
-                onPressed: () {
-                  Navigator.pushNamed(context, MyBottomNavigation.route);
-                }),
+              text: "Back to home",
+              onPressed: () {
+                Navigator.pushNamed(context, MyBottomNavigation.route);
+              },
+            ),
           ),
           const Spacer(),
         ],

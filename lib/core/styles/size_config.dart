@@ -17,6 +17,6 @@ class SizeConfig {
 
 final verySmallSpace = SizeConfig.screenHeight * 0.01;
 final smallSpace = SizeConfig.screenHeight * 0.025;
-final mediumSpace = SizeConfig.screenHeight * 0.05;
-final largeSpace = SizeConfig.screenHeight * 0.1;
-final veryLargeSpace = SizeConfig.screenHeight * 0.2;
+final mediumSpace = SizeConfig.screenHeight * 0.04;
+final largeSpace = SizeConfig.screenHeight * 0.08;
+final veryLargeSpace = SizeConfig.screenHeight * 0.16;

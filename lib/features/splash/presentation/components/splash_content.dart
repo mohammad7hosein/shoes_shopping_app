@@ -20,7 +20,7 @@ class SplashContent extends StatelessWidget {
           style: context.textTheme.titleLarge
               ?.copyWith(color: context.scheme.primary),
         ),
-        const SizedBox(height: 5),
+        const SizedBox(height: 8),
         Text(
           text,
           style: context.textTheme.bodyMedium,
@@ -29,8 +29,8 @@ class SplashContent extends StatelessWidget {
         const Spacer(flex: 2),
         Image.asset(
           image,
-          height: 265,
-          width: 235,
+          height: 250,
+          width: 250,
         )
       ],
     );

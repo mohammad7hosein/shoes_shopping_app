@@ -15,28 +15,25 @@ class ForgetPasswordScreen extends StatelessWidget {
       appBar: const MyAppBar(
         title: Text("Forget Password"),
       ),
-      body: SafeArea(
-        child: SizedBox(
-          width: double.infinity,
-          child: SingleChildScrollView(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: Column(
-                children: [
-                  SizedBox(height: SizeConfig.screenHeight * 0.04),
-                  Text(
-                    "Forget Password",
-                    style: context.textTheme.titleLarge,
-                  ),
-                  const Text(
-                    "Please enter your email and we will send \nyou a link to return your account",
-                    textAlign: TextAlign.center,
-                  ),
-                  SizedBox(height: SizeConfig.screenHeight * 0.1),
-                  const ForgetPasswordForm(),
-                ],
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: EdgeInsets.all(smallSpace),
+          child: Column(
+            children: [
+              Text(
+                "Forget Password",
+                style: context.textTheme.titleLarge,
               ),
-            ),
+              SizedBox(height: verySmallSpace),
+              Text(
+                "Please enter your email and we will send \nyou a link to return your account",
+                style: context.textTheme.bodyMedium,
+                textAlign: TextAlign.center,
+              ),
+              SizedBox(height: largeSpace),
+              const ForgetPasswordForm(),
+              SizedBox(height: largeSpace),
+            ],
           ),
         ),
       ),

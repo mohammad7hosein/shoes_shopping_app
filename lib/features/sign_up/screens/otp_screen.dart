@@ -13,41 +13,39 @@ class OtpScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: const MyAppBar(
-        title: Text("OTP Verificcation"),
+        title: Text("OTP Verification"),
       ),
-      body: SizedBox(
-        width: double.infinity,
+      body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20),
-          child: SingleChildScrollView(
-            child: Column(
-              children: [
-                SizedBox(height: SizeConfig.screenHeight * 0.05),
-                Text(
-                  "OTP Verification",
-                  style: context.textTheme.titleLarge,
-                ),
-                const Text(
-                  "We sent your code to +98 919 542 ****",
+          padding: EdgeInsets.all(smallSpace),
+          child: Column(
+            children: [
+              Text(
+                "OTP Verification",
+                style: context.textTheme.titleLarge,
+              ),
+              SizedBox(height: verySmallSpace),
+              Text(
+                "We sent your code to +98 919 542 ****",
+                style: context.textTheme.bodyMedium,
+                textAlign: TextAlign.center,
+              ),
+              buildTimer(),
+              SizedBox(height: veryLargeSpace),
+              const OtpForm(),
+              SizedBox(height: largeSpace),
+              GestureDetector(
+                onTap: () {
+                  // resend your otp
+                },
+                child: const Text(
+                  "Resend OTP code",
+                  style: TextStyle(decoration: TextDecoration.underline),
                   textAlign: TextAlign.center,
                 ),
-                buildTimer(),
-                SizedBox(height: SizeConfig.screenHeight * 0.15),
-                const OtpForm(),
-                SizedBox(height: SizeConfig.screenHeight * 0.1),
-                GestureDetector(
-                  onTap: () {
-                    // resend your otp
-                  },
-                  child: const Text(
-                    "Resend OTP code",
-                    style: TextStyle(decoration: TextDecoration.underline),
-                    textAlign: TextAlign.center,
-                  ),
-                ),
-                const SizedBox(height: 20),
-              ],
-            ),
+              ),
+              SizedBox(height: smallSpace),
+            ],
           ),
         ),
       ),

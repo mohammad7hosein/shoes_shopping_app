@@ -18,7 +18,7 @@ class SocialCard extends StatelessWidget {
     return GestureDetector(
       onTap: onPressed,
       child: Container(
-        margin: const EdgeInsets.symmetric(horizontal: 10),
+        margin: const EdgeInsets.symmetric(horizontal: 8),
         padding: const EdgeInsets.all(12),
         decoration: BoxDecoration(
           borderRadius: myBorderRadius,

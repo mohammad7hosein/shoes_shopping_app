@@ -3,11 +3,11 @@ import 'package:shoes_shopping_app/core/styles/theme.dart';
 import 'package:shoes_shopping_app/generated/assets.dart';
 
 class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
-  final Widget title;
+  final Widget? title;
 
   const MyAppBar({
     super.key,
-    required this.title,
+    this.title,
   });
 
   @override

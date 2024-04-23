@@ -61,9 +61,9 @@ class _ForgetPasswordFormState extends State<ForgetPasswordForm> {
               suffixIcon: CustomSuffixIcon(icon: Assets.iconsMail),
             ),
           ),
-          const SizedBox(height: 30),
+          SizedBox(height: smallSpace),
           FormError(errors: errors),
-          SizedBox(height: SizeConfig.screenHeight * 0.1),
+          SizedBox(height: largeSpace),
           MyButton(
             text: "Continue",
             onPressed: () {
@@ -72,9 +72,8 @@ class _ForgetPasswordFormState extends State<ForgetPasswordForm> {
               }
             },
           ),
-          SizedBox(height: SizeConfig.screenHeight * 0.1),
+          SizedBox(height: largeSpace),
           const NoAccountText(),
-          const SizedBox(height: 20),
         ],
       ),
     );

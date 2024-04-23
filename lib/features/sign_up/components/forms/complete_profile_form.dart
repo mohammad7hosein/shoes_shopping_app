@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shoes_shopping_app/core/common/widgets/my_button.dart';
 import 'package:shoes_shopping_app/core/constants/strings.dart';
+import 'package:shoes_shopping_app/core/styles/size_config.dart';
 import 'package:shoes_shopping_app/features/sign_up/components/custom_suffix_icon.dart';
 import 'package:shoes_shopping_app/features/sign_up/screens/otp_screen.dart';
 import 'package:shoes_shopping_app/generated/assets.dart';
@@ -40,21 +41,22 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
       child: Column(
         children: [
           buildFirstNameFormField(),
-          const SizedBox(height: 30),
+          SizedBox(height: smallSpace),
           buildLastNameFormField(),
-          const SizedBox(height: 30),
+          SizedBox(height: smallSpace),
           buildPhoneNumberFormField(),
-          const SizedBox(height: 30),
+          SizedBox(height: smallSpace),
           buildAddressFormField(),
-          const SizedBox(height: 40),
+          SizedBox(height: mediumSpace),
           MyButton(
-              text: "Continue",
-              onPressed: () {
-                if (_formKey.currentState!.validate()) {
-                  _formKey.currentState!.save();
-                  Navigator.pushNamed(context, OtpScreen.route);
-                }
-              }),
+            text: "Continue",
+            onPressed: () {
+              if (_formKey.currentState!.validate()) {
+                _formKey.currentState!.save();
+                Navigator.pushNamed(context, OtpScreen.route);
+              }
+            },
+          ),
         ],
       ),
     );

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shoes_shopping_app/core/common/widgets/my_button.dart';
 import 'package:shoes_shopping_app/core/constants/strings.dart';
+import 'package:shoes_shopping_app/core/styles/size_config.dart';
 import 'package:shoes_shopping_app/core/utils/extensions.dart';
 import 'package:shoes_shopping_app/features/sign_up/components/custom_suffix_icon.dart';
 import 'package:shoes_shopping_app/features/sign_up/components/form_error.dart';
@@ -45,11 +46,10 @@ class _SignFormState extends State<SignForm> {
       child: Column(
         children: [
           buildEmailFormField(),
-          const SizedBox(height: 30),
+          SizedBox(height: smallSpace),
           buildPasswordFormField(),
-          const SizedBox(height: 30),
           FormError(errors: errors),
-          const SizedBox(height: 30),
+          SizedBox(height: mediumSpace),
           Row(
             children: [
               Checkbox(
@@ -77,7 +77,7 @@ class _SignFormState extends State<SignForm> {
               )
             ],
           ),
-          const SizedBox(height: 20),
+          SizedBox(height: smallSpace),
           MyButton(
             text: "Continue",
             onPressed: () {

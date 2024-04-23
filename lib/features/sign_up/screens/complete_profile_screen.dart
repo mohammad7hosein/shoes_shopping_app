@@ -15,9 +15,9 @@ class CompleteProfileScreen extends StatelessWidget {
       appBar: const MyAppBar(
         title: Text("Sign Up"),
       ),
-      body: Padding(
-        padding: EdgeInsets.all(smallSpace),
-        child: SingleChildScrollView(
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: EdgeInsets.all(smallSpace),
           child: Column(
             children: [
               Text(
@@ -30,13 +30,14 @@ class CompleteProfileScreen extends StatelessWidget {
                 style: context.textTheme.bodySmall,
                 textAlign: TextAlign.center,
               ),
-              SizedBox(height: mediumSpace),
+              SizedBox(height: largeSpace),
               const CompleteProfileForm(),
-              SizedBox(height: mediumSpace),
+              SizedBox(height: largeSpace),
               const Text(
                 "By continuing your confirm that you agree \nwith our term and Conditoin",
                 textAlign: TextAlign.center,
               ),
+              SizedBox(height: smallSpace),
             ],
           ),
         ),
