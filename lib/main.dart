@@ -58,7 +58,7 @@ class App extends StatelessWidget {
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        theme: MyTheme.lightTheme,
+        theme: MyTheme.darkTheme,
         routes: {
           MyBottomNavigation.route: (context) => const MyBottomNavigation(),
           HomeScreen.route: (context) => const HomeScreen(),

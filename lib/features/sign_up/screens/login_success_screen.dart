@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:shoes_shopping_app/core/common/widgets/my_button.dart';
+import 'package:shoes_shopping_app/core/common/widgets/my_app_bar.dart';
 import 'package:shoes_shopping_app/core/common/widgets/my_bottom_navigation.dart';
+import 'package:shoes_shopping_app/core/common/widgets/my_button.dart';
 import 'package:shoes_shopping_app/core/styles/size_config.dart';
 import 'package:shoes_shopping_app/core/utils/extensions.dart';
 import 'package:shoes_shopping_app/generated/assets.dart';
@@ -13,9 +14,8 @@ class LoginSuccessScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        leading: const SizedBox(),
-        title: const Text("Login Success"),
+      appBar: const MyAppBar(
+        title: Text("Login Success"),
       ),
       body: Column(
         children: [

@@ -29,7 +29,7 @@ class IconButtonWithBadge extends StatelessWidget {
             decoration: BoxDecoration(
               color: context.scheme.surface,
               borderRadius: myBorderRadius,
-              boxShadow: [myBoxShadow],
+              // boxShadow: [myBoxShadow(context)],
             ),
             child: icon,
           ),

@@ -19,7 +19,7 @@ class SearchField extends StatelessWidget {
       decoration: BoxDecoration(
         color: context.scheme.surface,
         borderRadius: myBorderRadius,
-        boxShadow: [myBoxShadow],
+        // boxShadow: [myBoxShadow(context)],
       ),
       child: TextField(
         onChanged: (value) {},

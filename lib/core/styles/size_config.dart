@@ -15,16 +15,8 @@ class SizeConfig {
   }
 }
 
-// // Get the proportionate height as per screen size
-// double getProportionateScreenHeight(double inputHeight) {
-//   double screenHeight = SizeConfig.screenHeight;
-//   // 812 is the layout height that designer use
-//   return (inputHeight / 812.0) * screenHeight;
-// }
-//
-// // Get the proportionate width as per screen size
-// double getProportionateScreenWidth(double inputWidth) {
-//   double screenWidth = SizeConfig.screenWidth;
-//   // 375 is the layout width that designer use
-//   return (inputWidth / 375.0) * screenWidth;
-// }
+final verySmallSpace = SizeConfig.screenHeight * 0.01;
+final smallSpace = SizeConfig.screenHeight * 0.025;
+final mediumSpace = SizeConfig.screenHeight * 0.05;
+final largeSpace = SizeConfig.screenHeight * 0.1;
+final veryLargeSpace = SizeConfig.screenHeight * 0.2;

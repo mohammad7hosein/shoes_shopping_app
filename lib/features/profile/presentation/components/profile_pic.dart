@@ -26,12 +26,11 @@ class ProfilePic extends StatelessWidget {
               height: 46,
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: context.scheme.background,
+                  backgroundColor: context.scheme.surface,
                   elevation: 0,
                   padding: EdgeInsets.zero,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(50),
-                    side: BorderSide(color: context.scheme.surface),
                   ),
                 ),
                 onPressed: () {},

@@ -46,12 +46,12 @@ class DetailScreen extends StatelessWidget {
                     flex: 4,
                     child: Container(
                       decoration: BoxDecoration(
-                        color: context.scheme.surface,
+                        color: context.scheme.background,
                         borderRadius: const BorderRadius.only(
                           topRight: Radius.circular(40),
                           topLeft: Radius.circular(40),
                         ),
-                        boxShadow: [myBoxShadow],
+                        boxShadow: [myBoxShadow(context)],
                       ),
                       child: SingleChildScrollView(
                         child: Padding(

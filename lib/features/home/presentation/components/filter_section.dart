@@ -27,14 +27,14 @@ class FilterSection extends StatelessWidget {
             padding: const EdgeInsets.all(16),
             decoration: BoxDecoration(
               color: context.scheme.surface,
-              boxShadow: [myBoxShadow],
+              // boxShadow: [myBoxShadow(context)],
               borderRadius: myBorderRadius,
             ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 const Icon(Icons.filter_alt_rounded),
-                const SizedBox(width: 2),
+                const SizedBox(width: 4),
                 Text(
                   'Filter',
                   style: context.textTheme.bodySmall

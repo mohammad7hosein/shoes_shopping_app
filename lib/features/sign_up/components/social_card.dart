@@ -20,13 +20,16 @@ class SocialCard extends StatelessWidget {
       child: Container(
         margin: const EdgeInsets.symmetric(horizontal: 10),
         padding: const EdgeInsets.all(12),
-        width: 40,
-        height: 40,
         decoration: BoxDecoration(
           borderRadius: myBorderRadius,
-          color: context.scheme.background,
+          color: context.scheme.surface,
         ),
-        child: myIcon(context, icon, blendMode: BlendMode.dstIn),
+        child: myIcon(
+          context,
+          icon,
+          size: 20,
+          blendMode: BlendMode.dstIn,
+        ),
       ),
     );
   }

@@ -54,6 +54,10 @@ class _SignFormState extends State<SignForm> {
             children: [
               Checkbox(
                 activeColor: context.scheme.primary,
+                side: BorderSide(color: context.scheme.onBackground),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(4),
+                ),
                 value: remember,
                 onChanged: (value) {
                   setState(() {

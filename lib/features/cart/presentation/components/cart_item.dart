@@ -27,7 +27,7 @@ class CartItem extends StatelessWidget {
             child: Container(
               padding: const EdgeInsets.all(10),
               decoration: BoxDecoration(
-                color: context.scheme.background,
+                color: context.scheme.surface,
                 borderRadius: myBorderRadius,
               ),
               child: Image.asset(cart.imageSrc),
@@ -84,7 +84,7 @@ class CartItem extends StatelessWidget {
                   const Spacer(),
                   Container(
                     decoration: BoxDecoration(
-                      color: context.scheme.background,
+                      color: context.scheme.surface,
                       borderRadius: myBorderRadius,
                     ),
                     child: Row(

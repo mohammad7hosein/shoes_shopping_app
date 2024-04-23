@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shoes_shopping_app/core/common/widgets/my_bottom_navigation.dart';
 import 'package:shoes_shopping_app/core/common/widgets/my_button.dart';
+import 'package:shoes_shopping_app/core/styles/theme.dart';
 import 'package:shoes_shopping_app/core/utils/extensions.dart';
 import 'package:shoes_shopping_app/generated/assets.dart';
 
@@ -94,12 +95,10 @@ class _SplashScreenState extends State<SplashScreen> {
     return AnimatedContainer(
       duration: const Duration(milliseconds: 200),
       margin: const EdgeInsets.only(right: 5),
-      width: currentPage == index ? 20 : 6,
+      width: currentPage == index ? 16 : 6,
       height: 6,
       decoration: BoxDecoration(
-        color: currentPage == index
-            ? context.scheme.primary
-            : context.scheme.background,
+        color: currentPage == index ? context.scheme.primary : gray,
         borderRadius: BorderRadius.circular(3),
       ),
     );

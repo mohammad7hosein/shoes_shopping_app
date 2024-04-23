@@ -23,11 +23,10 @@ class FilterItem extends StatelessWidget {
       onTap: onClick,
       child: Container(
         alignment: Alignment.center,
-        width: 50,
-        height: 50,
+        padding: const EdgeInsets.all(16),
         decoration: BoxDecoration(
           color: isSelected ? context.scheme.primary : context.scheme.surface,
-          boxShadow: [myBoxShadow],
+          // boxShadow: [myBoxShadow(context)],
           borderRadius: myBorderRadius,
         ),
         child: text != null

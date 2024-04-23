@@ -18,7 +18,7 @@ class CheckoutCard extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 20),
       decoration: BoxDecoration(
         color: context.scheme.surface,
-        boxShadow: [myBoxShadow],
+        boxShadow: [myBoxShadow(context)],
       ),
       child: SafeArea(
         child: Column(
@@ -41,7 +41,7 @@ class CheckoutCard extends StatelessWidget {
                   hintText: 'discount code',
                   suffixIcon: ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: context.scheme.onBackground,
+                      backgroundColor: context.scheme.secondary,
                       padding: const EdgeInsets.all(5),
                       shape: RoundedRectangleBorder(
                         borderRadius: myBorderRadius,
@@ -50,7 +50,7 @@ class CheckoutCard extends StatelessWidget {
                     child: Text(
                       'Apply',
                       style: context.textTheme.labelLarge
-                          ?.copyWith(color: context.scheme.onPrimary),
+                          ?.copyWith(color: context.scheme.onSecondary),
                     ),
                     onPressed: () {},
                   ),

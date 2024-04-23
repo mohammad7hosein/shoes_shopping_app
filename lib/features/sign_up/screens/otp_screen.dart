@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shoes_shopping_app/core/common/widgets/my_app_bar.dart';
 import 'package:shoes_shopping_app/core/styles/size_config.dart';
 import 'package:shoes_shopping_app/core/utils/extensions.dart';
 import 'package:shoes_shopping_app/features/sign_up/components/forms/otp_form.dart';
@@ -11,8 +12,8 @@ class OtpScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("OTP Verificcation"),
+      appBar: const MyAppBar(
+        title: Text("OTP Verificcation"),
       ),
       body: SizedBox(
         width: double.infinity,

@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:shoes_shopping_app/core/common/widgets/my_app_bar.dart';
 import 'package:shoes_shopping_app/core/styles/size_config.dart';
-import 'package:shoes_shopping_app/core/styles/theme.dart';
 import 'package:shoes_shopping_app/core/utils/extensions.dart';
 import 'package:shoes_shopping_app/features/sign_up/components/forms/sign_up_form.dart';
 import 'package:shoes_shopping_app/features/sign_up/components/social_card.dart';
-import 'package:shoes_shopping_app/generated/assets.dart';
 
 class SignUpScreen extends StatelessWidget {
   static String route = "/sign_up";
@@ -14,12 +13,8 @@ class SignUpScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        leading: IconButton(
-          onPressed: () => Navigator.pop(context),
-          icon: myIcon(context, Assets.iconsArrowLeft),
-        ),
-        title: const Text("Sign Up"),
+      appBar: const MyAppBar(
+        title: Text("Sign Up"),
       ),
       body: SizedBox(
         width: double.infinity,

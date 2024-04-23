@@ -18,15 +18,12 @@ class ProfileMenu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(
-        horizontal: 20,
-        vertical: 10,
-      ),
+      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
           elevation: 0,
           padding: const EdgeInsets.all(20),
-          backgroundColor: context.scheme.background,
+          backgroundColor: context.scheme.surface,
           shape: RoundedRectangleBorder(
             borderRadius: myBorderRadius,
           ),
