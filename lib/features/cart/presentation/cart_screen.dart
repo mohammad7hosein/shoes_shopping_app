@@ -52,7 +52,7 @@ class CartScreen extends StatelessWidget {
               itemBuilder: (context, index) {
                 final item = cartItems[index];
                 return Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 10),
+                  padding: const EdgeInsets.symmetric(vertical: 12),
                   child: Dismissible(
                     key: Key(item.id.toString()),
                     direction: DismissDirection.endToStart,
@@ -74,7 +74,8 @@ class CartScreen extends StatelessWidget {
                       child: Row(
                         children: [
                           const Spacer(),
-                          myIcon(context, 
+                          myIcon(
+                            context,
                             Assets.iconsTrash,
                             color: Colors.red,
                           ),

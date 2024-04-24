@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shoes_shopping_app/core/common/widgets/loading/loading_screen.dart';
+import 'package:shoes_shopping_app/core/styles/size_config.dart';
 import 'package:shoes_shopping_app/core/styles/theme.dart';
 import 'package:shoes_shopping_app/core/utils/extensions.dart';
 import 'package:shoes_shopping_app/features/cart/presentation/cart_screen.dart';
@@ -42,19 +43,17 @@ class HomeScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Padding(
-                  padding: const EdgeInsets.all(16),
-                  child: Text(
-                    'Shoes',
-                    style: context.textTheme.titleLarge
-                        ?.copyWith(fontFamily: 'Futura'),
-                  ),
+                SizedBox(height: smallSpace),
+                Text(
+                  "Seyed Shoes",
+                  style: context.textTheme.titleLarge
+                      ?.copyWith(fontFamily: 'Futura'),
                 ),
-                const SizedBox(height: 10),
+                SizedBox(height: mediumSpace),
                 buildSearchAndCartButton(),
-                const SizedBox(height: 30),
+                SizedBox(height: smallSpace),
                 buildFilterSection(),
-                const SizedBox(height: 20),
+                SizedBox(height: smallSpace),
                 buildShoes(),
               ],
             ),

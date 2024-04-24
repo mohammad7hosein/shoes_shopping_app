@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shoes_shopping_app/core/styles/size_config.dart';
 import 'package:shoes_shopping_app/core/styles/theme.dart';
 import 'package:shoes_shopping_app/core/utils/extensions.dart';
 
@@ -15,7 +16,7 @@ class CheckoutCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 20),
+      padding: EdgeInsets.all(smallSpace),
       decoration: BoxDecoration(
         color: context.scheme.surface,
         boxShadow: [myBoxShadow(context)],
@@ -25,8 +26,8 @@ class CheckoutCard extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             Container(
-              height: 50,
-              padding: const EdgeInsets.all(10),
+              height: 48,
+              padding: const EdgeInsets.all(8),
               decoration: BoxDecoration(
                 color: context.scheme.background,
                 borderRadius: myBorderRadius,
@@ -42,7 +43,7 @@ class CheckoutCard extends StatelessWidget {
                   suffixIcon: ElevatedButton(
                     style: ElevatedButton.styleFrom(
                       backgroundColor: context.scheme.secondary,
-                      padding: const EdgeInsets.all(5),
+                      padding: const EdgeInsets.all(4),
                       shape: RoundedRectangleBorder(
                         borderRadius: myBorderRadius,
                       ),
@@ -57,7 +58,7 @@ class CheckoutCard extends StatelessWidget {
                 ),
               ),
             ),
-            const SizedBox(height: 20),
+            SizedBox(height: mediumSpace),
             Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,

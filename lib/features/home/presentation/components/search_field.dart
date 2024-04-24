@@ -14,17 +14,15 @@ class SearchField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 50,
-      padding: const EdgeInsets.symmetric(horizontal: 10),
+      padding: const EdgeInsets.symmetric(horizontal: 12),
       decoration: BoxDecoration(
         color: context.scheme.surface,
         borderRadius: myBorderRadius,
-        // boxShadow: [myBoxShadow(context)],
       ),
       child: TextField(
         onChanged: (value) {},
         onSubmitted: (value) => onSearch(value),
-        style: Theme.of(context).textTheme.bodyMedium,
+        style: context.textTheme.bodyMedium,
         textInputAction: TextInputAction.search,
         decoration: InputDecoration(
           icon: myIcon(context, Assets.iconsSearch),

@@ -23,13 +23,10 @@ class IconButtonWithBadge extends StatelessWidget {
         clipBehavior: Clip.none,
         children: [
           Container(
-            width: 50,
-            height: 50,
             padding: const EdgeInsets.all(12),
             decoration: BoxDecoration(
               color: context.scheme.surface,
               borderRadius: myBorderRadius,
-              // boxShadow: [myBoxShadow(context)],
             ),
             child: icon,
           ),

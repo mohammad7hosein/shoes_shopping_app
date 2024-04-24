@@ -26,7 +26,6 @@ class FilterItem extends StatelessWidget {
         padding: const EdgeInsets.all(16),
         decoration: BoxDecoration(
           color: isSelected ? context.scheme.primary : context.scheme.surface,
-          // boxShadow: [myBoxShadow(context)],
           borderRadius: myBorderRadius,
         ),
         child: text != null

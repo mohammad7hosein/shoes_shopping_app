@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shoes_shopping_app/core/data/model/cart.dart';
+import 'package:shoes_shopping_app/core/styles/size_config.dart';
 import 'package:shoes_shopping_app/core/styles/theme.dart';
 import 'package:shoes_shopping_app/core/utils/extensions.dart';
 import 'package:shoes_shopping_app/generated/assets.dart';
@@ -22,19 +23,17 @@ class CartItem extends StatelessWidget {
       children: [
         SizedBox(
           width: 100,
-          child: AspectRatio(
-            aspectRatio: 1,
-            child: Container(
-              padding: const EdgeInsets.all(10),
-              decoration: BoxDecoration(
-                color: context.scheme.surface,
-                borderRadius: myBorderRadius,
-              ),
-              child: Image.asset(cart.imageSrc),
+          height: 100,
+          child: Container(
+            padding: const EdgeInsets.all(8),
+            decoration: BoxDecoration(
+              color: context.scheme.surface,
+              borderRadius: myBorderRadius,
             ),
+            child: Image.asset(cart.imageSrc),
           ),
         ),
-        const SizedBox(width: 20),
+        SizedBox(width: smallSpace),
         Expanded(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -60,10 +59,10 @@ class CartItem extends StatelessWidget {
                   ),
                   const Spacer(),
                   Text(cart.size),
-                  const SizedBox(width: 10),
+                  const SizedBox(width: 8),
                   Container(
-                    width: 25,
-                    height: 25,
+                    width: 24,
+                    height: 24,
                     decoration: BoxDecoration(
                       color: cart.color,
                       shape: BoxShape.circle,
@@ -71,7 +70,7 @@ class CartItem extends StatelessWidget {
                   ),
                 ],
               ),
-              const SizedBox(height: 16),
+              SizedBox(height: smallSpace),
               Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [

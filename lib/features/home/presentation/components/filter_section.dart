@@ -27,7 +27,6 @@ class FilterSection extends StatelessWidget {
             padding: const EdgeInsets.all(16),
             decoration: BoxDecoration(
               color: context.scheme.surface,
-              // boxShadow: [myBoxShadow(context)],
               borderRadius: myBorderRadius,
             ),
             child: Row(

@@ -29,7 +29,6 @@ class FilterColor extends StatelessWidget {
             color: isSelected ? context.scheme.primary : context.scheme.surface,
           ),
           color: context.scheme.surface,
-          boxShadow: [myBoxShadow(context)],
           borderRadius: myBorderRadius,
         ),
         child: Container(

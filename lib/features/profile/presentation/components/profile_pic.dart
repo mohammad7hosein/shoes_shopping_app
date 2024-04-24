@@ -4,15 +4,13 @@ import 'package:shoes_shopping_app/core/utils/extensions.dart';
 import 'package:shoes_shopping_app/generated/assets.dart';
 
 class ProfilePic extends StatelessWidget {
-  const ProfilePic({
-    Key? key,
-  }) : super(key: key);
+  const ProfilePic({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: 115,
-      height: 115,
+      width: 120,
+      height: 120,
       child: Stack(
         clipBehavior: Clip.none,
         fit: StackFit.expand,
@@ -22,8 +20,8 @@ class ProfilePic extends StatelessWidget {
             bottom: 0,
             right: -12,
             child: SizedBox(
-              width: 46,
-              height: 46,
+              width: 40,
+              height: 40,
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
                   backgroundColor: context.scheme.surface,

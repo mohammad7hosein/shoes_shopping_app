@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shoes_shopping_app/core/common/widgets/my_app_bar.dart';
-import 'package:shoes_shopping_app/features/sign_up/screens/complete_profile_screen.dart';
+import 'package:shoes_shopping_app/core/styles/size_config.dart';
+import 'package:shoes_shopping_app/features/sign_up/screens/sign_in_screen.dart';
 import 'package:shoes_shopping_app/generated/assets.dart';
 
 import 'components/profile_menu.dart';
@@ -14,18 +15,19 @@ class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const MyAppBar(title: Text('Profile')),
+      appBar: const MyAppBar(
+        title: Text('Profile'),
+      ),
       body: SingleChildScrollView(
         child: Column(
           children: [
-            const SizedBox(height: 20),
+            SizedBox(height: smallSpace),
             const ProfilePic(),
-            const SizedBox(height: 20),
+            SizedBox(height: smallSpace),
             ProfileMenu(
               text: "My Account",
               icon: Assets.iconsUser,
-              onClick: () =>
-                  Navigator.pushNamed(context, CompleteProfileScreen.route),
+              onClick: () => Navigator.pushNamed(context, SignInScreen.route),
             ),
             ProfileMenu(
               text: "Notifications",

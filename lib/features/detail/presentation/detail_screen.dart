@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shoes_shopping_app/core/common/widgets/loading/loading_screen.dart';
+import 'package:shoes_shopping_app/core/styles/size_config.dart';
 import 'package:shoes_shopping_app/core/styles/theme.dart';
 import 'package:shoes_shopping_app/core/utils/extensions.dart';
 import 'package:shoes_shopping_app/features/home/presentation/components/filter_item.dart';
@@ -61,11 +62,11 @@ class DetailScreen extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               buildTitleAndSubTitle(context),
-                              const SizedBox(height: 24),
+                              SizedBox(height: smallSpace),
                               buildSizes(context),
-                              const SizedBox(height: 24),
+                              SizedBox(height: smallSpace),
                               buildColors(context),
-                              const SizedBox(height: 60),
+                              SizedBox(height: largeSpace),
                               buildAddToCartButton(context),
                             ],
                           ),
@@ -131,7 +132,7 @@ class DetailScreen extends StatelessWidget {
             );
           },
         ),
-        const Padding(padding: EdgeInsets.all(10)),
+        const Padding(padding: EdgeInsets.all(8)),
       ],
       leading: IconButton(
         onPressed: () => Navigator.pop(context),
@@ -231,7 +232,7 @@ class DetailScreen extends StatelessWidget {
                 itemBuilder: (context, index) {
                   final item = colors[index];
                   return Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 5),
+                    padding: const EdgeInsets.symmetric(horizontal: 4),
                     child: FilterColor(
                       color: item,
                       isSelected: state.selectedColor == item,
@@ -274,14 +275,14 @@ class DetailScreen extends StatelessWidget {
                 itemBuilder: (context, index) {
                   final item = sizes[index];
                   return Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 5),
+                    padding: const EdgeInsets.symmetric(horizontal: 4),
                     child: FilterItem(
                       text: item,
                       isSelected: state.selectedSize == item,
                       onClick: () {
-                        context.read<DetailBloc>().add(
-                              DetailSelectSize(size: item),
-                            );
+                        context
+                            .read<DetailBloc>()
+                            .add(DetailSelectSize(size: item));
                       },
                     ),
                   );
@@ -306,7 +307,7 @@ class DetailScreen extends StatelessWidget {
               shoe.title,
               style: context.textTheme.titleLarge,
             ),
-            const SizedBox(height: 6),
+            const SizedBox(height: 8),
             Text(
               shoe.subTitle,
               style: context.textTheme.titleSmall

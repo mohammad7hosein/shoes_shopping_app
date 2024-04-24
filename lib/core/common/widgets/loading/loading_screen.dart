@@ -1,7 +1,9 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:shoes_shopping_app/core/styles/size_config.dart';
 import 'package:shoes_shopping_app/core/styles/theme.dart';
+import 'package:shoes_shopping_app/core/utils/extensions.dart';
 
 import 'loading_screen_controller.dart';
 
@@ -35,8 +37,8 @@ class LoadingScreen {
     required BuildContext context,
     required String text,
   }) {
-    final _text = StreamController<String>();
-    _text.add(text);
+    final loadingText = StreamController<String>();
+    loadingText.add(text);
 
     final state = Overlay.of(context);
     final renderBox = context.findRenderObject() as RenderBox;
@@ -54,7 +56,7 @@ class LoadingScreen {
                 minWidth: size.width * 0.5,
               ),
               decoration: BoxDecoration(
-                color: Colors.white,
+                color: context.scheme.surface,
                 borderRadius: myBorderRadius,
               ),
               child: Padding(
@@ -65,9 +67,9 @@ class LoadingScreen {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       const CircularProgressIndicator(),
-                      const SizedBox(height: 20),
+                      SizedBox(height: smallSpace),
                       StreamBuilder<String>(
-                        stream: _text.stream,
+                        stream: loadingText.stream,
                         builder: (context, snapshot) {
                           return snapshot.hasData
                               ? Text(
@@ -90,12 +92,12 @@ class LoadingScreen {
 
     return LoadingScreenController(
       close: () {
-        _text.close();
+        loadingText.close();
         overlay.remove();
         return true;
       },
       update: (text) {
-        _text.add(text);
+        loadingText.add(text);
         return true;
       },
     );

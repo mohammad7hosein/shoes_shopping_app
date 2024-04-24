@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shoes_shopping_app/core/styles/size_config.dart';
 import 'package:shoes_shopping_app/core/styles/theme.dart';
 import 'package:shoes_shopping_app/core/utils/extensions.dart';
 import 'package:shoes_shopping_app/generated/assets.dart';
@@ -36,7 +37,7 @@ class ProfileMenu extends StatelessWidget {
               icon,
               color: context.scheme.primary,
             ),
-            const SizedBox(width: 20),
+            SizedBox(width: smallSpace),
             Expanded(
               child: Text(
                 text,

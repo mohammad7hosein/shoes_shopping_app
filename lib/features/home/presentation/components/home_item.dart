@@ -24,7 +24,7 @@ class HomeItem extends StatelessWidget {
       borderRadius: myBorderRadius,
       onTap: onClick,
       child: Container(
-        padding: const EdgeInsets.all(10),
+        padding: const EdgeInsets.all(12),
         decoration: BoxDecoration(
           color: context.scheme.surface,
           borderRadius: myBorderRadius,
@@ -32,11 +32,11 @@ class HomeItem extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                InkWell(
+            Align(
+              alignment: Alignment.topLeft,
+              child: Padding(
+                padding: const EdgeInsets.all(4),
+                child: InkWell(
                   onTap: onLike,
                   child: myIcon(
                     context,
@@ -44,7 +44,7 @@ class HomeItem extends StatelessWidget {
                     color: isLiked ? Colors.red : null,
                   ),
                 ),
-              ],
+              ),
             ),
             Expanded(
               child: Hero(
@@ -52,7 +52,7 @@ class HomeItem extends StatelessWidget {
                 child: Image.asset(shoe.imageSrc),
               ),
             ),
-            const SizedBox(height: 10),
+            const SizedBox(height: 8),
             Text(
               shoe.title,
               style: context.textTheme.bodySmall,
@@ -62,7 +62,7 @@ class HomeItem extends StatelessWidget {
               style: context.textTheme.bodySmall
                   ?.copyWith(color: context.theme.hintColor),
             ),
-            const SizedBox(height: 10),
+            const SizedBox(height: 8),
             Text(
               '\$${shoe.price.toInt()}',
               style: context.textTheme.bodyMedium

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:shoes_shopping_app/core/common/widgets/my_bottom_navigation.dart';
 import 'package:shoes_shopping_app/core/common/widgets/my_button.dart';
 import 'package:shoes_shopping_app/core/styles/theme.dart';
 import 'package:shoes_shopping_app/core/utils/extensions.dart';
-import 'package:shoes_shopping_app/features/sign_up/screens/sign_in_screen.dart';
 import 'package:shoes_shopping_app/generated/assets.dart';
 
 import 'components/splash_content.dart';
@@ -74,7 +74,7 @@ class _SplashScreenState extends State<SplashScreen> {
                       text: "Continue",
                       onPressed: () => Navigator.pushNamed(
                         context,
-                        SignInScreen.route,
+                        MyBottomNavigation.route,
                       ),
                     ),
                     const Spacer(),
